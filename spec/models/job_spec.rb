@@ -10,5 +10,6 @@ describe Job do
 	it { @job.should respond_to :pay }
 	it { @job.should respond_to :title }
 	it { @job.should respond_to :employer }
+	it { @job.should respond_to :applieds }
 
 end

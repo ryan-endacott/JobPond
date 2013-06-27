@@ -24,4 +24,5 @@
 
 class Employee < User
 	has_one :resume
+	has_many :applieds
 end
