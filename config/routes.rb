@@ -11,7 +11,8 @@ authenticated :user do
   resource :employee do
   	resource :resume
   end
-  resources :employer do
+  #plural so we can list all
+  resources :employers do
   	resources :jobs
   end
 
