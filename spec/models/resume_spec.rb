@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: resumes
+#
+#  id             :integer          not null, primary key
+#  phone_number   :string(255)
+#  address        :string(255)
+#  job_experience :string(255)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Resume do
