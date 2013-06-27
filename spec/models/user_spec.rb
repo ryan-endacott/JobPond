@@ -11,6 +11,11 @@ describe User do
     }
   end
 
+  it "should respond to role" do
+    user = User.create(@attr)
+    user.should respond_to :role
+  end
+
   it "should create a new instance given a valid attribute" do
     User.create!(@attr)
   end
