@@ -1,5 +1,5 @@
 JobApp::Application.routes.draw do
-  authenticated :user do
+authenticated :user do
     root :to => 'home#index'
   end
   root :to => "home#index"
