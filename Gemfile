@@ -13,7 +13,6 @@ gem 'cancan'
 gem 'devise'
 gem 'figaro'
 gem 'haml-rails'
-gem 'rolify'
 gem 'simple_form'
 group :development do
   gem 'better_errors'
