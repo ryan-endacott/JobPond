@@ -39,7 +39,6 @@ describe User do
 	
 	it "should be an admin" do
 		u = FactoryGirl.create :admin
-		puts u
 		u.admin?.should == true
 	end
 	
