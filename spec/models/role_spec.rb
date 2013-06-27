@@ -12,14 +12,14 @@
 
 require 'spec_helper'
 
-describe Role do
+describe User do
 
 	before do
 		@roles = [:employee?, :employer?, :admin?]
-		@user = FactoryGirl.create
+		@user = FactoryGirl.create :user
 	end
 
-	it "should have appropriate roles" do 
+	it "should respond appropriate roles" do 
 		@roles.each do |role|
 			user = User.all.first
 			user.should respond_to role
