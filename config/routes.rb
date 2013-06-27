@@ -1,4 +1,8 @@
 JobApp::Application.routes.draw do
+  get "listings/index"
+
+  get "listings/show"
+
   authenticated :user do
     root :to => 'home#index'
   end
