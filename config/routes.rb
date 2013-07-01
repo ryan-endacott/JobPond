@@ -12,7 +12,7 @@ authenticated :user do
   	resource :resume
   end
   #plural so we can list all
-  resources :employers do
+  resources :employers do #seperate employers page
   	resources :jobs
   end
 
