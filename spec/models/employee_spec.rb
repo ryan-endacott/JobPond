@@ -27,11 +27,8 @@ require 'spec_helper'
 
 describe Employee do
 
-	before do
-		@employee = FactoryGirl.create :employee
-	end
-
-	it { @employee.should respond_to :applieds }
-	it { @employee.should respond_to :resume }
+  it { should have_many :applieds }
+  it { should have_many(:applied_jobs).through :applieds }
+  it { should have_one :resume }
 
 end
