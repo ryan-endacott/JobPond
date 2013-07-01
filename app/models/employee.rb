@@ -26,4 +26,5 @@
 class Employee < User
 	has_one :resume
 	has_many :applieds
+  has_many :applied_jobs, :through => :applieds, :source => :job
 end
