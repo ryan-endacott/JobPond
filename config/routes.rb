@@ -9,7 +9,7 @@ authenticated :user do
   #users might not be needed at all since we have subclasses
 
   resource :employee do
-  	resource :resume
+  	resource :resume, except: ["new"]
   end
   #plural so we can list all
   resources :employers do #seperate employers page
