@@ -9,7 +9,7 @@ JobApp::Application.routes.draw do
   #users might not be needed at all since we have subclasses
 
   resource :employee do
-  	resource :resume, except: ["new"]
+  	resource :resume, only: ["create", "edit", "update"]
   end
   #plural so we can list all
 

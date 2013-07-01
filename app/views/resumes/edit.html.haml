@@ -1,2 +1,7 @@
-%h1 Resumes#edit
-%p Find me in app/views/resumes/edit.html.haml
+%h2 Your Resume
+= simple_form_for @resume, url: employee_resume_path  do |f|
+  = f.error_notification
+  = display_base_errors @resume
+  = f.input :phone_number, :autofocus => true
+  = f.input :address, :required => true
+  = f.button :submit, 'Save', :class => 'btn-primary'

@@ -11,7 +11,7 @@ class Ability
 			can :read, [Employee, Resume]
 		elsif user.employee?
 			can :manage, [Employee, Resume]
-			can :read, [Employers, Job]
+			can :read, [Job]
 		else
 			can :read, [Employer, Job]
 		end
