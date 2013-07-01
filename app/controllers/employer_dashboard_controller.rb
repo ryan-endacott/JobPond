@@ -3,6 +3,6 @@ class EmployerDashboardController < ApplicationController
   before_filter :employer_only!
 
   def show
-
+    @listings = current_user.jobs
   end
 end

@@ -1,0 +1,10 @@
+= simple_form_for(@job, url: employer_jobs_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :description
+    = f.input :pay
+
+  .form-actions
+    = f.button :submit
