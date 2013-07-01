@@ -18,11 +18,13 @@ describe Job do
 	before do
 		@job = FactoryGirl.create :job
 	end
-  
+
 	it { @job.should respond_to :description }
 	it { @job.should respond_to :pay }
 	it { @job.should respond_to :title }
-	it { @job.should respond_to :employer }
-	it { @job.should respond_to :applieds }
+
+  it { should belong_to :employer }
+  it { should have_many :applieds }
+  it { should have_many(:applicants).through :applieds }
 
 end
