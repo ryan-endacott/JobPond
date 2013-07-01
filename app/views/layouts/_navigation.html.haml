@@ -1,22 +1,22 @@
 = link_to "Job App", root_path, :class => 'brand'
-= link_to "For Employers", employers_path, class: "btn btn-success"
+= link_to "For Employers", employer_path, class: "btn btn-success"
 %ul.nav.pull-right
   %li
-    = link_to 'Employers', employers_path
+    = nav_link 'Employers', employer_path
 
   %li
-    = link_to 'Job Listings', jobs_path
+    = nav_link 'Job Listings', jobs_path
 
   - if user_signed_in?
     %li
-      = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+      = nav_link 'Logout', destroy_user_session_path, :method=>'delete'
   - else
     %li
-      = link_to 'Login', new_user_session_path
+      = nav_link 'Login', new_user_session_path
 
   - if user_signed_in?
     %li
-      = link_to 'Edit account', edit_user_registration_path
+      = nav_link 'Edit account', edit_user_registration_path
   - else
     %li
-      = link_to 'Sign up', new_user_registration_path
+      = nav_link 'Sign up', new_user_registration_path

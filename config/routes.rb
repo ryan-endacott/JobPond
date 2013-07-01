@@ -1,5 +1,5 @@
 JobApp::Application.routes.draw do
-authenticated :user do
+  authenticated :user do
     root :to => 'home#index'
   end
   root :to => "home#index"
@@ -12,8 +12,11 @@ authenticated :user do
   	resource :resume, except: ["new"]
   end
   #plural so we can list all
-  resources :employers do #seperate employers page
-  	resources :jobs
+
+  resource :employer, only: ['show'] do
+    resource :dashboard, only: ['show'] do
+      root :to => 'employer_dashboard#show'
+    end
   end
 
   #cant use the jobs controller.  Need different layout and features.
