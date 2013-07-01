@@ -14,13 +14,10 @@ JobApp::Application.routes.draw do
   #plural so we can list all
 
   resource :employer, only: ['show'] do
-    resource :jobs, except: ['index']
+    resources :jobs, except: ['index']
     resource :dashboard, only: ['show'] do
       root :to => 'employer_dashboard#show'
     end
   end
-
-  #cant use the jobs controller.  Need different layout and features.
-  resources :jobs, controller: :listings, only: ["index", "show"]
 
 end
