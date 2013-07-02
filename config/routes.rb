@@ -1,8 +1,8 @@
 JobApp::Application.routes.draw do
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'employees#index'
   end
-  root :to => "home#index"
+  root :to => "employees#index"
   devise_for :users
   #resources :users
   #left the above for default although users probably needs to be singular

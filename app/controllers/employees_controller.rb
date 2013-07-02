@@ -1,22 +1,6 @@
 class EmployeesController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource # temporariliy removed, maybe we should just make a marketing controller?
 
-  def show
-
-  end
-
-  def edit
-  end
-
-  def create
-  end
-
-  def new
-  end
-
-  def update
-  end
-
-  def destroy
+  def index
   end
 end
