@@ -1,8 +1,8 @@
 JobApp::Application.routes.draw do
   authenticated :user do
-    root :to => 'employees#index'
+    root :to => 'marketing#employees'
   end
-  root :to => "employees#index"
+  root :to => 'marketing#employees'
   devise_for :users
   #resources :users
   #left the above for default although users probably needs to be singular
@@ -17,7 +17,7 @@ JobApp::Application.routes.draw do
     resources :jobs, except: ['index']
   end
 
-  get '/employers', to: 'Employers#index'
+  get '/employers', to: 'marketing#employers'
   get '/employers/dashboard', to: 'EmployerDashboard#show', as: :employer_dashboard
 
 end
