@@ -3,18 +3,23 @@
     %h1 Your Listings
   .span3.offset2.pull-right
     = link_to "Create New Listing", new_employer_job_path, class: "btn btn-success"
-- @listings.each_slice(3) do |slice|
-  .row
-    - slice.each do |listing|
-      .span4
-        %h2= link_to listing.title, employer_job_path(listing)
-        %p= listing.description
-        %p
-          Pay: $
-          = listing.pay
-        %p
-          Location: North Pole
-          -#(hardcoded, not an attribute yet)
-        %p
-          Applicants:
-          = listing.applicants.count
+- if @listings.empty?
+  %p
+    It looks like you haven't created any job listings yet!
+    = link_to 'Get hiring!', new_employer_job_path
+- else
+  - @listings.each_slice(3) do |slice|
+    .row
+      - slice.each do |listing|
+        .span4
+          %h2= link_to listing.title, employer_job_path(listing)
+          %p= listing.description
+          %p
+            Pay: $
+            = listing.pay
+          %p
+            Location: North Pole
+            -#(hardcoded, not an attribute yet)
+          %p
+            Applicants:
+            = listing.applicants.count
