@@ -28,27 +28,24 @@ describe JobsController do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # JobsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
-
-  describe "GET index" do
-    it "assigns all jobs as @jobs" do
-      job = Job.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:jobs).should eq([job])
-    end
+  include Devise::TestHelpers
+  before(:each) do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in FactoryGirl.create :employer
   end
+
 
   describe "GET show" do
     it "assigns the requested job as @job" do
       job = Job.create! valid_attributes
-      get :show, {:id => job.to_param}, valid_session
+      get :show, {:id => job.to_param}
       assigns(:job).should eq(job)
     end
   end
 
   describe "GET new" do
     it "assigns a new job as @job" do
-      get :new, {}, valid_session
+      get :new, {}
       assigns(:job).should be_a_new(Job)
     end
   end
@@ -56,7 +53,7 @@ describe JobsController do
   describe "GET edit" do
     it "assigns the requested job as @job" do
       job = Job.create! valid_attributes
-      get :edit, {:id => job.to_param}, valid_session
+      get :edit, {:id => job.to_param}
       assigns(:job).should eq(job)
     end
   end
@@ -65,19 +62,19 @@ describe JobsController do
     describe "with valid params" do
       it "creates a new Job" do
         expect {
-          post :create, {:job => valid_attributes}, valid_session
+          post :create, {:job => valid_attributes}
         }.to change(Job, :count).by(1)
       end
 
       it "assigns a newly created job as @job" do
-        post :create, {:job => valid_attributes}, valid_session
+        post :create, {:job => valid_attributes}
         assigns(:job).should be_a(Job)
         assigns(:job).should be_persisted
       end
 
       it "redirects to the created job" do
-        post :create, {:job => valid_attributes}, valid_session
-        response.should redirect_to(Job.last)
+        post :create, {:job => valid_attributes}
+        response.should redirect_to(employer_dashboard_path)
       end
     end
 
@@ -85,14 +82,14 @@ describe JobsController do
       it "assigns a newly created but unsaved job as @job" do
         # Trigger the behavior that occurs when invalid params are submitted
         Job.any_instance.stub(:save).and_return(false)
-        post :create, {:job => {  }}, valid_session
+        post :create, {:job => {  }}
         assigns(:job).should be_a_new(Job)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Job.any_instance.stub(:save).and_return(false)
-        post :create, {:job => {  }}, valid_session
+        post :create, {:job => {  }}
         response.should render_template("new")
       end
     end
@@ -107,19 +104,19 @@ describe JobsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Job.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
-        put :update, {:id => job.to_param, :job => { "these" => "params" }}, valid_session
+        put :update, {:id => job.to_param, :job => { "these" => "params" }}
       end
 
       it "assigns the requested job as @job" do
         job = Job.create! valid_attributes
-        put :update, {:id => job.to_param, :job => valid_attributes}, valid_session
+        put :update, {:id => job.to_param, :job => valid_attributes}
         assigns(:job).should eq(job)
       end
 
       it "redirects to the job" do
         job = Job.create! valid_attributes
-        put :update, {:id => job.to_param, :job => valid_attributes}, valid_session
-        response.should redirect_to(job)
+        put :update, {:id => job.to_param, :job => valid_attributes}
+        response.should redirect_to(employer_job_path(job))
       end
     end
 
@@ -128,7 +125,7 @@ describe JobsController do
         job = Job.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Job.any_instance.stub(:save).and_return(false)
-        put :update, {:id => job.to_param, :job => {  }}, valid_session
+        put :update, {:id => job.to_param, :job => {  }}
         assigns(:job).should eq(job)
       end
 
@@ -136,7 +133,7 @@ describe JobsController do
         job = Job.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Job.any_instance.stub(:save).and_return(false)
-        put :update, {:id => job.to_param, :job => {  }}, valid_session
+        put :update, {:id => job.to_param, :job => {  }}
         response.should render_template("edit")
       end
     end
@@ -146,14 +143,14 @@ describe JobsController do
     it "destroys the requested job" do
       job = Job.create! valid_attributes
       expect {
-        delete :destroy, {:id => job.to_param}, valid_session
+        delete :destroy, {:id => job.to_param}
       }.to change(Job, :count).by(-1)
     end
 
     it "redirects to the jobs list" do
       job = Job.create! valid_attributes
-      delete :destroy, {:id => job.to_param}, valid_session
-      response.should redirect_to(jobs_url)
+      delete :destroy, {:id => job.to_param}
+      response.should redirect_to(employer_dashboard_path)
     end
   end
 

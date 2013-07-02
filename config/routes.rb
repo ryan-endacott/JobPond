@@ -18,6 +18,6 @@ JobApp::Application.routes.draw do
   end
 
   get '/employers', to: 'marketing#employers'
-  get '/employers/dashboard', to: 'EmployerDashboard#show', as: :employer_dashboard
+  get '/employer/dashboard', to: 'employer_dashboard#show', as: :employer_dashboard
 
 end
