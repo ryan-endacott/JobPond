@@ -13,11 +13,11 @@ JobApp::Application.routes.draw do
   end
   #plural so we can list all
 
-  resource :employer, only: ['show'] do
+  resource :employer, only: [] do
     resources :jobs, except: ['index']
-    resource :dashboard, only: ['show'] do
-      root :to => 'employer_dashboard#show'
-    end
   end
+
+  get '/employers', to: 'Employers#index'
+  get '/employers/dashboard', to: 'EmployerDashboard#show'
 
 end

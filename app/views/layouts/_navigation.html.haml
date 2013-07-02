@@ -1,16 +1,14 @@
 = link_to "Job App", root_path, :class => 'brand'
 - if not user_signed_in?
-  - if current_page?(employer_path)
+  - if current_page?(employers_path)
     = link_to "For Job Seekers", root_path, class: 'btn btn-success'
   - else
-    = link_to "For Employers", employer_path, class: 'btn btn-success'
+    = link_to "For Employers", employers_path, class: 'btn btn-success'
 %ul.nav.pull-right
+  - if user_signed_in? and current_user.employer?
+    = nav_link 'Dashboard', employers_dashboard_path
   %li
-    = nav_link 'Employers', employer_path
-
-    -#  %li
-    -#    = nav_link 'Job Listings', jobs_path
-
+    = nav_link 'Employers', employers_path
   - if user_signed_in?
     %li
       = nav_link 'Logout', destroy_user_session_path, :method=>'delete'
