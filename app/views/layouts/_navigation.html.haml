@@ -1,5 +1,9 @@
 = link_to "Job App", root_path, :class => 'brand'
-= link_to "For Employers", employer_path, class: "btn btn-success"
+- if not user_signed_in?
+  - if current_page?(employer_path)
+    = link_to "For Job Seekers", root_path, class: 'btn btn-success'
+  - else
+    = link_to "For Employers", employer_path, class: 'btn btn-success'
 %ul.nav.pull-right
   %li
     = nav_link 'Employers', employer_path
