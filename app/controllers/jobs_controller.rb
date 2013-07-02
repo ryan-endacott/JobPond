@@ -81,7 +81,7 @@ class JobsController < ApplicationController
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to jobs_url }
+      format.html { redirect_to employer_dashboard_path }
       format.json { head :no_content }
     end
   end

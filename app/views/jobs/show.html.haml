@@ -1,6 +1,14 @@
-%p#notice= notice
+%h2= link_to @job.title, employer_job_path(@job)
+%p= @job.description
+%p
+  Pay: $
+  = @job.pay
+%p
+  Location: North Pole
+%p
+  Applicants:
+  = @job.applicants.count
 
-
-= link_to 'Edit', edit_job_path(@job)
+= link_to 'Edit', edit_employer_job_path(@job), class: 'btn'
 \|
-= link_to 'Back', jobs_path
+= link_to 'Back', employer_dashboard_path

@@ -7,4 +7,11 @@
     = f.input :pay, default: 7
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-success'
+
+    - if @job.id
+      = link_to 'Delete Listing',
+        employer_job_path(@job),
+        :method => :delete,
+        :confirm => 'Are you sure you wish to delete this listing?',
+        :class => 'btn btn-danger'
