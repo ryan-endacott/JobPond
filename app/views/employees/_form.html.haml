@@ -1,7 +1,8 @@
-= simple_form_for(@employee) do |f|
+= simple_form_for(@employee, url: employee_path) do |f|
   = f.error_notification
-
-  .form-inputs
-
-  .form-actions
-    = f.button :submit
+  = f.input :name, :autofocus => true
+  = f.input :email, :required => true
+  = f.input :password, :required => true
+  = f.input :password_confirmation, :required => true
+  = f.button :submit, 'Sign up', :class => 'btn-primary'
+  = render "devise/shared/links"
