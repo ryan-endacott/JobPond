@@ -20,5 +20,8 @@
     %li
       = nav_link 'Edit account', edit_user_registration_path
   - else
-    %li
-      = nav_link 'Sign up', new_user_registration_path
+    - if current_page?(employer_path)
+      = nav_link 'Sign up', new_user_registration_path #go to employer signup
+    - else
+      %li
+        = nav_link 'Sign up', new_employee_path #go to employee signup
