@@ -3,9 +3,9 @@ JobApp::Application.routes.draw do
     root :to => 'marketing#employees'
   end
   root :to => 'marketing#employees'
-  devise_for :users, skip: [:registration]
-  devise_for :employees, skip: [:session, :password]
-  devise_for :employers, skip: [:session, :password]
+  devise_for :users, skip: [:registrations]
+  devise_for :employees, skip: [:sessions, :passwords]
+  devise_for :employers, skip: [:sessions, :passwords]
   #resources :users
   #left the above for default although users probably needs to be singular
   #users might not be needed at all since we have subclasses
