@@ -1,4 +1,4 @@
-class Employer::DashboardController < ApplicationController
+class Employers::DashboardController < ApplicationController
   authorize_resource :employer, :job
   before_filter :employer_only!
 

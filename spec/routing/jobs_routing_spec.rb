@@ -1,34 +1,34 @@
 require "spec_helper"
 
-describe Employer::JobsController do
+describe Employers::JobsController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/employer/dashboard").should route_to("employer/dashboard#show")
+      get("/employers/dashboard").should route_to("employers/dashboard#show")
     end
 
     it "routes to #new" do
-      get("/employer/jobs/new").should route_to("employer/jobs#new")
+      get("/employers/jobs/new").should route_to("employers/jobs#new")
     end
 
     it "routes to #show" do
-      get("/employer/jobs/1").should route_to("employer/jobs#show", :id => "1")
+      get("/employers/jobs/1").should route_to("employers/jobs#show", :id => "1")
     end
 
     it "routes to #edit" do
-      get("/employer/jobs/1/edit").should route_to("employer/jobs#edit", :id => "1")
+      get("/employers/jobs/1/edit").should route_to("employers/jobs#edit", :id => "1")
     end
 
     it "routes to #create" do
-      post("/employer/jobs").should route_to("employer/jobs#create")
+      post("/employers/jobs").should route_to("employers/jobs#create")
     end
 
     it "routes to #update" do
-      put("/employer/jobs/1").should route_to("employer/jobs#update", :id => "1")
+      put("/employers/jobs/1").should route_to("employers/jobs#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      delete("/employer/jobs/1").should route_to("employer/jobs#destroy", :id => "1")
+      delete("/employers/jobs/1").should route_to("employers/jobs#destroy", :id => "1")
     end
 
   end

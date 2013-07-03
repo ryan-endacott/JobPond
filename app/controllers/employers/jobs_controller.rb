@@ -1,5 +1,5 @@
 # JobsController is for employers, ListingsController is for all.
-class Employer::JobsController < ApplicationController
+class Employers::JobsController < ApplicationController
   authorize_resource :job
   before_filter :employer_only!
 
@@ -49,7 +49,7 @@ class Employer::JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to employer_dashboard_path, notice: 'Job was successfully created.' }
+        format.html { redirect_to employers_dashboard_path, notice: 'Job was successfully created.' }
         format.json { render json: @job, status: :created, location: @job }
       else
         format.html { render action: "new" }
@@ -65,7 +65,7 @@ class Employer::JobsController < ApplicationController
 
     respond_to do |format|
       if @job.update_attributes(params[:job])
-        format.html { redirect_to employer_job_path(@job), notice: 'Job was successfully updated.' }
+        format.html { redirect_to employers_job_path(@job), notice: 'Job was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -81,7 +81,7 @@ class Employer::JobsController < ApplicationController
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to employer_dashboard_path }
+      format.html { redirect_to employers_dashboard_path }
       format.json { head :no_content }
     end
   end

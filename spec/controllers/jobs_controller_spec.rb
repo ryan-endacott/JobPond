@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe Employer::JobsController do
+describe Employers::JobsController do
 
   # This should return the minimal set of attributes required to create a valid
   # Job. As you add validations to Job, be sure to
@@ -74,7 +74,7 @@ describe Employer::JobsController do
 
       it "redirects to the created job" do
         post :create, {:job => valid_attributes}
-        response.should redirect_to(employer_dashboard_path)
+        response.should redirect_to(employers_dashboard_path)
       end
     end
 
@@ -116,7 +116,7 @@ describe Employer::JobsController do
       it "redirects to the job" do
         job = Job.create! valid_attributes
         put :update, {:id => job.to_param, :job => valid_attributes}
-        response.should redirect_to(employer_job_path(job))
+        response.should redirect_to(employers_job_path(job))
       end
     end
 
@@ -150,7 +150,7 @@ describe Employer::JobsController do
     it "redirects to the jobs list" do
       job = Job.create! valid_attributes
       delete :destroy, {:id => job.to_param}
-      response.should redirect_to(employer_dashboard_path)
+      response.should redirect_to(employers_dashboard_path)
     end
   end
 
