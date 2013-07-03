@@ -1,2 +1,6 @@
-%h1 Resumes#show
-%p Find me in app/views/resumes/show.html.haml
+%p#notice= notice
+
+
+= link_to 'Edit', edit_resume_path(@resume)
+\|
+= link_to 'Back', resumes_path
