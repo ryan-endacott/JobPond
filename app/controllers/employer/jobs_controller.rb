@@ -1,5 +1,5 @@
 # JobsController is for employers, ListingsController is for all.
-class JobsController < ApplicationController
+class Employer::JobsController < ApplicationController
   authorize_resource :job
   before_filter :employer_only!
 
