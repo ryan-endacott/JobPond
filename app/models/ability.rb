@@ -11,10 +11,8 @@ class Ability
 			can :read, [Employee, Resume]
 		elsif user.employee?
 			can :manage, [Employee, Resume]
-			can :read, [Job]
-		else
-			can :read, [Employer, Job]
 		end
+			can :read, [Employer, Job]
 	end
 	# Define abilities for the passed in user here. For example:
 	#
