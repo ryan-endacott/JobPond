@@ -76,7 +76,7 @@ class EmployeesController < ApplicationController
     @employee.destroy
 
     respond_to do |format|
-      format.html { redirect_to employees_url }
+      format.html { redirect_to employee_path }
       format.json { head :no_content }
     end
   end

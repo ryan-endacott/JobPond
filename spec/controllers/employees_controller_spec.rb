@@ -23,20 +23,17 @@ describe EmployeesController do
   # This should return the minimal set of attributes required to create a valid
   # Employee. As you add validations to Employee, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {  } }
+  let(:valid_attributes) { {
+    name: "Employee",
+    email: "employee@example.com",
+    password: "password",
+    password_confirmation: "password"
+  } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # EmployeesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
-  describe "GET index" do
-    it "assigns all employees as @employees" do
-      employee = Employee.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:employees).should eq([employee])
-    end
-  end
 
   describe "GET show" do
     it "assigns the requested employee as @employee" do
@@ -153,7 +150,7 @@ describe EmployeesController do
     it "redirects to the employees list" do
       employee = Employee.create! valid_attributes
       delete :destroy, {:id => employee.to_param}, valid_session
-      response.should redirect_to(employees_url)
+      response.should redirect_to(employee_path)
     end
   end
 
