@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
+  def sign_up(resource, *args)
+    super(:user, User.find(resource.id), args)
+  end
+
   private
     def employer_only!
       authenticate_user!
