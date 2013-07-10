@@ -11,6 +11,8 @@ class RegistrationsController < Devise::RegistrationsController
   def current_employee
   	current_user
   end
-  alias_method :resource, :current_employer
+  def resource
+    current_user || super
+  end
 
 end
