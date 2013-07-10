@@ -2,7 +2,8 @@
   = link_to "Sign in", new_user_session_path
   %br/
 - if devise_mapping.registerable? && controller_name != 'registrations'
-  = link_to "Sign up", new_registration_path(resource_name)
+  = link_to "Sign up as employer", new_employer_registration_path
+  = link_to "Sign up as employee", new_employee_registration_path
   %br/
 - if devise_mapping.recoverable? && controller_name != 'passwords'
   = link_to "Forgot your password?", new_user_password_path
