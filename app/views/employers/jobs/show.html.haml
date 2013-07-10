@@ -1,4 +1,4 @@
-%h2= link_to @job.title, employer_job_path(@job)
+%h2= link_to @job.title, employers_job_path(@job)
 %p= @job.description
 %p
   Pay: $
@@ -9,6 +9,6 @@
   Applicants:
   = @job.applicants.count
 
-= link_to 'Edit', edit_employer_job_path(@job), class: 'btn'
+= link_to 'Edit', edit_employers_job_path(@job), class: 'btn'
 \|
-= link_to 'Back', employer_dashboard_path
+= link_to 'Back', employers_dashboard_path
