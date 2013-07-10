@@ -4,9 +4,7 @@ JobApp::Application.routes.draw do
   end
   root :to => 'marketing#employees'
 
-  devise_for :users, skip: [:registrations]
-  devise_for :employees, skip: [:sessions, :passwords], controllers: {registrations: 'registrations'}
-  devise_for :employers, skip: [:sessions, :passwords], controllers: {registrations: 'registrations'}
+  devise_for :users, controllers: {registrations: 'registrations'}
 
   resource :employee do
   	resource :resume, only: ["create", "edit", "update"]

@@ -1,7 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
-  skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
-
-  def sign_up(resource_name, resource)
-    super(:user, resource)
+  def build_resource(hash=nil)
+    hash ||= resource_params || {}
+    if hash[:type] == 'Employee'
+      self.resource = Employee.new_with_session(hash, session)
+    elsif hash[:type] == 'Employer'
+      self.resource = Employer.new_with_session(hash, session)
+    else
+      self.resource = resource_class.new_with_session(hash, session)
+    end
   end
 end

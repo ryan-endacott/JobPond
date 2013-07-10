@@ -1,30 +1,36 @@
 = link_to "Job App", root_path, :class => 'brand'
-- if not user_signed_in?
-  - if current_page?(employers_path)
-    = link_to "For Job Seekers", root_path, class: 'btn btn-success'
-  - else
-    = link_to "For Employers", employers_path, class: 'btn btn-success'
-%ul.nav.pull-right
-  - if user_signed_in? and current_user.employer?
-    = nav_link 'Dashboard', employers_dashboard_path
-  %li
-    = nav_link 'Employers', employers_path
-  - if user_signed_in?
-    %li
-      = nav_link 'Logout', destroy_user_session_path, :method=>'delete'
-  - else
-    %li
-      = nav_link 'Login', new_user_session_path
+-if not user_signed_in?
+  = link_to "new account", new_user_registration_path
+-else
+  = link_to "other stuff", edit_user_registration_path
 
-  - if user_signed_in?
-    %li
-      - if current_user.employer?
-        = nav_link 'Edit account', edit_employer_registration_path
-      - elsif current_user.employee?
-        = nav_link 'Edit account', edit_employee_registration_path
-  - else
+-#
+  - if not user_signed_in?
     - if current_page?(employers_path)
-      = nav_link 'Sign up', new_employer_registration_path #go to employer signup
+      = link_to "For Job Seekers", root_path, class: 'btn btn-success'
+    - else
+      = link_to "For Employers", employers_path, class: 'btn btn-success'
+  %ul.nav.pull-right
+    - if user_signed_in? and current_user.employer?
+      = nav_link 'Dashboard', employers_dashboard_path
+    %li
+      = nav_link 'Employers', employers_path
+    - if user_signed_in?
+      %li
+        = nav_link 'Logout', destroy_user_session_path, :method=>'delete'
     - else
       %li
-        = nav_link 'Sign up', new_employee_registration_path #go to employee signup
+        = nav_link 'Login', new_user_session_path
+
+    - if user_signed_in?
+      %li
+        - if current_user.employer?
+          = nav_link 'Edit account', edit_employer_registration_path
+        - elsif current_user.employee?
+          = nav_link 'Edit account', edit_employee_registration_path
+    - else
+      - if current_page?(employers_path)
+        = nav_link 'Sign up', new_employer_registration_path #go to employer signup
+      - else
+        %li
+          = nav_link 'Sign up', new_employee_registration_path #go to employee signup

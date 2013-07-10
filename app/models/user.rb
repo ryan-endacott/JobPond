@@ -46,4 +46,11 @@ class User < ActiveRecord::Base
   	return self.class == Admin
   end
 
+  def type_helper
+    self.type
+  end
+  def type_helper=(type)
+    self.type = type
+  end
+
 end
