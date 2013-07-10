@@ -1,8 +1,8 @@
 - # Hack to get around routing issue:
 - if render_type == :new
-  - url = employer_jobs_path
+  - url = employers_jobs_path
 - else #render_type == :edit
-  - url = employer_job_path(@job)
+  - url = employers_job_path(@job)
 = simple_form_for(@job, url: url) do |f|
   = f.error_notification
 
