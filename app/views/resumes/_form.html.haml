@@ -1,7 +1,11 @@
-= simple_form_for(@resume) do |f|
-  = f.error_notification
+= simple_form_for(@resume, url: employee_resume_path, html: {method: :put}) do |f|
+	= f.error_notification
+	.form-inputs
 
-  .form-inputs
+		= f.input :address
+		= f.input :phone_number
+		= f.input :job_experience, input_html: { class: "span8"}
+		= f.input :password, required: true
 
-  .form-actions
-    = f.button :submit
+	.form-actions
+		= f.button :submit, value: "Update Resume"

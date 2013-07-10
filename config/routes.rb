@@ -9,7 +9,7 @@ JobApp::Application.routes.draw do
   devise_for :employers, skip: [:sessions, :passwords], controllers: {registrations: 'registrations'}
 
   resource :employee do
-  	resource :resume, only: ["create", "edit", "update"]
+  	resource :resume, only: ["edit", "update"]
   end
 
   namespace :employers do

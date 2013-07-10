@@ -1,66 +1,27 @@
 class ResumesController < ApplicationController
-  # GET /resumes
-  # GET /resumes.json
-  def index
-    @resumes = Resume.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @resumes }
-    end
-  end
-
-  # GET /resumes/1
-  # GET /resumes/1.json
-  def show
-    @resume = Resume.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @resume }
-    end
-  end
-
-  # GET /resumes/new
-  # GET /resumes/new.json
-  def new
-    @resume = Resume.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @resume }
-    end
-  end
+  authorize_resource :resume
+  before_filter :employee_only!
 
   # GET /resumes/1/edit
   def edit
-    @resume = Resume.find(params[:id])
-  end
-
-  # POST /resumes
-  # POST /resumes.json
-  def create
-    @resume = Resume.new(params[:resume])
-
-    respond_to do |format|
-      if @resume.save
-        format.html { redirect_to @resume, notice: 'Resume was successfully created.' }
-        format.json { render json: @resume, status: :created, location: @resume }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @resume.errors, status: :unprocessable_entity }
-      end
-    end
+    @resume = resume
   end
 
   # PUT /resumes/1
   # PUT /resumes/1.json
   def update
-    @resume = Resume.find(params[:id])
-
+    @resume = resume
+    unless current_user.valid_password?(params[:resume][:password])
+      flash[:error] = "You need to enter your password to verify changes!"
+      clean_password
+      @resume.attributes = params[:resume]
+      render "edit"
+      return
+    end
+    clean_password
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
-        format.html { redirect_to @resume, notice: 'Resume was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Resume was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -69,15 +30,12 @@ class ResumesController < ApplicationController
     end
   end
 
-  # DELETE /resumes/1
-  # DELETE /resumes/1.json
-  def destroy
-    @resume = Resume.find(params[:id])
-    @resume.destroy
-
-    respond_to do |format|
-      format.html { redirect_to resumes_url }
-      format.json { head :no_content }
+  private
+    def resume
+      return @resume || current_user.resume || current_user.build_resume
     end
-  end
+
+    def clean_password
+      params[:resume].delete :password
+    end
 end
