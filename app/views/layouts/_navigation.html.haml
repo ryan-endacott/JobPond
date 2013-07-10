@@ -18,7 +18,10 @@
 
   - if user_signed_in?
     %li
-      = nav_link 'Edit account', edit_user_registration_path
+      - if current_user.employer?
+        = nav_link 'Edit account', edit_employer_registration_path
+      - elsif current_user.employee?
+        = nav_link 'Edit account', edit_employee_registration_path
   - else
     - if current_page?(employers_path)
       = nav_link 'Sign up', new_employer_registration_path #go to employer signup
