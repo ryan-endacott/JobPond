@@ -4,4 +4,13 @@ class RegistrationsController < Devise::RegistrationsController
   def sign_up(resource_name, resource)
     super(:user, resource)
   end
+
+	def current_employer
+  	current_user
+  end
+  def current_employee
+  	current_user
+  end
+  alias_method :resource, :current_employer
+
 end
