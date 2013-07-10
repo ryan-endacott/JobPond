@@ -3,9 +3,12 @@
 	.form-inputs
 
 		= f.input :address
+		= f.input :city
+		= f.input :state
+		= f.input :zipcode
 		= f.input :phone_number
 		= f.input :job_experience, input_html: { class: "span8"}
-		= f.input :password, required: true
+		= f.input :password, required: true, :hint => "we need your current password to confirm your changes"
 
 	.form-actions
 		= f.button :submit, value: "Update Resume"
