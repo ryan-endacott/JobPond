@@ -16,7 +16,7 @@
 
     - if @job.id
       = link_to 'Delete Listing',
-        employer_job_path(@job),
+        employers_job_path(@job),
         :method => :delete,
         :confirm => 'Are you sure you wish to delete this listing?',
         :class => 'btn btn-danger'

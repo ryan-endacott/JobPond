@@ -11,9 +11,9 @@ JobApp::Application.routes.draw do
   resource :employee do
   	resource :resume, only: ["edit", "update"]
   end
-
+  get  '/listings',  :to => 'listings#index'
+  get '/employers', :to => 'marketing#employers'
   namespace :employers do
-    get "/", to: 'marketing#employers'
     get "/dashboard", to: 'dashboard#show', as: :dashboard
     resources :jobs, except: ['index']
   end
