@@ -2,6 +2,7 @@
 class ListingsController < ApplicationController
 
   def index
+  	@listings = Job.all
   end
 
   def show
