@@ -7,8 +7,13 @@
 		= f.input :state
 		= f.input :zipcode
 		= f.input :phone_number
-		= f.input :job_experience, input_html: { class: "span8"}
-		= f.input :password, required: true, :hint => "we need your current password to confirm your changes"
+		%p Job Experience
+		= f.simple_fields_for :job_experience do |builder|
+			= builder.input_field :title, label: false, placeholder: "Title"
+			= builder.input_field :company, label: false, placeholder: "Company"
+			= builder.input_field :time, label: false, as: :select, collection: time_frames
+		.links
+			= link_to_add_association '+ Add more job experience', builder, :job_experience
 
 	.form-actions
 		= f.button :submit, value: "Update Resume"

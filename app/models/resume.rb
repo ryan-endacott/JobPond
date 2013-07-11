@@ -16,4 +16,5 @@ class Resume < ActiveRecord::Base
    	:job_experience
 
   belongs_to :employee
+  has_many :job_experiences
 end
