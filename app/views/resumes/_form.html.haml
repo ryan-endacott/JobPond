@@ -8,7 +8,7 @@
 		= f.input :zipcode
 		= f.input :phone_number
 		%p Job Experience
-		= f.simple_fields_for :job_experience do |builder|
+		= f.simple_fields_for :job_experiences do |builder|
 			= render "job_experience_fields", f: builder
 		.links
 			= link_to_add_association '+ Add more job experience', f, :job_experiences
