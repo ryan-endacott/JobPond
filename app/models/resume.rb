@@ -11,6 +11,10 @@
 #
 
 class Resume < ActiveRecord::Base
-  attr_accessible :address, :job_experience, :phone_number
+  attr_accessible :address, :city, :state, :zipcode,
+   	:phone_number,
+   	:job_experience
+
   belongs_to :employee
+  has_many :job_experiences
 end

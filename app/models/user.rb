@@ -46,4 +46,9 @@ class User < ActiveRecord::Base
   	return self.class == Admin
   end
 
+  def gravitar_url
+    hash = Digest::MD5.hexdigest(self.email.strip)
+    "http://www.gravatar.com/avatar/#{hash}?s=200"
+  end
+
 end
