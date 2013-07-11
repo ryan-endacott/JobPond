@@ -15,7 +15,7 @@ gem 'devise'
 gem 'figaro'
 gem 'haml-rails'
 gem 'simple_form'
-gem 'cocoon'
+gem 'cocoon', '1.1.2'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

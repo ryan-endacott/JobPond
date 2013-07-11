@@ -9,11 +9,9 @@
 		= f.input :phone_number
 		%p Job Experience
 		= f.simple_fields_for :job_experience do |builder|
-			= builder.input_field :title, label: false, placeholder: "Title"
-			= builder.input_field :company, label: false, placeholder: "Company"
-			= builder.input_field :time, label: false, as: :select, collection: time_frames
+			= render "job_experience_fields", f: builder
 		.links
-			= link_to_add_association '+ Add more job experience', builder, :job_experience
+			= link_to_add_association '+ Add more job experience', f, :job_experiences
 
 	.form-actions
 		= f.button :submit, value: "Update Resume"

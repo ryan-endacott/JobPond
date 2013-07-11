@@ -5,6 +5,7 @@ class ResumesController < ApplicationController
   # GET /resumes/1/edit
   def edit
     @resume = resume
+    @resume.job_experiences.build unless !@resume.job_experiences.empty?
   end
 
   # PUT /resumes/1
