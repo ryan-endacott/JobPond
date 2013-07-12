@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: applieds
+#
+#  id          :integer          not null, primary key
+#  employee_id :integer
+#  job_id      :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Applied do

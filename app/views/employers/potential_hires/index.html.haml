@@ -1,0 +1,15 @@
+.row
+  %h1 Your Potential Hires
+
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Other info
+        %th Score
+    %tbody
+      - @job_seekers.each do |seeker|
+        %tr
+          %td= seeker.name
+          %td Great at ping pong.
+          %td 50
