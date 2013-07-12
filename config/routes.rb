@@ -18,4 +18,9 @@ JobApp::Application.routes.draw do
     resources :jobs, except: ['index']
   end
 
+
+  #review namespace for ranking users
+  namespace :admin do
+    resources :reviews, only: ["index", "show", "edit", "update"]
+  end
 end
