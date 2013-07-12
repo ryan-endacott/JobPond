@@ -32,7 +32,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :type
+  attr_accessible :first_name, :last_name, :email,
+   :password, :password_confirmation, :remember_me, :type
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 
   def employee?
   	return self.class == Employee
@@ -48,7 +53,7 @@ class User < ActiveRecord::Base
 
   def gravitar_url
     hash = Digest::MD5.hexdigest(self.email.strip)
-    "http://www.gravatar.com/avatar/#{hash}?s=200"
+    "http://www.gravatar.com/avatar/#{hash}?s=200&d=mm"
   end
 
 end
