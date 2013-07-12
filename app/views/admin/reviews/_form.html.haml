@@ -2,11 +2,14 @@
 	.avatar.pull-right.text-right
 		= image_tag @review.gravitar_url
 	= render "resume", review: @review
-.admin-form
-	= simple_form_for(@review, url: admin_review_path(@review), html: {method: :put}) do |f|
-		= f.error_notification
-		.form-inputs
-			= f.input :reviewed, as: :hidden, input_html: { value: 1 }
-			= f.input :score
-		.form-actions
-			= f.button :submit
+.row
+	.span4
+		= simple_form_for(@review, url: admin_review_path(@review), html: {method: :put}) do |f|
+			= f.error_notification
+			.form-inputs
+				= f.input :reviewed, as: :hidden, input_html: { value: 1 }
+				= f.input :score
+				= f.button :submit
+	.span8
+		%h3 Key
+		%p Some kind of curriculum so we have a standard
