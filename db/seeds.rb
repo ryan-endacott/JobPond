@@ -60,6 +60,8 @@ if Rails.env.development?
 
   end
 
+  puts "Done seeding the psuedo users"
+
 end
 
 # Add the secure admin in all environments.

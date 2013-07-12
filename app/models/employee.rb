@@ -31,4 +31,19 @@ class Employee < User
 	has_one :resume
 	has_many :applieds
   has_many :applied_jobs, :through => :applieds, :source => :job
+  after_create :create_resume
+
+  validate :needs_score_on_review
+
+  private
+  	def create_resume
+  		self.build_resume.save unless !self.resume.nil?
+  	end
+
+  	def needs_score_on_review
+  		if self.reviewed
+  			errors.add(:score, 'Not a valid score!') unless
+          self.score && self.score >= 0 && self.score <= 100
+  		end
+		end
 end

@@ -1,0 +1,27 @@
+- 100.times{puts review.resume.nil?}
+= simple_form_for(review.resume, url: "#") do |f|
+	.form-inputs
+		= f.input :address, disabled: true
+		= f.input :city, disabled: true
+		= f.input :state, disabled: true
+		= f.input :zipcode, disabled: true
+		= f.input :phone_number, disabled: true
+		= f.input :birthday, start_year: Date.today.year - 90, disabled: true
+
+		= f.input :highest_education do
+			= f.input_field :highest_education, label: "Curent Education (If applicable)",collection: ["High School", "College"], disabled: true
+			= f.input_field :highest_major, placeholder: "Major (If applicable)", disabled: true
+
+		= f.input :current_education do
+			= f.input_field :current_education, label: "Curent Education (If applicable)",collection: ["High School", "College"], disabled: true
+			= f.input_field :current_major, placeholder: "Major (If applicable)", disabled: true
+
+
+		= f.input :graduation_date, start_year: Date.today.year - 90, disabled: true
+		= f.input :description, input_html: { class: "span9", rows: 10 }, placeholder: "Tell us about yourself!", disabled: true
+		%p Job Experience
+		= f.simple_fields_for :job_experiences do |builder|
+			.nested-fields
+				= f.input_field :title, label: false, placeholder: "Title", disabled: true
+				= f.input_field :company, label: false, placeholder: "Company", disabled: true
+				= f.input_field :time, label: false, as: :select, collection: time_frames, disabled: true

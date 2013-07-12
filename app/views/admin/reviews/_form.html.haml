@@ -1,7 +1,12 @@
-= simple_form_for(@admin_review) do |f|
-  = f.error_notification
-
-  .form-inputs
-
-  .form-actions
-    = f.button :submit
+.resume
+	.avatar.pull-right.text-right
+		= image_tag @review.gravitar_url
+	= render "resume", review: @review
+.admin-form
+	= simple_form_for(@review, url: admin_review_path(@review), html: {method: :put}) do |f|
+		= f.error_notification
+		.form-inputs
+			= f.input :reviewed, as: :hidden, input_html: { value: 1 }
+			= f.input :score
+		.form-actions
+			= f.button :submit

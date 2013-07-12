@@ -1,12 +1,10 @@
 %h1 Review Some Users!!!!
-%p.muted= "#{@reviews.count} Employees to review"
+%p.muted= "#{@reviews.count} employees to review"
 %table
   %tr
-    %th
     %th
 
   - @reviews.each do |review|
     %tr
-      %td= link_to review.full_name, review
-      %td= link_to 'Start Review', edit_admin_review_path(review)
+      %td= link_to review.full_name, edit_admin_review_path(review)
 %br
