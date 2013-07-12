@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :user do
-    name 'Test User'
+    first_name 'Test'
+    last_name "User"
     email 'example@example.com'
     password 'changeme'
     password_confirmation 'changeme'
@@ -11,14 +12,16 @@ FactoryGirl.define do
   end
 
   factory :employee, class: Employee do
-  	name "Employee"
+  	first_name 'Test'
+    last_name "User"
   	email "employee@example.com"
   	password "password"
   	password_confirmation "password"
   end
 
   factory :employer, class: Employer do
-  	name "Employer"
+  	first_name 'Test'
+    last_name "User"
   	email "employer@example.com"
   	password "password"
   	password_confirmation "password"
@@ -26,7 +29,8 @@ FactoryGirl.define do
   end
 
   factory :admin, class: Admin do
-  	name "Admin"
+  	first_name 'Test'
+    last_name "User"
   	email "employer@example.com"
   	password "password"
   	password_confirmation "password"

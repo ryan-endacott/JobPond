@@ -31,129 +31,66 @@ describe Admin::ReviewsController do
   let(:valid_session) { {} }
 
   describe "GET index" do
-    it "assigns all admin_reviews as @admin_reviews" do
-      review = Admin::Review.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:admin_reviews).should eq([review])
+    it "assigns all review as @review" do
+      review = FactoryGirl.create :employee
+      get :index, {}
+      assigns(:reviews).should eq([review])
     end
   end
-
+=begin
   describe "GET show" do
     it "assigns the requested admin_review as @admin_review" do
       review = Admin::Review.create! valid_attributes
-      get :show, {:id => review.to_param}, valid_session
+      get :show, {:id => review.to_param}
       assigns(:admin_review).should eq(review)
     end
   end
-
-  describe "GET new" do
-    it "assigns a new admin_review as @admin_review" do
-      get :new, {}, valid_session
-      assigns(:admin_review).should be_a_new(Admin::Review)
-    end
-  end
+=end
 
   describe "GET edit" do
-    it "assigns the requested admin_review as @admin_review" do
-      review = Admin::Review.create! valid_attributes
-      get :edit, {:id => review.to_param}, valid_session
-      assigns(:admin_review).should eq(review)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Admin::Review" do
-        expect {
-          post :create, {:admin_review => valid_attributes}, valid_session
-        }.to change(Admin::Review, :count).by(1)
-      end
-
-      it "assigns a newly created admin_review as @admin_review" do
-        post :create, {:admin_review => valid_attributes}, valid_session
-        assigns(:admin_review).should be_a(Admin::Review)
-        assigns(:admin_review).should be_persisted
-      end
-
-      it "redirects to the created admin_review" do
-        post :create, {:admin_review => valid_attributes}, valid_session
-        response.should redirect_to(Admin::Review.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved admin_review as @admin_review" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Review.any_instance.stub(:save).and_return(false)
-        post :create, {:admin_review => {  }}, valid_session
-        assigns(:admin_review).should be_a_new(Admin::Review)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Review.any_instance.stub(:save).and_return(false)
-        post :create, {:admin_review => {  }}, valid_session
-        response.should render_template("new")
-      end
+    it "assigns the requested review as @review" do
+      review = FactoryGirl.create :employee
+      get :edit, {:id => review.to_param}
+      assigns(:review).should eq(review)
     end
   end
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested admin_review" do
-        review = Admin::Review.create! valid_attributes
-        # Assuming there are no other admin_reviews in the database, this
-        # specifies that the Admin::Review created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Admin::Review.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
-        put :update, {:id => review.to_param, :admin_review => { "these" => "params" }}, valid_session
+      it "updates the requested review" do
+        review = FactoryGirl.create :employee
+        put :update, {:id => review.to_param, :employee => { score: 100 }}
       end
 
-      it "assigns the requested admin_review as @admin_review" do
-        review = Admin::Review.create! valid_attributes
-        put :update, {:id => review.to_param, :admin_review => valid_attributes}, valid_session
-        assigns(:admin_review).should eq(review)
+      it "assigns the requested review as @review" do
+        review = FactoryGirl.create :employee
+        put :update, {:id => review.to_param, :employee => {score: 100}}
+        assigns(:review).should eq(review)
       end
 
-      it "redirects to the admin_review" do
-        review = Admin::Review.create! valid_attributes
-        put :update, {:id => review.to_param, :admin_review => valid_attributes}, valid_session
-        response.should redirect_to(review)
+      it "redirects to the review" do
+        review = FactoryGirl.create :employee
+        put :update, {:id => review.to_param, :employee => {score: 100}}
+        response.should redirect_to(admin_reviews_path)
       end
     end
 
     describe "with invalid params" do
-      it "assigns the admin_review as @admin_review" do
-        review = Admin::Review.create! valid_attributes
+      it "assigns the review as @review" do
+        review = FactoryGirl.create :employee
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Review.any_instance.stub(:save).and_return(false)
-        put :update, {:id => review.to_param, :admin_review => {  }}, valid_session
-        assigns(:admin_review).should eq(review)
+        Employee.any_instance.stub(:save).and_return(false)
+        put :update, {:id => review.to_param, :employee => {  }}
+        assigns(:review).should eq(review)
       end
 
       it "re-renders the 'edit' template" do
-        review = Admin::Review.create! valid_attributes
+        review = FactoryGirl.create :employee
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Review.any_instance.stub(:save).and_return(false)
-        put :update, {:id => review.to_param, :admin_review => {  }}, valid_session
+        Employee.any_instance.stub(:save).and_return(false)
+        put :update, {:id => review.to_param, :admin_review => {  }}
         response.should render_template("edit")
       end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested admin_review" do
-      review = Admin::Review.create! valid_attributes
-      expect {
-        delete :destroy, {:id => review.to_param}, valid_session
-      }.to change(Admin::Review, :count).by(-1)
-    end
-
-    it "redirects to the admin_reviews list" do
-      review = Admin::Review.create! valid_attributes
-      delete :destroy, {:id => review.to_param}, valid_session
-      response.should redirect_to(admin_reviews_url)
     end
   end
 

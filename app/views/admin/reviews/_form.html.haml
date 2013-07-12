@@ -7,7 +7,6 @@
 		= simple_form_for(@review, url: admin_review_path(@review), html: {method: :put}) do |f|
 			= f.error_notification
 			.form-inputs
-				= f.input :reviewed, as: :hidden, input_html: { value: 1 }
 				= f.input :score
 				= f.button :submit
 	.span8

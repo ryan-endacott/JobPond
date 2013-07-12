@@ -4,7 +4,7 @@ describe ResumesController do
   describe "routing" do
 
     it "routes to #edit" do
-      get("/employee/resume/editj").should route_to("resumes#edit")
+      get("/employee/resume/edit").should route_to("resumes#edit")
     end
 
     it "routes to #update" do
