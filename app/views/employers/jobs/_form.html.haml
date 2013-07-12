@@ -7,9 +7,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :title
-    = f.input :description, input_html: { class: 'span6', rows: 10 }
-    = f.input :pay, default: 7
+    = f.input :title, input_html: { class: "span6" }
+    = f.input :description, input_html: { class: 'span9', rows: 10 }
+    = f.input :pay, default: 7, label: "Pay per hour"
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'
