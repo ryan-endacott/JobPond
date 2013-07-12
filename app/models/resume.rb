@@ -12,7 +12,10 @@
 
 class Resume < ActiveRecord::Base
   attr_accessible :address, :city, :state, :zipcode,
-   	:phone_number, :job_experiences_attributes, :description
+   	:phone_number, :job_experiences_attributes, :description,
+   	:highest_education, :highest_major,
+   	:current_education, :current_major,
+   	:graduation_date, :birthday
 
   belongs_to :employee
   has_many :job_experiences
