@@ -20,19 +20,22 @@ if Rails.env.development?
   puts "Password for all of the above: #{pass}"
 
   Admin.find_or_create_by_email(
-    :name => 'admin',
+    :first_name => 'admin',
+    :last_name => 'user',
     :email => 'admin@example.com',
     :password => pass,
     :password_confirmation => pass)
 
   Employer.find_or_create_by_email(
-    :name => 'employer',
+    :first_name => 'employer',
+    :last_name => 'user',
     :email => 'employer@example.com',
     :password => pass,
     :password_confirmation => pass)
 
   Employee.find_or_create_by_email(
-    :name => 'employee',
+    :first_name => 'employee',
+    :last_name => 'user',
     :email => 'employee@example.com',
     :password => pass,
     :password_confirmation => pass)
@@ -41,7 +44,8 @@ end
 
 # Add the secure admin in all environments.
 admin = Admin.find_or_create_by_email(
-  :name => ENV['ADMIN_NAME'].dup,
+  :first_name => ENV['ADMIN_NAME'].dup,
+  :last_name => "Name",
   :email => ENV['ADMIN_EMAIL'].dup,
   :password => ENV['ADMIN_PASSWORD'].dup,
   :password_confirmation => ENV['ADMIN_PASSWORD'].dup)
