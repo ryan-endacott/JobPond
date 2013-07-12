@@ -3,7 +3,7 @@ class Admin::ReviewsController < ApplicationController
   # GET /admin/reviews
   # GET /admin/reviews.json
   def index
-    @reviews = Employee.where("reviewed = true")
+    @reviews = Employee.where("reviewed = 'true'")
 
     respond_to do |format|
       format.html # index.html.erb

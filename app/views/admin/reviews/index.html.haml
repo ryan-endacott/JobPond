@@ -1,17 +1,12 @@
-%h1 Listing admin_reviews
-
+%h1 Review Some Users!!!!
+%p.muted= "#{@reviews.count} Employees to review"
 %table
   %tr
     %th
     %th
-    %th
 
-  - @admin_reviews.each do |admin_review|
+  - @reviews.each do |review|
     %tr
-      %td= link_to 'Show', admin_review
-      %td= link_to 'Edit', edit_admin_review_path(admin_review)
-      %td= link_to 'Destroy', admin_review, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+      %td= link_to review.full_name, review
+      %td= link_to 'Start Review', edit_admin_review_path(review)
 %br
-
-= link_to 'New Review', new_admin_review_path

@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
+  alias_method :name, :full_name
 
   def employee?
   	return self.class == Employee
