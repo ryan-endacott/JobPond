@@ -7,6 +7,7 @@
 		= f.input :state
 		= f.input :zipcode
 		= f.input :phone_number
+		= f.input :description, input_html: { class: "span9", rows: 10 }
 		%p Job Experience
 		= f.simple_fields_for :job_experiences do |builder|
 			= render "job_experience_fields", f: builder

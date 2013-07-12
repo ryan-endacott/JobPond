@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711020228) do
+ActiveRecord::Schema.define(:version => 20130712013037) do
 
   create_table "applieds", :force => true do |t|
     t.integer  "employee_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130711020228) do
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
+    t.text     "description"
   end
 
   create_table "roles", :force => true do |t|
