@@ -1,4 +1,15 @@
-%p look at all the people you can hire!  They're the smartest ever!
+.row
+  %h1 Your Potential Hires
 
-- @job_seekers.each do |seeker|
-  = seeker.name
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Other info
+        %th Score
+    %tbody
+      - @job_seekers.each do |seeker|
+        %tr
+          %td= seeker.name
+          %td Great at ping pong.
+          %td 50
