@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
         redirect_to root_path
       end
     end
+
+    def admin_only!
+      authenticate_user!
+      unless current_user.admin?
+        flash[:error] = "You must be an admin to access this page."
+        redirect_to root_path
+      end
+    end
 end

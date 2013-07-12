@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -12,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712014623) do
+ActiveRecord::Schema.define(:version => 20130712032210) do
 
   create_table "applieds", :force => true do |t|
     t.integer  "employee_id"
@@ -78,6 +77,8 @@ ActiveRecord::Schema.define(:version => 20130712014623) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "type"
+    t.boolean  "reviewed"
+    t.integer  "score"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

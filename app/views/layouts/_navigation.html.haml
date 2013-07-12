@@ -5,6 +5,8 @@
   - else
     = link_to "For Employers", employers_path, class: 'btn btn-success'
 %ul.nav.pull-right
+  - if user_signed_in? && current_user.admin?
+    = nav_link 'Employee Reviews', employers_dashboard_path
   - if user_signed_in?
     - if current_user.employer?
       = nav_link 'Dashboard', employers_dashboard_path

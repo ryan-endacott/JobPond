@@ -15,12 +15,15 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  name                   :string(255)
+#  first_name             :string(255)
+#  last_name              :string(255)
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
 #  type                   :string(255)
+#  reviewed               :boolean
+#  score                  :integer
 #
 
 require 'spec_helper'
