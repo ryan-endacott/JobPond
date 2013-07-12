@@ -20,7 +20,7 @@ class Admin::ReviewsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @review }
     end
-end
+  end
 
   # GET /admin/reviews/1/edit
   def edit

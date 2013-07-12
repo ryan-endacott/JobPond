@@ -22,6 +22,6 @@ JobApp::Application.routes.draw do
 
   #review namespace for ranking users
   namespace :admin do
-    resources :reviews, only: ["index", "show", "edit", "update"]
+    resources :reviews, only: ["index", "edit", "update"]
   end
 end
