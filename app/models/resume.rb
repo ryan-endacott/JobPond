@@ -8,6 +8,10 @@
 #  job_experience :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  employee_id    :integer
+#  city           :string(255)
+#  state          :string(255)
+#  zipcode        :string(255)
 #
 
 class Resume < ActiveRecord::Base
