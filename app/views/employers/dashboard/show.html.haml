@@ -13,22 +13,28 @@
     Tired of waiting? See who you can
     = link_to 'hire!', employers_potential_hires_path
     !-->
+
 - if @listings.empty?
   %br
   %p It looks like you haven't created any job listings yet!
 - else
-  - @listings.each_slice(3) do |slice|
+  - @listings.each do |listing|
     .row
-      - slice.each do |listing|
-        .span4
-          %h2= link_to listing.title, employers_job_path(listing)
-          %p= listing.description
-          %p
-            Pay: $
-            = listing.pay
-          %p
-            Location: North Pole
-            -#(hardcoded, not an attribute yet)
-          %p
-            Applicants:
-            = listing.applicants.count
+      .span12
+        %h2= link_to listing.title, employers_job_path(listing)
+        .row
+          .span4
+            %p
+              Pay/hour: $
+              = listing.pay
+          .span4
+            %p
+              Location: North Pole
+              -#(hardcoded, not an attribute yet)
+          .span4
+            %p
+              Applicants:
+              = listing.applicants.count
+        %p= listing.description
+
+
