@@ -1,6 +1,13 @@
 .hero-unit
-  %h1 Epic Marketing For Job Seekers
-  %br
-  %p Can you believe how awesome our product is?  Neither can we!  You can literally get the best job you've ever dreamed of! It's the bee's knees.
-  %p
-    = link_to 'Sign up now!', new_employee_registration_path, class: 'btn btn-large btn-success'
+	%h1 Epic Marketing For Job Seekers
+	%br
+	%p Can you believe how awesome our product is?  Neither can we!  You can literally get the best job you've ever dreamed of! It's the bee's knees.
+	%p= link_to 'Sign up now!', new_employee_registration_path, class: 'btn btn-large btn-success'
+
+%h3 Recent Listings
+- @jobs.each_slice(3) do |slice|
+	.row
+		- slice.each do |job|
+			.span4
+				= link_to job.title, "#"
+				%p.mute= job.employer.name

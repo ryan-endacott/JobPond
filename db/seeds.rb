@@ -59,7 +59,7 @@ if Rails.env.development?
       :password_confirmation => pass)
 
     job = Job.find_or_create_by_title(
-      title: Faker::Lorem.words,
+      title: Faker::Lorem.words.map(&:capitalize).join(" "),
       description: Faker::Lorem.paragraph,
       pay: (7 + Random.rand(10)))
     job.employer = emp
