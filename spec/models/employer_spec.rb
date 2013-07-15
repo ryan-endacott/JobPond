@@ -24,6 +24,7 @@
 #  type                   :string(255)
 #  reviewed               :boolean
 #  score                  :integer
+#  company_name           :string(255)
 #
 
 require 'spec_helper'

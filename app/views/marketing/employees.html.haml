@@ -4,10 +4,10 @@
 	%p We make it quick and easy for you to find the job you are looking for.  Fill out a single application, and you are on your way to finding great jobs!
 	%p= link_to 'Apply Now!', new_employee_registration_path, class: 'btn btn-large btn-success'
 
-%h3 Recent Listings
+%h2 Recent Listings
 - @jobs.each_slice(3) do |slice|
 	.row
 		- slice.each do |job|
 			.span4
 				= link_to job.title, "#"
-				%p.mute= job.employer.name
+				%p.mute= job.employer.company_name
