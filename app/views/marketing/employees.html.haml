@@ -1,8 +1,8 @@
-.hero-unit
-	%h1 Epic Marketing For Job Seekers
+.hero-unit.text-center
+	%h1 Looking For Jobs Is Rough!
 	%br
-	%p Can you believe how awesome our product is?  Neither can we!  You can literally get the best job you've ever dreamed of! It's the bee's knees.
-	%p= link_to 'Sign up now!', new_employee_registration_path, class: 'btn btn-large btn-success'
+	%p We make it quick and easy for you to find the job you are looking for.  Fill out a single application, and you are on your way to finding great jobs!
+	%p= link_to 'Apply Now!', new_employee_registration_path, class: 'btn btn-large btn-success'
 
 %h3 Recent Listings
 - @jobs.each_slice(3) do |slice|
