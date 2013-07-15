@@ -27,5 +27,6 @@
 #
 
 class Employer < User
+	attr_accessible :company_name
 	has_many :jobs
 end
