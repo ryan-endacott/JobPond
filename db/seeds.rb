@@ -51,12 +51,19 @@ if Rails.env.development?
       :password => pass,
       :password_confirmation => pass)
 
-    Employer.find_or_create_by_email(
+    emp = Employer.find_or_create_by_email(
       :first_name => Faker::Name.first_name,
       :last_name => Faker::Name.last_name,
       :email => Faker::Internet.safe_email,
       :password => pass,
       :password_confirmation => pass)
+
+    job = Job.find_or_create_by_title(
+      title: Faker::Lorem.words,
+      description: Faker::Lorem.paragraph,
+      pay: (7 + Random.rand(10)))
+    job.employer = emp
+    job.save
 
   end
 
