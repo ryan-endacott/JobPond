@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
 */
+
+
+.hero-unit{
+	&.small{
+		padding-top: 10px;
+		padding-bottom: 25px;
+	}
+}

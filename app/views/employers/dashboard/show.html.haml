@@ -1,3 +1,9 @@
+-if @listings.empty?
+  .hero-unit.small
+    %h2 You Don't Have Any Listings!
+    %p Create your first listing and get hiring!
+    = link_to "Create New Listing", new_employers_job_path, class: "btn btn-success"
+
 .row
   .span4
     %h1 Your Listings
