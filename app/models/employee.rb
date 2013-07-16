@@ -29,6 +29,7 @@
 
 class Employee < User
 	attr_protected :reviewed, :score
+  attr_accessor :new_resume #for when the user is just created
 	has_one :resume
 	has_many :applieds
   has_many :applied_jobs, :through => :applieds, :source => :job
@@ -38,7 +39,10 @@ class Employee < User
 
   private
   	def create_resume
-  		self.build_resume.save unless !self.resume.nil?
+      if self.resume.nil?
+  		  self.build_resume.save
+        self.new_resume = true
+      end
   	end
 
   	def needs_score_on_review

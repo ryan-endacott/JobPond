@@ -7,6 +7,20 @@ class ApplicationController < ActionController::Base
   end
 
   private
+    def after_sign_in_path_for(user)
+      if user.employer?
+        path = employers_dashboard_path
+      else
+        if user.new_resume
+          flash[:notice] = "Welcome #{user.first_name}! The next step is to fill out your resume."
+          path = edit_employee_resume_path
+        else
+          path = listings_path
+        end
+      end
+      session[:user_return_to] || path #Was on page or go to new
+    end
+
     def employer_only!
       authenticate_user!
       unless current_user.employer?
