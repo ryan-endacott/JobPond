@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  title       :string(255)
-#  description :text
+#  description :string(255)
 #  pay         :decimal(, )
 #  employer_id :integer
 #  created_at  :datetime         not null
