@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
   private
 
     def after_sign_in_path_for(user)
--      if user.employer?
--        path = employers_dashboard_path
--      else
--        path = listings_path
--      end
--      session[:user_return_to] || path #Was on page or go to new
--    end
+      if user.employer?
+        path = employers_dashboard_path
+      else
+        path = listings_path
+      end
+      session[:user_return_to] || path #Was on page or go to new
+    end
 
     def employer_only!
       authenticate_user!
