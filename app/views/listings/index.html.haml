@@ -7,7 +7,8 @@
     .row
       - slice.each do |listing|
         .span6
-          %h4= link_to listing.title, employers_job_path(listing)
+          %h4= link_to listing.title, listing_path(listing)
+          %p.muted= listing.employer.company_name
           %p= truncate listing.description, length: 100
           .row
             .span2

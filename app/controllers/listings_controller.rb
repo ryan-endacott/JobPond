@@ -6,5 +6,6 @@ class ListingsController < ApplicationController
   end
 
   def show
+  	@listing = Job.find(params[:id])
   end
 end

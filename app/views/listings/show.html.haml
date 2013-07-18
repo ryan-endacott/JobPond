@@ -1,2 +1,32 @@
-%h1 Listings#show
-%p Find me in app/views/listings/show.html.haml
+%h1= @listing.title
+.row
+	.span3
+		%h4 Employer
+		%p= @listing.employer.company_name
+	.span2
+		%h4 Pay
+		%p= "$#{@listing.pay}"
+	.span4
+		%h4 Location
+		%p= "Needs fixed"#@listing.location
+%h4 Job Description
+%p= @listing.description
+%hr
+%h4
+	Other Listings By This Employer
+	- if @listing.employer.jobs.count > 1
+		- @listing.employer.jobs.take(5).each do |job|
+			- if job = @listing
+				- next
+			%h5= link_to job.title, listing_path(job)
+			%p= job.description
+			.row
+				.span2
+					%p
+						Pay:
+						= job.pay
+					%p
+						Location:
+						= "Needs Fixing"
+	- else
+%p The employer has no more jobs
