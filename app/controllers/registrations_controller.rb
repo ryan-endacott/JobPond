@@ -1,6 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
   skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
 
+  def create
+    params[:password_confirmation] = params[:password]
+    super
+  end
+
   def after_sign_up_path_for(user)
     if user.employer?
       employers_dashboard_path
