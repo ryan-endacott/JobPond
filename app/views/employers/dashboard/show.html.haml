@@ -8,11 +8,9 @@
   .span4
     %h1 Your Listings
     = link_to "Create New Listing", new_employers_job_path, class: "btn btn-success"
-  <!--
   %p.span4
     Tired of waiting? See who you can
     = link_to 'hire!', employers_potential_hires_path
-    !-->
 
 - if @listings.empty?
   %br
