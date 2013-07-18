@@ -2,7 +2,7 @@
 class ListingsController < ApplicationController
 
   def index
-  	@listings = Job.all
+  	@listings = Job.order("created_at DESC").limit(30)
   end
 
   def show

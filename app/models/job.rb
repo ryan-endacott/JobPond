@@ -16,4 +16,11 @@ class Job < ActiveRecord::Base
 	has_many :applieds
   has_many :applicants, :through => :applieds, :source => :employee
   attr_accessible :description, :pay, :title, :employer_id
+
+  before_save :cap_title
+
+  private
+  	def cap_title
+  		self.title = self.title.capitalize
+  	end
 end

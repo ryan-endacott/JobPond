@@ -3,15 +3,18 @@
   %p
     There aren't any jobs here.
 - else
-  - @listings.each_slice(3) do |slice|
+  - @listings.each_slice(2) do |slice|
     .row
       - slice.each do |listing|
-        .span4
-          %h2= link_to listing.title, employers_job_path(listing)
-          %p= listing.description
-          %p
-            Pay: $
-            = listing.pay
-          %p
-            Location: North Pole
-            -#(hardcoded, not an attribute yet)
+        .span6
+          %h4= link_to listing.title, employers_job_path(listing)
+          %p= truncate listing.description, length: 100
+          .row
+            .span2
+              %p
+                Pay: $
+                = listing.pay
+            .span3
+              %p
+                Location: North Pole
+                -#(hardcoded, not an attribute yet)
