@@ -1,13 +1,17 @@
-.hero-unit.text-center
-	%h1 Looking For Jobs Is Rough!
-	%br
-	%p We make it quick and easy for you to find the job you are looking for.  Fill out a single application, and you are on your way to finding great jobs!
-	%p= link_to 'Apply Now!', new_employee_registration_path, class: 'btn btn-large btn-success'
-
-%h2 Recent Listings
-- @jobs.each_slice(3) do |slice|
-	.row
-		- slice.each do |job|
-			.span4
-				= link_to job.title, "#"
-				%p.mute= job.employer.company_name
+.row
+	.span6
+		%h2 Get Hired Now!
+	.span4.offset1
+		%h2 Sign up
+		= simple_form_for(@employee, url: employee_registration_path, html: {class: 'form-vertical' }) do |f|
+			.row
+				.span2
+					= f.input_field :first_name, autofocus: true, placeholder: "First", class: "input-block-level"
+				.span2
+					= f.input_field :last_name, required: true, placeholder: "Last", class: "input-block-level"
+			= f.input_field :email, required: true, placeholder: "Email", class: "input-block-level"
+			= f.input_field :password, required: true, placeholder: "Password", class: "input-block-level"
+			= f.button :submit, 'Sign up', class: 'btn-primary btn-block btn-large'
+		%p.text-center
+			Or
+			= link_to "Sign In", new_user_session_path
