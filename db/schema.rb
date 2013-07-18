@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715223258) do
+ActiveRecord::Schema.define(:version => 20130718023742) do
 
   create_table "applieds", :force => true do |t|
     t.integer  "employee_id"
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20130715223258) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20130715223258) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "confirmation_token"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130715223258) do
     t.boolean  "reviewed"
     t.integer  "score"
     t.string   "company_name"
+    t.boolean  "can_contact",            :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
