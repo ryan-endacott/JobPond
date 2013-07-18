@@ -32,9 +32,15 @@ class Employee < User
 	has_many :applieds
   has_many :applied_jobs, :through => :applieds, :source => :job
 
+  attr_accessible :can_contact
+
   after_create :create_resume
 
   validate :needs_score_on_review
+
+  def can_contact?
+    can_contact
+  end
 
   private
   	def create_resume
