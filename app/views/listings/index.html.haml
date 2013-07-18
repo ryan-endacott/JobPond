@@ -1,11 +1,8 @@
-.row
-  .span7
-    %h1 Listings
-    %p
-      = @listings.count
-      Listings Available
-  .span5
-    = pagination @listings, class: "pull-right"
+%h1 Listings
+%p
+  = @listings.count
+  Listings Available
+= will_paginate @listings, renderer: BootstrapPagination::Rails
 
 - if @listings.empty?
   %p
@@ -27,6 +24,4 @@
               %p
                 Location: North Pole
                 -#(hardcoded, not an attribute yet
-.row
-  .span12
-    = pagination @listings, class: "pull-right"
+= will_paginate @listings, renderer: BootstrapPagination::Rails
