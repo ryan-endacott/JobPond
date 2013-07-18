@@ -1,4 +1,12 @@
-%h1 Listings
+.row
+  .span7
+    %h1 Listings
+    %p
+      = @listings.count
+      Listings Available
+  .span5
+    = pagination @listings, class: "pull-right"
+
 - if @listings.empty?
   %p
     There aren't any jobs here.
@@ -18,4 +26,7 @@
             .span3
               %p
                 Location: North Pole
-                -#(hardcoded, not an attribute yet)
+                -#(hardcoded, not an attribute yet
+.row
+  .span12
+    = pagination @listings, class: "pull-right"

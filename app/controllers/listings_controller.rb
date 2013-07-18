@@ -2,7 +2,7 @@
 class ListingsController < ApplicationController
 
   def index
-  	@listings = Job.order("created_at DESC").limit(30)
+  	@listings = Job.paginate page: params[:page]
   end
 
   def show

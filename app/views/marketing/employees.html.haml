@@ -9,9 +9,9 @@
 				.span2
 					= f.input_field :first_name, autofocus: true, placeholder: "First", class: "input-block-level"
 				.span2
-					= f.input_field :last_name, required: true, placeholder: "Last", class: "input-block-level"
-			= f.input_field :email, required: true, placeholder: "Email", class: "input-block-level"
-			= f.input_field :password, required: true, placeholder: "Password", class: "input-block-level"
+					= f.input_field :last_name, placeholder: "Last", class: "input-block-level"
+			= f.input_field :email, placeholder: "Email", class: "input-block-level"
+			= f.input_field :password, placeholder: "Password", class: "input-block-level"
 			= f.button :submit, 'Sign up', class: 'btn-primary btn-block btn-large'
 		%p.text-center
 			Or
