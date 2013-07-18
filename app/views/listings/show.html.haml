@@ -14,19 +14,20 @@
 %hr
 %h4
 	Other Listings By This Employer
-	- if @listing.employer.jobs.count > 1
-		- @listing.employer.jobs.take(5).each do |job|
-			- if job = @listing
-				- next
-			%h5= link_to job.title, listing_path(job)
-			%p= job.description
-			.row
-				.span2
-					%p
-						Pay:
-						= job.pay
-					%p
-						Location:
-						= "Needs Fixing"
-	- else
-%p The employer doesn't have anymore listings
+- if @listing.employer.jobs.count > 1
+	- @listing.employer.jobs.take(5).each do |job|
+		- if job == @listing
+			- next
+		%h5= link_to job.title, listing_path(job)
+		%p= job.description
+		.row
+			.span2
+				%p
+					Pay:
+					= job.pay
+			.span5
+				%p
+					Location:
+					= "Needs Fixing"
+- else
+	%p The employer doesn't have anymore listings

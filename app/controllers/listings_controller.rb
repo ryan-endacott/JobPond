@@ -7,5 +7,6 @@ class ListingsController < ApplicationController
 
   def show
   	@listing = Job.find(params[:id])
+  	#raise @listing.employer.jobs.to_yaml
   end
 end
