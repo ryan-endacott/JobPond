@@ -10,7 +10,8 @@
     - if user_signed_in? && current_user.admin?
       = nav_link 'Employee Reviews', admin_reviews_path
 
-    = nav_link "Job Listings", listings_path
+    - if user_signed_in?
+      = nav_link "Job Listings", listings_path
 
     - if user_signed_in?
       - if current_user.employer?
