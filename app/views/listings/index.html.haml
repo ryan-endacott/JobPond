@@ -1,7 +1,14 @@
-%h1 Listings
-%p
-  = @listings.count
-  Listings Available
+.row
+  .span8
+    %h1 Listings
+    %p
+      = @listings.count
+      Listings Available
+  .span4
+    = form_tag listings_path, method: :get, class: "form-inline" do
+      = text_field_tag :search, params[:search], class: "input-medium", placeholder: "Search Jobs"
+      = submit_tag "Search", class: "btn", name: nil
+
 = will_paginate @listings, renderer: BootstrapPagination::Rails
 
 - if @listings.empty?

@@ -19,6 +19,14 @@ class Job < ActiveRecord::Base
 
   before_save :cap_title
 
+  def self.search search
+  	if search
+  		where('title LIKE ?', "%#{search}%")
+  	else
+  		where('title LIKE ?', "%") #needs a relation
+  	end
+  end
+
   private
   	def cap_title
   		self.title = self.title.capitalize

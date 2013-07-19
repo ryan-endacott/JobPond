@@ -2,7 +2,7 @@
 class ListingsController < ApplicationController
 
   def index
-  	@listings = Job.paginate page: params[:page]
+  	@listings = Job.search(params[:search]).paginate page: params[:page]
   end
 
   def show
