@@ -10,6 +10,7 @@ JobApp::Application.routes.draw do
 
   resource :employee do
   	resource :resume, only: ["edit", "update"]
+    resources :applieds, only: ["create"]
   end
   resources :listings, only: ["index", "show"]
   get '/employers', :to => 'marketing#employers'
