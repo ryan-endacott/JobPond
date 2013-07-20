@@ -32,7 +32,11 @@
               -#(hardcoded, not an attribute yet
         %p= truncate listing.description, length: 100
       .span1
-        = link_to "Apply", "#", class: "btn btn-info btn-apply"
+        - if current_user.employee?
+          - if current_user.applied_for? listing
+            = link_to "Appied!", "#", class: "btn btn-success btn-apply"
+          - else
+            = link_to "Apply", "#", class: "btn btn-info btn-apply"
     %hr
 
 = will_paginate @listings, renderer: BootstrapPagination::Rails

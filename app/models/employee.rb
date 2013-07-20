@@ -42,6 +42,13 @@ class Employee < User
     can_contact
   end
 
+  def applied_for? job
+    job.applicants.each do |applicant|
+      return true if applicant == self
+    end
+    false
+  end
+
   private
   	def create_resume
       self.build_resume.save if self.resume.nil?
