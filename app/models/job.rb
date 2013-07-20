@@ -20,15 +20,18 @@ class Job < ActiveRecord::Base
 
   before_save :cap_title
 
-  geocoded_by :full_street_address
+  geocoded_by :full_address
   after_validation :geocode, if: :location_changed?
 
-  def self.search search
-  	if search
-  		where('title LIKE ?', "%#{search}%")
-  	else
-  		where('title LIKE ?', "%") #needs a relation
+  def self.search search, zipcode
+  	if !search
+  		search = ""
   	end
+    if zipcode
+      near(zipcode).where('title LIKE ?', "%#{search}%") #needs a relation
+    else
+      where('title LIKE ?', "%#{search}%") #needs a relation
+    end
   end
 
   private
