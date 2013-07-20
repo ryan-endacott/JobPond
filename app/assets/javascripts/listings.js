@@ -3,8 +3,10 @@ $(document).ready(function(){
 
   $(".btn-apply").click(function(e){
     e.preventDefault();
-    var job_id = $(this).data("job");
     var self = $(this);
+    var job_id = self.data("job");
+    if(self.text() == "Applied!")
+      return;
     $.post("/employee/applieds", {
       "applied" : {
         "job_id" : job_id
