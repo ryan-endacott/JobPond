@@ -1,5 +1,28 @@
+var map;
+function initialize() {
+  var canvas = $("#map-canvas"),
+  latitude = canvas.data("lat"),
+  longitude = canvas.data("long"),
+  title = canvas.data("title");
+  var latLong = new google.maps.LatLng(latitude, longitude);
+  var mapOptions = {
+    zoom: 16,
+    center: latLong,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: latLong,
+      map: map,
+      title: title
+  });
+}
 
 $(document).ready(function(){
+
+  initialize();
 
   $(".btn-apply").popover({
     trigger : "manual",

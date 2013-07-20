@@ -12,6 +12,12 @@
 %h4 Job Description
 %p= @listing.description
 %hr
+
+.row
+	.span12
+		#map-canvas{:data => {lat: @listing.latitude, long: @listing.longitude, title: @listing.employer.company_name}}
+
+%hr
 %h4
 	Other Listings By This Employer
 - if @listing.employer.jobs.count > 1
