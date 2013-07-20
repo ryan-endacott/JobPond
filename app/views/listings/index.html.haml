@@ -34,7 +34,7 @@
       .span2
         - if current_user.employee?
           - if current_user.applied_for? listing
-            = link_to "Appied!", "#", class: "btn btn-success btn-apply pull-right", data: {job: listing.id}
+            = link_to "Applied!", "#", class: "btn btn-success btn-apply pull-right", data: {job: listing.id}
           - else
             = link_to "Apply", "#", class: "btn btn-info btn-apply pull-right", data: {job: listing.id}
     %hr
