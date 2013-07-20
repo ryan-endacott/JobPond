@@ -1,12 +1,16 @@
 .row
-  .span8
+  .span4
     %h1 Listings
     %p
       = @listings.count
       Listings Available
-  .span4
+  .span8
     = form_tag listings_path, method: :get, class: "form-inline pull-right" do
       = text_field_tag :search, params[:search], class: "input-medium", placeholder: "Search Jobs"
+      Within
+      = select_tag "people", options_for_select(distances), class: "input-medium"
+      Of
+      = text_field_tag :zipcode, params[:zipcode], class: "input-mini", placeholder: "Zipcode"
       = submit_tag "Search", class: "btn", name: nil
 
 = will_paginate @listings, renderer: BootstrapPagination::Rails

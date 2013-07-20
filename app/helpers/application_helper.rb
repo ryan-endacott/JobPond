@@ -20,4 +20,12 @@ module ApplicationHelper
     end
   end
 
+  def distances
+    d = {}
+    [5, 10, 20, 30, 40, 50, 75, 100].each do |dist|
+      d["#{dist} miles"] = dist
+    end
+    return d
+  end
+
 end
