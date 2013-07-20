@@ -19,6 +19,7 @@ gem 'cocoon', '1.1.2'
 gem 'faker'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
+gem 'geocoder'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
