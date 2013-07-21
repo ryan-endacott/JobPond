@@ -12,6 +12,8 @@
     Tired of waiting? See who you can
     = link_to 'hire!', employers_potential_hires_path
 
+%hr
+
 - if @listings.empty?
   %br
   %p It looks like you haven't created any job listings yet!
@@ -27,7 +29,7 @@
               = listing.pay
           .span4
             %p
-              Location: North Pole
+              = listing.full_address
               -#(hardcoded, not an attribute yet)
           .span4
             %p

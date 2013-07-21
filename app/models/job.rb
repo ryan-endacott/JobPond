@@ -34,6 +34,10 @@ class Job < ActiveRecord::Base
     end
   end
 
+  def full_address
+    "#{self.address}, #{self.city}, #{self.state}"
+  end
+
   private
 
     def self.is_number? object #has to be static method which sucks
@@ -44,10 +48,6 @@ class Job < ActiveRecord::Base
 
     def location_changed?
       address_changed? || city_changed? || state_changed?
-    end
-
-    def full_address
-      "#{self.address}, #{self.state}, #{self.city}"
     end
 
   	def cap_title
