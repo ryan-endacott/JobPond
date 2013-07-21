@@ -20,6 +20,8 @@ class Job < ActiveRecord::Base
 
   before_save :cap_title
 
+  validates :address, :city, :state, :pay, :description, :title, presence: true
+
   geocoded_by :full_address
   after_validation :geocode, if: :location_changed?
 
