@@ -32,7 +32,7 @@
               = listing.pay
           .span4
             %p
-              Location: North Pole
+              = "#{listing.city}, #{listing.state}"
               -#(hardcoded, not an attribute yet
         %p= truncate listing.description, length: 100
       .span2
