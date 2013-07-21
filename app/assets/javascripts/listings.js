@@ -1,7 +1,9 @@
 var map;
 function initialize() {
-  var canvas = $("#map-canvas"),
-  latitude = canvas.data("lat"),
+  var canvas = $("#map-canvas");
+  if(canvas.length < 1)
+    return;
+  var latitude = canvas.data("lat"),
   longitude = canvas.data("long"),
   title = canvas.data("title");
   var latLong = new google.maps.LatLng(latitude, longitude);

@@ -23,18 +23,24 @@ class Job < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode, if: :location_changed?
 
-  def self.search search, zipcode
-  	if !search
+  def self.search search, zipcode, dist
+  	if search.nil?
   		search = ""
   	end
-    if zipcode
-      near(zipcode).where('title LIKE ?', "%#{search}%") #needs a relation
+    if !zipcode.nil? && is_number?(zipcode) && !dist.nil? && is_number?(dist)
+      near(zipcode, dist).where('title LIKE ?', "%#{search}%") #needs a relation
     else
       where('title LIKE ?', "%#{search}%") #needs a relation
     end
   end
 
   private
+
+    def self.is_number? object #has to be static method which sucks
+      #obviously doen't belong here but where else to put?
+      #Also may be a better way but this works for integers and thats all I need.
+      object.to_i.to_s == object
+    end
 
     def location_changed?
       address_changed? || city_changed? || state_changed?
