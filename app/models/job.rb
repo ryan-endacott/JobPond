@@ -30,9 +30,9 @@ class Job < ActiveRecord::Base
   		search = ""
   	end
     if !zipcode.nil? && is_number?(zipcode) && !dist.nil? && is_number?(dist)
-      near(zipcode, dist).where('title LIKE ?', "%#{search}%") #needs a relation
+      near(zipcode, dist).where('title LIKE ?', "%#{search}%").order("created_at DESC") #needs a relation
     else
-      where('title LIKE ?', "%#{search}%") #needs a relation
+      where('title LIKE ?', "%#{search}%").order("created_at DESC") #needs a relation
     end
   end
 

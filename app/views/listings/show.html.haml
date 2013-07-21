@@ -5,7 +5,7 @@
 		%p= @listing.employer.company_name
 	.span2
 		%h4 Pay
-		%p= "$#{@listing.pay}"
+		%p= number_to_currency @listing.pay
 	.span4
 		%h4 Location
 		%p= "Needs fixed"#@listing.location
@@ -30,7 +30,7 @@
 			.span2
 				%p
 					Pay:
-					= job.pay
+					= number_to_currency job.pay
 			.span5
 				%p
 					Location:

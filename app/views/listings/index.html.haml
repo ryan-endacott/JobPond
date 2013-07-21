@@ -28,8 +28,8 @@
             %p.muted= listing.employer.company_name
           .span4
             %p
-              Pay: $
-              = listing.pay
+              Pay:
+              = number_to_currency listing.pay
           .span4
             %p
               = "#{listing.city}, #{listing.state}"
