@@ -1,4 +1,4 @@
--if @listings.empty?
+- if @listings.empty?
   .hero-unit.small
     %h2 You Don't Have Any Listings!
     %p Create your first listing and get hiring!
@@ -8,9 +8,6 @@
   .span4
     %h1 Your Listings
     = link_to "Create New Listing", new_employers_job_path, class: "btn btn-success"
-  %p.span4
-    Tired of waiting? See who you can
-    = link_to 'hire!', employers_potential_hires_path
 
 %hr
 
@@ -18,6 +15,11 @@
   %br
   %p It looks like you haven't created any job listings yet!
 - else
+  .hero-unit.mini
+    %p
+      %span.lead.big Don't wait any longer!
+      Find top rated job seekers with our employee finder.
+    = link_to "Find Great Emoloyees", "#", class: "btn btn-info"
   - @listings.each do |listing|
     .row
       .span12

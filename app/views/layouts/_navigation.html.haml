@@ -4,7 +4,9 @@
     %li
       %p
         Employer?
-        = link_to "Sign up here!", new_employer_registration_path
+        = link_to "Sign up", new_employer_registration_path
+        or
+        = link_to "Login", new_user_session_path
 - else
   %ul.nav.pull-right
     - if user_signed_in? && current_user.admin?
