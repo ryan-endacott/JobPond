@@ -14,17 +14,6 @@ class Employers::JobsController < ApplicationController
     end
   end
 
-  # GET /jobs/1
-  # GET /jobs/1.json
-  def show
-    @job = Job.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @job }
-    end
-  end
-
   # GET /jobs/new
   # GET /jobs/new.json
   def new

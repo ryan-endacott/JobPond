@@ -17,7 +17,7 @@ JobApp::Application.routes.draw do
   namespace :employers do
     get '/dashboard', to: 'dashboard#show', as: :dashboard
     get '/dashboard/potential_hires', to: 'potential_hires#index', as: :potential_hires
-    resources :jobs, except: ['index']
+    resources :jobs, except: ['index', "show"]
   end
 
 
