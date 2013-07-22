@@ -15,7 +15,8 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  name                   :string(255)
+#  first_name             :string(255)
+#  last_name              :string(255)
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
@@ -24,6 +25,7 @@
 #  reviewed               :boolean
 #  score                  :integer
 #  company_name           :string(255)
+#  can_contact            :boolean          default(FALSE)
 #
 
 class Admin < User

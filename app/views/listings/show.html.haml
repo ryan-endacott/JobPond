@@ -1,2 +1,43 @@
-%h1 Listings#show
-%p Find me in app/views/listings/show.html.haml
+%h1= @listing.title
+- if current_user.employer? && current_user.my_listing?(@listing)
+  .row
+    .span12
+      = link_to "Edit Listing", edit_employers_job_path(@listing), class: "btn btn-info"
+.row
+  .span3
+    %h4 Employer
+    %p= @listing.employer.company_name
+  .span2
+    %h4 Pay
+    %p= number_to_currency @listing.pay
+  .span4
+    %h4 Location
+    %p= @listing.full_address
+%h4 Job Description
+%p= @listing.description
+%hr
+
+.row
+  .span12
+    #map-canvas{:data => {lat: @listing.latitude, long: @listing.longitude, title: @listing.employer.company_name}}
+
+%hr
+%h4
+  Other Listings By This Employer
+- if @listing.employer.jobs.count > 1
+  - @listing.employer.jobs.take(5).each do |job|
+    - if job == @listing
+      - next
+    %h5= link_to job.title, listing_path(job)
+    %p= job.description
+    .row
+      .span2
+        %p
+          Pay:
+          = number_to_currency job.pay
+      .span5
+        %p
+          Location:
+          = @listing.full_address
+- else
+  %p The employer doesn't have anymore listings

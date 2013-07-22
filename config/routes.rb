@@ -10,13 +10,14 @@ JobApp::Application.routes.draw do
 
   resource :employee do
   	resource :resume, only: ["edit", "update"]
+    resources :applieds, only: ["create"]
   end
-  get  '/listings',  :to => 'listings#index'
+  resources :listings, only: ["index", "show"]
   get '/employers', :to => 'marketing#employers'
   namespace :employers do
     get '/dashboard', to: 'dashboard#show', as: :dashboard
-    get '/potential_hires', to: 'potential_hires#index'
-    resources :jobs, except: ['index']
+    get '/dashboard/potential_hires', to: 'potential_hires#index', as: :potential_hires
+    resources :jobs, except: ['index', "show"]
   end
 
 

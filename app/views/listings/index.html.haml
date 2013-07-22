@@ -1,17 +1,46 @@
-%h1 Listings
+.row
+  .span4
+    %h1 Listings
+    %p
+      = @listings.count
+      Listings Available
+  .span8
+    = form_tag listings_path, method: :get, class: "form-inline pull-right" do
+      = text_field_tag :search, params[:search], class: "input-medium", placeholder: "Search Jobs"
+      Within
+      = select_tag :dist, options_for_select(distances), class: "input-medium"
+      Of
+      = text_field_tag :zipcode, params[:zipcode], class: "input-mini", placeholder: "Zipcode"
+      = submit_tag "Search", class: "btn", name: nil
+
+= will_paginate @listings, renderer: BootstrapPagination::Rails
+%hr
 - if @listings.empty?
   %p
     There aren't any jobs here.
 - else
-  - @listings.each_slice(3) do |slice|
+  - @listings.each do |listing|
     .row
-      - slice.each do |listing|
-        .span4
-          %h2= link_to listing.title, employers_job_path(listing)
-          %p= listing.description
-          %p
-            Pay: $
-            = listing.pay
-          %p
-            Location: North Pole
-            -#(hardcoded, not an attribute yet)
+      .span10
+        %h4= link_to listing.title, listing_path(listing)
+        .row-fluid
+          .span4
+            %p.muted= listing.employer.company_name
+          .span4
+            %p
+              Pay:
+              = number_to_currency listing.pay
+          .span4
+            %p
+              = "#{listing.city}, #{listing.state}"
+              -#(hardcoded, not an attribute yet
+        %p= truncate listing.description, length: 100
+      .span2
+        - if current_user.employee?
+          - if current_user.applied_for? listing
+            = link_to "Applied!", "#", class: "btn btn-success btn-apply pull-right", data: {job: listing.id}
+          - else
+            = link_to "Apply", "#", class: "btn btn-info btn-apply pull-right", data: {job: listing.id}
+    %hr
+
+= will_paginate @listings, renderer: BootstrapPagination::Rails

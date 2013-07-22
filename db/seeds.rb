@@ -60,12 +60,17 @@ if Rails.env.development?
       :password => pass,
       :password_confirmation => pass)
 
-    job = Job.find_or_create_by_title(
-      title: Faker::Lorem.words.map(&:capitalize).join(" "),
-      description: Faker::Lorem.paragraph,
-      pay: (7 + Random.rand(10)))
-    job.employer = emp
-    job.save
+    4.times do
+      job = Job.find_or_create_by_title(
+        title: Faker::Lorem.words.map(&:capitalize).join(" "),
+        description: Faker::Lorem.paragraph,
+        pay: (7 + Random.rand(10)),
+        address: "514 S Nicholas Rd",
+        city: "Nixa",
+        state: "Missouri")
+      job.employer = emp
+      job.save
+    end
 
   end
 

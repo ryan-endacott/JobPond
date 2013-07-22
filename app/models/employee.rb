@@ -15,7 +15,8 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  name                   :string(255)
+#  first_name             :string(255)
+#  last_name              :string(255)
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
@@ -24,6 +25,7 @@
 #  reviewed               :boolean
 #  score                  :integer
 #  company_name           :string(255)
+#  can_contact            :boolean          default(FALSE)
 #
 
 class Employee < User
@@ -32,9 +34,22 @@ class Employee < User
 	has_many :applieds
   has_many :applied_jobs, :through => :applieds, :source => :job
 
+  attr_accessible :can_contact
+
   after_create :create_resume
 
   validate :needs_score_on_review
+
+  def can_contact?
+    can_contact
+  end
+
+  def applied_for? job
+    job.applicants.each do |applicant|
+      return true if applicant == self
+    end
+    false
+  end
 
   private
   	def create_resume

@@ -15,13 +15,53 @@ class Job < ActiveRecord::Base
 	belongs_to :employer
 	has_many :applieds
   has_many :applicants, :through => :applieds, :source => :employee
-  attr_accessible :description, :pay, :title, :employer_id
 
-validates :title, length: { in: 1..50,
+  attr_accessible :description, :pay, :title, :employer_id,
+    :address, :city, :state, :latitude, :longitude
+
+  before_save :cap_title
+
+  validates :address, :city, :state, :pay, :description, :title, presence: true
+  validates :title, length: { in: 1..50,
   	too_short: "Title must be longer"
   	too_long: "Title can only be %{count} characters long" }
   validates :description, length: { maximum: 500,
   	too_long: "Description can only be %{count} characters long"}
   validates :pay, numericality: true, greater_than_or_equal_to: 0
+
+  geocoded_by :full_address
+  after_validation :geocode, if: :location_changed?
+
+  def self.search search, zipcode, dist
+  	if search.nil?
+  		search = ""
+  	end
+    if !zipcode.nil? && is_number?(zipcode) && !dist.nil? && is_number?(dist)
+      near(zipcode, dist).where('title LIKE ?', "%#{search}%").order("created_at DESC") #needs a relation
+    else
+      where('title LIKE ?', "%#{search}%").order("created_at DESC") #needs a relation
+    end
+  end
+
+  def full_address
+    "#{self.address}, #{self.city}, #{self.state}"
+  end
+
+  private
+
+    def self.is_number? object #has to be static method which sucks
+      #obviously doen't belong here but where else to put?
+      #Also may be a better way but this works for integers and thats all I need.
+      object.to_i.to_s == object
+    end
+
+    def location_changed?
+      address_changed? || city_changed? || state_changed?
+    end
+
+  	def cap_title
+  		self.title = self.title.capitalize
+  	end
+>>>>>>> c725637eb2ac56061ace5e3f3d0af15dc3029a6a
 end
 

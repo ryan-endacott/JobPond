@@ -1,10 +1,12 @@
 # JobsController is for employers, ListingsController is for all.
 class ListingsController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
-  	@listings = Job.all
+  	@listings = Job.search(params[:search], params[:zipcode], params[:dist]).paginate page: params[:page]
   end
 
   def show
+  	@listing = Job.find(params[:id])
   end
 end

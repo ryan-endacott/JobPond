@@ -1,33 +1,42 @@
 = link_to "Job App", root_path, :class => 'brand'
-- if not user_signed_in?
-  - if current_page?(employers_path)
-    = link_to "For Job Seekers", root_path, class: 'btn btn-success'
-  - else
-    = link_to "For Employers", employers_path, class: 'btn btn-success'
-%ul.nav.pull-right
-  - if user_signed_in? && current_user.admin?
-    = nav_link 'Employee Reviews', admin_reviews_path
-  - if user_signed_in?
-    - if current_user.employer?
-      = nav_link 'Dashboard', employers_dashboard_path
-    - else
-      = nav_link 'My Resume', edit_employee_resume_path
-  - if user_signed_in?
+- if current_page? root_path
+  %ul.nav.pull-right
     %li
-      = nav_link 'Logout', destroy_user_session_path, :method=>'delete'
-  - else
-    %li
-      = nav_link 'Login', new_user_session_path
+      %p
+        Employer?
+        = link_to "Sign up", new_employer_registration_path
+        or
+        = link_to "Login", new_user_session_path
+- else
+  %ul.nav.pull-right
+    - if user_signed_in? && current_user.admin?
+      = nav_link 'Employee Reviews', admin_reviews_path
 
-  - if user_signed_in?
-    %li
+    - if user_signed_in?
+      = nav_link "Job Listings", listings_path
+
+    - if user_signed_in?
       - if current_user.employer?
-        = nav_link 'Edit account', edit_employer_registration_path
-      - elsif current_user.employee?
-        = nav_link 'Edit account', edit_employee_registration_path
-  - else
-    - if current_page?(employers_path)
-      = nav_link 'Sign up', new_employer_registration_path #go to employer signup
+        = nav_link 'Dashboard', employers_dashboard_path
+      - else
+        = nav_link 'My Resume', edit_employee_resume_path
+
+
+    - if user_signed_in?
+      %li
+        - if current_user.employer?
+          = nav_link 'Edit Account', edit_employer_registration_path
+        - elsif current_user.employee?
+          = nav_link 'Edit Account', edit_employee_registration_path
+    - else
+      - if current_page?(employers_path)
+        = nav_link 'Sign up', new_employer_registration_path #go to employer signup
+      - else
+        %li
+          = nav_link 'Sign up', new_employee_registration_path #go to employee signup
+    - if user_signed_in?
+      %li
+        = nav_link 'Logout', destroy_user_session_path, :method=>'delete'
     - else
       %li
-        = nav_link 'Sign up', new_employee_registration_path #go to employee signup
+        = nav_link 'Login', new_user_session_path

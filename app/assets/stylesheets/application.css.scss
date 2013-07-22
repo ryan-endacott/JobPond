@@ -12,10 +12,32 @@
  *= require_tree .
 */
 
-
 .hero-unit{
 	&.small{
 		padding-top: 10px;
 		padding-bottom: 25px;
 	}
+  &.mini{
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+  }
+}
+
+.lead{
+  &.big{
+    font-size:1.3em;
+  }
+}
+
+.marketing-container{
+  padding-top: 30px;
+}
+
+.btn-apply{
+  margin-top: 40px;
+}
+
+#map-canvas{
+  height:400px;
 }
