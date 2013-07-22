@@ -23,11 +23,11 @@ class Job < ActiveRecord::Base
 
   validates :address, :city, :state, :pay, :description, :title, presence: true
   validates :title, length: { in: 1..50,
-  	too_short: "Title must be longer"
+  	too_short: "Title must be longer",
   	too_long: "Title can only be %{count} characters long" }
   validates :description, length: { maximum: 500,
   	too_long: "Description can only be %{count} characters long"}
-  validates :pay, numericality: true, greater_than_or_equal_to: 0
+  validates_numericality_of :pay, greater_than_or_equal_to: 0
 
   geocoded_by :full_address
   after_validation :geocode, if: :location_changed?
@@ -62,6 +62,5 @@ class Job < ActiveRecord::Base
   	def cap_title
   		self.title = self.title.capitalize
   	end
->>>>>>> c725637eb2ac56061ace5e3f3d0af15dc3029a6a
 end
 
