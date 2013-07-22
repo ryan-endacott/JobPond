@@ -31,4 +31,9 @@
 class Employer < User
 	attr_accessible :company_name
 	has_many :jobs
+
+  def my_listing? listing
+    listing.employer == self
+  end
+
 end
