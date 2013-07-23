@@ -8,6 +8,36 @@ JobApp.marketing = {
 
   employees : function(){
     console.log("Marketing - Employees...");
+
+    var map;
+    function initialize() {
+      var canvas = $("#map-canvas");
+      if(canvas.length < 1)
+        return;
+      var latitude = canvas.data("lat"),
+      longitude = canvas.data("long"),
+      title = canvas.data("title");
+      var latLong = new google.maps.LatLng(latitude, longitude);
+      var mapOptions = {
+        zoom: 16,
+        center: latLong,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        panControl: false,
+        zoomControl: false,
+        scaleControl: false,
+        scrollwheel: false
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'),
+          mapOptions);
+
+      var marker = new google.maps.Marker({
+          position: latLong,
+          map: map,
+          title: title
+      });
+    }
+    initialize();
+
     var CHILD_MARGIN_TOP = 100,
     FLOAT_OF_SCREEN_HEIGHT = .85;
 
