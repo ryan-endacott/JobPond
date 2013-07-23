@@ -54,13 +54,14 @@
   margin: 0;
 }
 
-.higher{
-  z-index: 100;
-}
-
-
 .well{
   &.border{
     border: 1px solid #aaa;
+  }
+}
+
+.btn{
+  &.btn-medium{
+    padding: 17px 22px;
   }
 }
