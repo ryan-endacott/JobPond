@@ -1,5 +1,5 @@
 #map-heading-wrapper
-	#map-canvas.absolute{:data => {lat: @listing.latitude, long: @listing.longitude, title: @listing.employer.company_name}}
+	#map-canvas.absolute{:data => {lat: @coords[0], long: @coords[1], near: @near.to_json}}
 
 	#map-heading-promo-text.span6.well.border
 		%h2 Get Hired Now!

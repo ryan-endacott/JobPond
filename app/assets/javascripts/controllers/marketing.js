@@ -30,11 +30,16 @@ JobApp.marketing = {
       map = new google.maps.Map(document.getElementById('map-canvas'),
           mapOptions);
 
-      var marker = new google.maps.Marker({
-          position: latLong,
+      var location_data = canvas.data("near")
+      for(var i = 0 ; i < location_data.length ; i ++){
+        var item = location_data[i];
+        var myLatLng = new google.maps.LatLng(item.coords[0], item.coords[1]);
+        var marker = new google.maps.Marker({
+          position: myLatLng,
           map: map,
-          title: title
-      });
+          title: item.title
+        });
+      }
     }
     initialize();
 
