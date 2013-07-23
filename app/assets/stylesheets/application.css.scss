@@ -40,4 +40,27 @@
 
 #map-canvas{
   height:400px;
+
+  &.absolute{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+#map-heading-promo-text, #map-heading-sign-up{
+  position: absolute;
+  margin: 0;
+}
+
+.higher{
+  z-index: 100;
+}
+
+
+.well{
+  &.border{
+    border: 1px solid #aaa;
+  }
 }

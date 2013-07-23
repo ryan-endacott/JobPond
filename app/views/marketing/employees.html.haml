@@ -1,8 +1,10 @@
-.row.marketing-container
-	.span6
+#map-heading-wrapper
+	#map-canvas.absolute{:data => {lat: @listing.latitude, long: @listing.longitude, title: @listing.employer.company_name}}
+
+	#map-heading-promo-text.span6.well.border
 		%h2 Get Hired Now!
 		%p.lead Quickly and easily apply for tons of jobs with a single resume!
-	.span4.offset1
+	#map-heading-sign-up.span4.well.border
 		%h2 Sign up
 		= simple_form_for(@employee, url: employee_registration_path, html: {class: 'form-vertical' }) do |f|
 			.row
