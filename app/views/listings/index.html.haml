@@ -5,7 +5,7 @@
       = @listings.count
       Listings Available
   .span8
-    = form_tag listings_path, method: :get, class: "form-inline pull-right" do
+    = form_tag listings_path, method: :get, class: "form-inline pull-right search-form" do
       = text_field_tag :search, params[:search], class: "input-medium", placeholder: "Search Jobs"
       Within
       = select_tag :dist, options_for_select(distances), class: "input-medium"

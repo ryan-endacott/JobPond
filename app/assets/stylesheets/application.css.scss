@@ -76,13 +76,19 @@
 
 .nav{
   a{
-    color: #00afff;
-    &:hover{
-      color: #008fff;
+    &.light{
+      color: #00afff;
+      &:hover{
+        color: #008fff;
+      }
     }
   }
   p{
     color: white;
     margin-top: 14px;
   }
+}
+
+.search-form{
+  margin-top: 20px;
 }
