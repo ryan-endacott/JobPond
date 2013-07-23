@@ -9,7 +9,7 @@
         = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
         = csrf_meta_tags
         = yield(:head)
-  %body{:class => "#{controller_name} #{action_name}"}
+  %body{ data: { controller: controller_name, action: action_name }}
     .navbar.navbar-fixed-top
       %nav.navbar-inner
         .container

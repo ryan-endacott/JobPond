@@ -10,45 +10,64 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+// Need to require self before controllers
+//
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require_self
 //= require_tree .
 //= require cocoon
 
-var CHILD_MARGIN_TOP = 100,
-    FLOAT_OF_SCREEN_HEIGHT = .85;
 
-var map_resize = function(){
-  console.log("Resizing map...");
-  var map_container = $("#map-heading-wrapper"),
-    map_canvas = $("#map-canvas"),
-    map_promo_text = map_container.find("#map-heading-promo-text"),
-    map_sign_up = map_container.find("#map-heading-sign-up");
+////*************** Template *****************/////
+/*
+var JobApp = JobApp || {};
 
-  var window_width = $(window).width(),
-    window_height = $(window).height(),
-    container_width = $(".container").width();
-  //Do the map container so content will fit right in under
-  map_container.height(window_height * FLOAT_OF_SCREEN_HEIGHT);
-  //Do the actual map.  Probably not necessary with css but might as well.
-  map_canvas.height(window_height * FLOAT_OF_SCREEN_HEIGHT);
-  //Do the promo text
-  map_promo_text.css({
-    left : (window_width - container_width) / 2,
-    top : CHILD_MARGIN_TOP
-  });
-  //Do the sign up dialog
-  map_sign_up.css({
-    right : (window_width - container_width) / 2,
-    top : CHILD_MARGIN_TOP
-  });
+JobApp.marketing = {   // controller name
+  init : function(){    // Always executed
+    console.log("Init marketing");
+  },
+
+  employee : function(){  // Action name
+
+  }
+}*/
+
+var JobApp = JobApp || {};
+
+JobApp = {   // App wide code and sets up namespace
+  common: {
+    init: function() {
+      // application-wide code
+      console.log("Initializing App JS...");
+    }
+  }
 };
 
-$(document).ready(function(){
-  map_resize();
-  $(window).resize(function(){
-    map_resize();
-  });
+/////**************DON'T TOUCH BELOW!*********////
 
+UTIL = {
+  exec: function( controller, action ) {
+    var ns = JobApp,
+        action = ( action === undefined ) ? "init" : action;
+
+    if ( controller !== "" && ns[controller] && typeof ns[controller][action] == "function" ) {
+      ns[controller][action]();
+    }
+  },
+
+  init: function() {
+    var body = $("body"),
+        controller = body.data( "controller" ),
+        action = body.data( "action" );
+
+    UTIL.exec( "common" );
+    UTIL.exec( controller );
+    UTIL.exec( controller, action );
+  }
+};
+
+$( document ).ready(function(){
+  UTIL.init();
 });
