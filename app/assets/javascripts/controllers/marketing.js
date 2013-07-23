@@ -10,7 +10,31 @@ JobApp.marketing = {
     console.log("Marketing - Employees...");
 
     var map;
-    function initialize() {
+    var openWindow = null;
+
+    var markerListener = function(marker){
+      var contentString = [
+        "<p class=\"lead\">",
+          "<a href=\"" + marker.url + "\">",
+            marker.title,
+          "</a>",
+        "</p>",
+        "<p>",
+          marker.company_name,
+        "</p>"
+      ].join("");
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      return function(){
+        if(openWindow)
+          openWindow.close();
+        openWindow = infowindow;
+        infowindow.open(map, marker);
+      };
+    };
+
+    var initialize = function() {
       var canvas = $("#map-canvas");
       if(canvas.length < 1)
         return;
@@ -27,6 +51,7 @@ JobApp.marketing = {
         scaleControl: false,
         scrollwheel: false
       };
+
       map = new google.maps.Map(document.getElementById('map-canvas'),
           mapOptions);
 
@@ -37,8 +62,11 @@ JobApp.marketing = {
         var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
-          title: item.title
+          title: item.title,
+          company_name : item.company_name,
+          url : item.url
         });
+        google.maps.event.addListener(marker, 'click', markerListener(marker));
       }
     }
     initialize();

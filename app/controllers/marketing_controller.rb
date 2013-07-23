@@ -17,7 +17,7 @@ class MarketingController < ApplicationController
       nears = []
       n.each do |near|
         nears << {title: near.title, coords: [near.latitude, near.longitude],
-          url: listing_path(near)}
+          url: listing_path(near), company_name: near.employer.company_name}
       end
       return nears
     end
