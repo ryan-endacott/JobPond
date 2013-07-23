@@ -15,7 +15,7 @@ JobApp.marketing = {
     var markerListener = function(marker){
       var contentString = [
         "<p class=\"lead\">",
-          "<a href=\"" + marker.url + "\">",
+          "<a href=\"" + marker.url + "\" class=\"marker-url\">",
             marker.title,
           "</a>",
         "</p>",
@@ -71,8 +71,8 @@ JobApp.marketing = {
     }
     initialize();
 
-    var CHILD_MARGIN_TOP = 100,
-    FLOAT_OF_SCREEN_HEIGHT = .85;
+    var CHILD_MARGIN_TOP = 140,
+    FLOAT_OF_SCREEN_HEIGHT = .9;
 
     var map_resize = function(){
       console.log("Resizing map...");
