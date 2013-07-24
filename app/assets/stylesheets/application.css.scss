@@ -55,11 +55,25 @@
     left: 0;
     right: 0;
   }
+  &.full-screen{
+    top: 51px;
+    bottom: 0;
+    height: auto;
+  }
 }
 
-#map-heading-promo-text, #map-heading-sign-up{
+#map-heading-promo-text, #map-heading-sign-up, #map-search-form{
   position: absolute;
-  margin: 0;
+  &[class^="span"]{
+    margin: 0;
+  }
+}
+
+#map-search-form{
+  p{
+    padding: 0;
+    margin: 5px 0 0 0;
+  }
 }
 
 .well{
@@ -91,4 +105,11 @@
 
 .search-form{
   margin-top: 20px;
+  &.search-form-absolute{
+    margin: 0;
+  }
+}
+
+.higher{
+  z-index: 10;
 }

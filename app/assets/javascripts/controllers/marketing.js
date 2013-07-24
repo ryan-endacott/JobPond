@@ -86,7 +86,7 @@ JobApp.marketing = {
         container_width = $(".container").width();
       //Do the map container so content will fit right in under
       //Subtract for the padding of the body
-      map_container.height(window_height * FLOAT_OF_SCREEN_HEIGHT - 60);
+      map_container.height(window_height * FLOAT_OF_SCREEN_HEIGHT - JobApp.NAV_BAR_PADDING);
       //Do the actual map.  Probably not necessary with css but might as well.
       map_canvas.height(window_height * FLOAT_OF_SCREEN_HEIGHT);
       //Do the promo text

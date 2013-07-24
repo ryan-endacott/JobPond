@@ -1,0 +1,12 @@
+#map-search-form.higher.well.border.well-small
+  = form_tag listings_path, method: :get, class: "form-inline pull-right search-form search-form-absolute" do
+    = link_to "Back", params.merge(map: false), class: "btn btn-warning"
+    = hidden_field_tag :map, params[:map] || false
+    = text_field_tag :search, params[:search], class: "input-medium", placeholder: "Search Jobs"
+    Within
+    = select_tag :dist, options_for_select(distances), class: "input-medium"
+    Of
+    = text_field_tag :zipcode, params[:zipcode], class: "input-mini", placeholder: "Zipcode"
+    = submit_tag "Search", class: "btn btn-primary", name: nil
+
+#map-canvas.absolute.full-screen{:data => {lat: @coords[0], long: @coords[1], near: @near.to_json}}

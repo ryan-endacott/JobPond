@@ -22,13 +22,13 @@
     #map-canvas{:data => {lat: @listing.latitude, long: @listing.longitude, title: @listing.employer.company_name}}
 
 %hr
-%h4
+%h3
   Other Listings By This Employer
 - if @listing.employer.jobs.count > 1
   - @listing.employer.jobs.take(5).each do |job|
     - if job == @listing
       - next
-    %h5= link_to job.title, listing_path(job)
+    %h4= link_to job.title, listing_path(job)
     %p= job.description
     .row
       .span2

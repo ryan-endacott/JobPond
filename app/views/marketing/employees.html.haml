@@ -1,10 +1,10 @@
 #map-heading-wrapper
 	#map-canvas.absolute{:data => {lat: @coords[0], long: @coords[1], near: @near.to_json}}
 
-	#map-heading-promo-text.span6.well.border
+	#map-heading-promo-text.span6.well.border.higher
 		%h2 Get Hired Now!
 		%p.lead Quickly and easily apply for tons of jobs with a single resume!
-	#map-heading-sign-up.span4.well.border
+	#map-heading-sign-up.span4.well.border.higher
 		%h2 Sign up
 		= simple_form_for(@employee, url: employee_registration_path, html: {class: 'form-vertical' }) do |f|
 			.row

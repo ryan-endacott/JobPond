@@ -4,14 +4,20 @@
     %p
       = @listings.count
       Listings Available
+    %p
+      Views:
+      = link_to "Listings", params.merge(map: false)
+      |
+      = link_to "Map", params.merge(map: true)
   .span8
     = form_tag listings_path, method: :get, class: "form-inline pull-right search-form" do
+      = hidden_field_tag :map, params[:map] || false
       = text_field_tag :search, params[:search], class: "input-medium", placeholder: "Search Jobs"
       Within
       = select_tag :dist, options_for_select(distances), class: "input-medium"
       Of
       = text_field_tag :zipcode, params[:zipcode], class: "input-mini", placeholder: "Zipcode"
-      = submit_tag "Search", class: "btn", name: nil
+      = submit_tag "Search", class: "btn btn-primary", name: nil
 
 = will_paginate @listings, renderer: BootstrapPagination::Rails
 %hr

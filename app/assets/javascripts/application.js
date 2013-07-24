@@ -36,12 +36,12 @@ JobApp.marketing = {   // controller name
 
 var JobApp = JobApp || {};
 
-JobApp = {   // App wide code and sets up namespace
-  common: {
-    init: function() {
-      // application-wide code
-      console.log("Initializing App JS...");
-    }
+JobApp.NAV_BAR_PADDING = 51;
+
+JobApp.common = {   // App wide code and sets up namespace
+  init: function() {
+    // application-wide code
+    console.log("Initializing App JS...");
   }
 };
 
