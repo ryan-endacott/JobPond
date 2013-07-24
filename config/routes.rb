@@ -25,4 +25,6 @@ JobApp::Application.routes.draw do
   namespace :admin do
     resources :reviews, only: ["index", "edit", "update"]
   end
+
+  resources :charges, only: ['create']
 end
