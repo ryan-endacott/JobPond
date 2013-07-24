@@ -13,3 +13,18 @@
           %td= seeker.name
           %td Great at ping pong.
           %td 50
+          %td
+            = form_tag charges_path do
+              %article
+                %label{:class => "amount"}
+                  %span Amount: $5.00
+
+              = javascript_include_tag "https://checkout.stripe.com/v2/checkout.js",
+                :class => "stripe-button",
+                :"data-key" => "#{Rails.configuration.stripe[:publishable_key]}",
+                :"data-label" => "Pay Now",
+                :"data-panel-label" => "Submit payment for",
+                :"data-name" => "ABC Company",
+                :"data-description" => "30-day free trial",
+                :"data-amount" => "500",
+                :"data-image" => "/app-128x128.png"

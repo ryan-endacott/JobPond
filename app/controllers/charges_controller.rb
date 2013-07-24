@@ -16,9 +16,12 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
+    flash[:success] = 'Access purchased!' # TODO: Implement actual access
+    redirect_to employers_potential_hires_path
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to charges_path
+    redirect_to employers_potential_hires_path
   end
 
 end
