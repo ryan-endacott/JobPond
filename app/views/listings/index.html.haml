@@ -6,7 +6,7 @@
       Listings Available
     %p
       Views:
-      = link_to "Listings", params.merge(map: false)
+      = link_to "Listings", params.merge(map: false), class: "disabled-link"
       |
       = link_to "Map", params.merge(map: true)
   .span8

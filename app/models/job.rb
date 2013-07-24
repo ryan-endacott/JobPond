@@ -37,7 +37,7 @@ class Job < ActiveRecord::Base
   		search = ""
   	end
     if !zipcode.nil? && is_number?(zipcode) && !dist.nil? && is_number?(dist)
-      near(zipcode, dist).where('title LIKE ?', "%#{search}%").order("created_at DESC") #needs a relation
+      near(zipcode).where('title LIKE ?', "%#{search}%").order("created_at DESC") #needs a relation
     else
       where('title LIKE ?', "%#{search}%").order("created_at DESC") #needs a relation
     end
@@ -47,13 +47,13 @@ class Job < ActiveRecord::Base
     "#{self.address}, #{self.city}, #{self.state}"
   end
 
-  private
+  def self.is_number? object #has to be static method which sucks
+    #obviously doen't belong here but where else to put?
+    #Also may be a better way but this works for integers and thats all I need.
+    object.to_i.to_s == object
+  end
 
-    def self.is_number? object #has to be static method which sucks
-      #obviously doen't belong here but where else to put?
-      #Also may be a better way but this works for integers and thats all I need.
-      object.to_i.to_s == object
-    end
+  private
 
     def location_changed?
       address_changed? || city_changed? || state_changed?

@@ -113,3 +113,11 @@
 .higher{
   z-index: 10;
 }
+
+.disabled-link{
+  color: black;
+  text-decoration: underline;
+  &:hover{
+    color: black;
+  }
+}

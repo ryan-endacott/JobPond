@@ -4,16 +4,19 @@ class ListingsController < ApplicationController
 
   def index
 
-    @coords = coords
-    if !params[:zipcode] || params[:zipcode].empty?
-      @listings = Job.search(params[:search], ip_zipcode, params[:dist]).paginate page: params[:page]
+    if !valid_zipcode? params[:zipcode]
+      @listings = Job.search(params[:search], ip_zipcode, params[:dist])
     else
-      @listings = Job.search(params[:search], params[:zipcode], params[:dist]).paginate page: params[:page]
+      @listings = Job.search(params[:search], params[:zipcode], params[:dist])
     end
+
+    @coords = coords @listings
 
     if params[:map] == "true"
       @near = near_formatted @listings
       render "map"
+    else
+      @listings = @listings.paginate page: params[:page]
     end
   end
 
@@ -23,21 +26,19 @@ class ListingsController < ApplicationController
 
   private
 
-    def near_formatted n
-      nears = []
-      n.each do |near|
-        nears << {title: near.title, coords: [near.latitude, near.longitude],
-          url: listing_path(near), company_name: near.employer.company_name}
-      end
-      return nears
+    def valid_zipcode? zipcode
+      params[:zipcode] && !params[:zipcode].empty? && Job.is_number?(params[:zipcode])
     end
 
-    def coords
-      if Rails.env.production?
-        Geocoder.coordinates(ip_zipcode)
-      else
-        Geocoder.coordinates("Nixa, Missouri")
+    def near_formatted n
+      return n.map do |near|
+        {title: near.title, coords: [near.latitude, near.longitude],
+          url: listing_path(near), company_name: near.employer.company_name}
       end
+    end
+
+    def coords listings
+      Geocoder::Calculations.geographic_center(listings.map{ |l| [l.latitude, l.longitude]})
     end
 
     def ip_zipcode

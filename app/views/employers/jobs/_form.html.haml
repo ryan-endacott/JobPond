@@ -1,9 +1,11 @@
 - # Hack to get around routing issue:
 - if render_type == :new
   - url = employers_jobs_path
+  - method = "post"
 - else #render_type == :edit
   - url = employers_job_path(@job)
-= simple_form_for(@job, url: url) do |f|
+  - method = "put"
+= simple_form_for(@job, url: url, method: method.to_sym) do |f|
   = f.error_notification
 
   .form-inputs

@@ -74,8 +74,6 @@ JobApp.listings = {
         var search_container = $("#map-search-form"),
           search_form_width = search_container.width(),
           window_width = $(window).width();
-          console.log(window_width);
-          console.log(search_form_width);
           search_container.css({
             position : "absolute",
             top : JobApp.NAV_BAR_PADDING,
@@ -128,7 +126,7 @@ JobApp.listings = {
         title = canvas.data("title");
         var latLong = new google.maps.LatLng(latitude, longitude);
         var mapOptions = {
-          zoom: 16,
+          zoom: 14,
           center: latLong,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
