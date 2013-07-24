@@ -15,16 +15,11 @@
           %td 50
           %td
             = form_tag charges_path do
-              %article
-                %label{:class => "amount"}
-                  %span Amount: $5.00
-
               = javascript_include_tag "https://checkout.stripe.com/v2/checkout.js",
                 :class => "stripe-button",
                 :"data-key" => "#{Rails.configuration.stripe[:publishable_key]}",
-                :"data-label" => "Pay Now",
+                :"data-label" => "Contact!",
                 :"data-panel-label" => "Submit payment for",
-                :"data-name" => "ABC Company",
-                :"data-description" => "30-day free trial",
-                :"data-amount" => "500",
-                :"data-image" => "/app-128x128.png"
+                :"data-name" => "Contact #{seeker.name}!",
+                :"data-description" => "Get a full refund if you don't hire him/her!* TODOMVP: WRITE TERMS AND CONDITIONS",
+                :"data-amount" => "5000"
