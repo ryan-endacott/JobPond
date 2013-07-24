@@ -29,7 +29,7 @@ if Rails.env.development?
   Employer.find_or_create_by_email(
     :first_name => 'employer',
     :last_name => 'user',
-    :company_name => Faker::Lorem.words.map(&:capitalize).join(" "),
+    :company_name => Faker::Company.name,
     :email => 'employer@example.com',
     :password => pass,
     :password_confirmation => pass)
