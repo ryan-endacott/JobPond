@@ -37,6 +37,7 @@ JobApp.marketing = {   // controller name
 var JobApp = JobApp || {};
 
 JobApp.NAV_BAR_PADDING = 51;
+JobApp.JOB_LISTING_ZOOM = 14;
 
 JobApp.common = {   // App wide code and sets up namespace
   init: function() {

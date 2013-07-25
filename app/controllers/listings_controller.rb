@@ -38,11 +38,24 @@ class ListingsController < ApplicationController
     end
 
     def coords listings
-      Geocoder::Calculations.geographic_center(listings.map{ |l| [l.latitude, l.longitude]})
+      c = Geocoder::Calculations.geographic_center(listings.map{ |l| [l.latitude, l.longitude]})
+      if c[0].nan?
+        if valid_zipcode? params[:zipcode]
+          return Geocoder.coordinates(params[:zipcode])
+        else
+          return Geocoder.coordinates(ip_zipcode)
+        end
+      else
+        return c
+      end
     end
 
     def ip_zipcode
-      request.location.postal_code
+      if Rails.env.production?
+        request.location.postal_code
+      else
+        return "65714"
+      end
     end
 
 end

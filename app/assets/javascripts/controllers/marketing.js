@@ -43,7 +43,7 @@ JobApp.marketing = {
       title = canvas.data("title");
       var latLong = new google.maps.LatLng(latitude, longitude);
       var mapOptions = {
-        zoom: 16,
+        zoom: JobApp.JOB_LISTING_ZOOM,
         center: latLong,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         panControl: false,
@@ -71,7 +71,7 @@ JobApp.marketing = {
     }
     initialize();
 
-    var CHILD_MARGIN_TOP = 140,
+    var CHILD_MARGIN_TOP = 100,
     FLOAT_OF_SCREEN_HEIGHT = .9;
 
     var map_resize = function(){

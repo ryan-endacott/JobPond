@@ -13,19 +13,17 @@ class MarketingController < ApplicationController
   private
 
     def near_formatted coords
-      n = Job.near(coords, 20).limit(100)
-      nears = []
-      n.each do |near|
-        nears << {title: near.title, coords: [near.latitude, near.longitude],
+      n = Job.near(coords, 20)
+      return n.map do |near|
+        {title: near.title, coords: [near.latitude, near.longitude],
           url: listing_path(near), company_name: near.employer.company_name}
       end
-      return nears
     end
 
     def coords
       if Rails.env.production?
         loc = request.location
-        Geocoder.coordinates("#{loc.city}, #{state}")
+        Geocoder.coordinates("#{loc.city}, #{loc.state}")
       else
         Geocoder.coordinates("Nixa, Missouri")
       end

@@ -19,7 +19,7 @@ JobApp.listings = {
       title = canvas.data("title");
       var latLong = new google.maps.LatLng(latitude, longitude);
       var mapOptions = {
-        zoom: 16,
+        zoom: JobApp.JOB_LISTING_ZOOM,
         center: latLong,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
@@ -126,7 +126,7 @@ JobApp.listings = {
         title = canvas.data("title");
         var latLong = new google.maps.LatLng(latitude, longitude);
         var mapOptions = {
-          zoom: 14,
+          zoom: JobApp.JOB_LISTING_ZOOM,
           center: latLong,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
