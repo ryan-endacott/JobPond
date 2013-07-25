@@ -6,8 +6,8 @@
 			= display_base_errors resource
 			= f.input :first_name, autofocus: true
 			= f.input :last_name, required: true
-			= f.input :email, required: true
-			= f.input :password, required: true
+			= f.input :email, required: true, input_html: {class: "input-xlarge"}
+			= f.input :password, required: true, input_html: {class: "input-xlarge"}
 			= f.button :submit, 'Sign up', class: 'btn-primary'
 		= render "devise/shared/links"
 	.span7
