@@ -4,7 +4,7 @@
 
 		= f.input :address
 		= f.input :city
-		= f.input :state
+		= f.input :state, collection: us_states, as: :select
 		= f.input :zipcode
 		= f.input :phone_number
 		= f.input :birthday, start_year: Date.today.year - 90
