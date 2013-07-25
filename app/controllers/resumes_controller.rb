@@ -23,6 +23,16 @@ class ResumesController < ApplicationController
     end
   end
 
+  # POST /avatar
+  def avatar
+    if params[:employee] && current_user.update_attributes(params[:employee])
+      flash[:notice] = "Avatar successfully updated."
+    else
+      flash[:error] = "Avatar could not be updated."
+    end
+    redirect_to edit_employee_resume_path
+  end
+
   private
     def resume
       return @resume || current_user.resume || current_user.build_resume

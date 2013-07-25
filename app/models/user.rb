@@ -38,7 +38,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email,
-   :password, :password_confirmation, :remember_me, :type
+   :password, :password_confirmation, :remember_me, :type, :avatar
+
+  has_attached_file :avatar, :styles => { :medium => "200x200>" }
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -57,9 +59,13 @@ class User < ActiveRecord::Base
   	return self.class == Admin
   end
 
-  def gravitar_url
-    hash = Digest::MD5.hexdigest(self.email.strip)
-    "http://www.gravatar.com/avatar/#{hash}?s=200&d=mm"
+  def avatar_url
+    if !avatar.exists?
+      hash = Digest::MD5.hexdigest(self.email.strip)
+      "http://www.gravatar.com/avatar/#{hash}?s=200&d=mm"
+    else
+      avatar.url
+    end
   end
 
 end
