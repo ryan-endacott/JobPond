@@ -1,7 +1,11 @@
 class MarketingController < ApplicationController
 
 	def employees
-		redirect_to listings_path if user_signed_in?
+
+    if user_signed_in?
+      flash.keep
+  		redirect_to listings_path
+    end
 
 		@employee = Employee.new
 

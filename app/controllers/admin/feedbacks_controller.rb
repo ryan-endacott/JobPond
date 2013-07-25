@@ -5,6 +5,7 @@ class Admin::FeedbacksController < ApplicationController
     @feedbacks = Feedback.all
   end
 
+  # Contact us route
   def new
     @feedback = Feedback.new
   end
