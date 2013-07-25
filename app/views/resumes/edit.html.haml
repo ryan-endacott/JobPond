@@ -1,6 +1,18 @@
 %h1 Editing Resume
 .avatar.pull-right.text-right
-	= image_tag current_user.gravitar_url
-	%br
-	= link_to "Change image with gravitar", "https://en.gravatar.com/"
+  = image_tag current_user.avatar_url
+  %br
+  = #link_to "Upload avatar from computer", "#", id: "upload-avatar"
+  = link_to "Change image with gravitar", "https://en.gravatar.com/"
 = render 'form'
+
+#my-modal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  = simple_form_for current_user, url: avatar_path, html: {multipart: true}, method: :post do |f|
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+      %h3 Upload Avatar
+    .modal-body
+      = f.input :avatar, as: :file
+    .modal-footer
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+      %button.btn.btn-primary Upload

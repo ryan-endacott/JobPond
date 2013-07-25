@@ -5,9 +5,9 @@
       = link_to "Edit Listing", edit_employers_job_path(@listing), class: "btn btn-info"
 - if current_user.employee?
   - if current_user.applied_for? @listing
-    = link_to "Applied!", "#", class: "btn btn-success btn-skinny", data: {job: @listing.id}
+    = link_to "Applied!", "#", id: "btn-apply",class: "btn btn-success btn-skinny", data: {job: @listing.id}
   - else
-    = link_to "Apply", "#", class: "btn btn-info btn-skinny", data: {job: @listing.id}
+    = link_to "Apply", "#", id: "btn-apply", class: "btn btn-info btn-skinny", data: {job: @listing.id}
 .row
   .span3
     %h4 Employer
