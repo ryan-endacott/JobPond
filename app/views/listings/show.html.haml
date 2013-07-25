@@ -3,6 +3,11 @@
   .row
     .span12
       = link_to "Edit Listing", edit_employers_job_path(@listing), class: "btn btn-info"
+- if current_user.employee?
+  - if current_user.applied_for? @listing
+    = link_to "Applied!", "#", class: "btn btn-success btn-skinny", data: {job: @listing.id}
+  - else
+    = link_to "Apply", "#", class: "btn btn-info btn-skinny", data: {job: @listing.id}
 .row
   .span3
     %h4 Employer
@@ -25,19 +30,23 @@
 %h3
   Other Listings By This Employer
 - if @listing.employer.jobs.count > 1
-  - @listing.employer.jobs.take(5).each do |job|
-    - if job == @listing
+  - @listing.employer.jobs.take(5).each do |listing|
+    - if listing == @listing
       - next
-    %h4= link_to job.title, listing_path(job)
-    %p= job.description
     .row
-      .span2
-        %p
-          Pay:
-          = number_to_currency job.pay
-      .span5
-        %p
-          Location:
-          = @listing.full_address
+      .span12
+        %h4= link_to listing.title, listing_path(listing)
+        .row-fluid
+          .span4
+            %p= listing.employer.company_name
+          .span4
+            %p
+              Pay:
+              = number_to_currency listing.pay
+          .span4
+            %p
+              = "#{listing.city}, #{listing.state}"
+              -#(hardcoded, not an attribute yet
+        %p= truncate listing.description, length: 100
 - else
   %p The employer doesn't have anymore listings

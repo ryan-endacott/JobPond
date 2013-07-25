@@ -34,10 +34,6 @@
   padding-top: 30px;
 }
 
-.btn-apply{
-  margin-top: 40px;
-}
-
 #map-canvas{
   height:400px;
 
@@ -85,6 +81,12 @@
 .btn{
   &.btn-medium{
     padding: 17px 22px;
+  }
+  &.btn-skinny{
+    padding: 9px 50px;
+  }
+  &.btn-apply{ /* For the listing index page*/
+    margin-top: 40px;
   }
 }
 
