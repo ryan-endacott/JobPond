@@ -5,13 +5,14 @@
   = display_base_errors resource
   = f.input :first_name, autofocus: true
   = f.input :last_name, required: true
-  = f.input :email, required: true
-  = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-  = f.input :password_confirmation, required: false
-  = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+  = f.input :email, required: true, input_html: {class: "input-xlarge"}
+  = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, input_html: {class: "input-xlarge"}
+  = f.input :password_confirmation, required: false, input_html: {class: "input-xlarge"}
+  = f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: {class: "input-xlarge"}
+  %br
   = f.input :can_contact, hint: 'Allow employers to contact you about jobs without you applying.', inline_label: "Employers can contact me", label: false
   = f.button :submit, 'Update', class: 'btn-primary'
-%h3 Cancel my account
+%h3 Cancel My Account
 %p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}.
+  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"}
 = link_to "Back", :back
