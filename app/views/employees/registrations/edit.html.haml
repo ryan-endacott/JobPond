@@ -9,7 +9,7 @@
   = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
   = f.input :password_confirmation, required: false
   = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
-  = f.input :can_contact, hint: 'Allow employers to contact you about jobs without you applying.'
+  = f.input :can_contact, hint: 'Allow employers to contact you about jobs without you applying.', inline_label: "Employers can contact me", label: false
   = f.button :submit, 'Update', class: 'btn-primary'
 %h3 Cancel my account
 %p
