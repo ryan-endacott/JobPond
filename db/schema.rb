@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130720155138) do
+ActiveRecord::Schema.define(:version => 20130725021036) do
 
   create_table "applieds", :force => true do |t|
     t.integer  "employee_id"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20130720155138) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "feedbacks", :force => true do |t|
+    t.text     "message"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id"
 
   create_table "job_experiences", :force => true do |t|
     t.string   "title"

@@ -1,0 +1,15 @@
+%h1 Listing User Feedback
+
+%table.table
+  %tr
+    %th Name
+    %th Email
+    %th Message
+
+  - @feedbacks.each do |feedback|
+    %tr
+      %td= feedback.user.name
+      %td= feedback.user.email
+      %td= feedback.message
+
+
