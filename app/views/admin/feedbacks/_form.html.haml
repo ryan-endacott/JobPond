@@ -1,0 +1,8 @@
+= simple_form_for(@feedback, url: contact_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :message
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

@@ -25,7 +25,11 @@ JobApp::Application.routes.draw do
   #review namespace for ranking users
   namespace :admin do
     resources :reviews, only: ["index", "edit", "update"]
+    resources :feedbacks, only: ['index']
   end
+
+  get '/contact', to: 'admin/feedbacks#new'
+  post '/contact', to: 'admin/feedbacks#create'
 
   resources :charges, only: ['create']
 end
