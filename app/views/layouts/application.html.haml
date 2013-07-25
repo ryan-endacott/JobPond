@@ -10,16 +10,19 @@
         = csrf_meta_tags
         = yield(:head)
   %body{ data: { controller: controller_name, action: action_name }}
-    .navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
-    .container
-      .content
-        .row
-          .span12
-            = render 'layouts/messages'
-            = yield
-        %footer
+    #wrap
+      .navbar.navbar-fixed-top
+        %nav.navbar-inner
+          .container
+            = render 'layouts/navigation'
+      .container
+        .content
+          .row
+            .span12
+              = render 'layouts/messages'
+              = yield
+      #push
+    %footer#footer
+      = render 'layouts/footer'
       / ! end of .container
     / ! end of #main
