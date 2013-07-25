@@ -15,9 +15,13 @@
 /* ---------------------------------------------------------------------------- */
 /* FOOTER STUFF */
 
-$footer_height: 46px;
+$footer_height: 60px;
 
 /* center text vertically */
+#footer > .container > p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 
 
