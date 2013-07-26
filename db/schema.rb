@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725023526) do
+ActiveRecord::Schema.define(:version => 20130726014209) do
 
   create_table "applieds", :force => true do |t|
     t.integer  "employee_id"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(:version => 20130725023526) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "contact_purchases", :force => true do |t|
+    t.integer  "employer_id"
+    t.integer  "employee_id"
+    t.string   "charge_id"
+    t.boolean  "refunded",    :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "contact_purchases", ["employee_id"], :name => "index_contact_purchases_on_employee_id"
+  add_index "contact_purchases", ["employer_id"], :name => "index_contact_purchases_on_employer_id"
 
   create_table "feedbacks", :force => true do |t|
     t.text     "message"

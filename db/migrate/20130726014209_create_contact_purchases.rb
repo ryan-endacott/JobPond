@@ -4,7 +4,7 @@ class CreateContactPurchases < ActiveRecord::Migration
       t.references :employer
       t.references :employee
       t.string :charge_id
-      t.boolean :refunded
+      t.boolean :refunded, default: false
 
       t.timestamps
     end
