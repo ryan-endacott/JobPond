@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+  before_filter :employer_only!
 
   def create
     # Amount in cents
@@ -15,6 +16,11 @@ class ChargesController < ApplicationController
       :description => current_user.company_name,
       :currency    => 'usd'
     )
+
+    purchase = ContactPurchase.new(charge_id: charge.id)
+    purchase.employer = current_user
+    purchase.employee = params[:employee_id]
+    purchase.save!
 
     flash[:success] = 'Access purchased!' # TODO: Implement actual access
     redirect_to employers_potential_hires_path
