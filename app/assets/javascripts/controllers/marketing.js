@@ -72,7 +72,7 @@ JobApp.marketing = {
     initialize();
 
     var CHILD_MARGIN_TOP = 100,
-    FLOAT_OF_SCREEN_HEIGHT = .95;
+    FLOAT_OF_SCREEN_HEIGHT = .93;
 
     var map_resize = function(){
       console.log("Resizing map...");
