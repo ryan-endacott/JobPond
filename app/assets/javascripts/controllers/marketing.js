@@ -72,14 +72,15 @@ JobApp.marketing = {
     initialize();
 
     var CHILD_MARGIN_TOP = 100,
-    FLOAT_OF_SCREEN_HEIGHT = .9;
+    FLOAT_OF_SCREEN_HEIGHT = .95;
 
     var map_resize = function(){
       console.log("Resizing map...");
       var map_container = $("#map-heading-wrapper"),
         map_canvas = $("#map-canvas"),
         map_promo_text = map_container.find("#map-heading-promo-text"),
-        map_sign_up = map_container.find("#map-heading-sign-up");
+        map_sign_up = map_container.find("#map-heading-sign-up"),
+        learn_more = $(".learn-more");
 
       var window_width = $(window).width(),
         window_height = $(window).height(),
@@ -99,11 +100,32 @@ JobApp.marketing = {
         right : (window_width - container_width) / 2,
         top : CHILD_MARGIN_TOP
       });
+      //Fill in with learn more
+      var learn_height = (1 - FLOAT_OF_SCREEN_HEIGHT) * window_height,
+        learn_link = learn_more.find("a");
+      learn_more.css({
+        height : learn_height,
+        "padding-top" : learn_height / 2 - learn_link.height() / 2
+      });
     };
 
     map_resize();
     $(window).resize(function(){
       map_resize();
+    });
+
+    $(".learn-more").click(function(e){
+      e.preventDefault();
+      $('html,body').animate({
+        scrollTop : $(this).offset().top - 51
+      },'slow');
+    });
+
+    $(".back-to-top").click(function(e){
+      e.preventDefault();
+      $('html,body').animate({
+        scrollTop : 0
+      },'fast');
     });
 
   }
