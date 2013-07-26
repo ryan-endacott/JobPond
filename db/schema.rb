@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726015052) do
+ActiveRecord::Schema.define(:version => 20130726015236) do
 
   create_table "applieds", :force => true do |t|
     t.integer  "employee_id"
@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(:version => 20130726015052) do
     t.string   "current_major"
     t.date     "graduation_date"
   end
+
+  add_index "resumes", ["employee_id"], :name => "index_resumes_on_employee_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
