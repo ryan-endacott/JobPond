@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :message
+    = f.input :message, input_html: { class: 'span9', rows: 10 }
 
   .form-actions
-    = f.button :submit, class: 'btn btn-success'
+    = f.button :submit, 'Submit Message', class: 'btn btn-success'

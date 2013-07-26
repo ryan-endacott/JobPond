@@ -1,10 +1,12 @@
 class Admin::FeedbacksController < ApplicationController
   before_filter :admin_only!, only: :index
+  before_filter :authenticate_user!
 
   def index
     @feedbacks = Feedback.all
   end
 
+  # Contact us route
   def new
     @feedback = Feedback.new
   end

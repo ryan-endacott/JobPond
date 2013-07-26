@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725021036) do
+ActiveRecord::Schema.define(:version => 20130726015236) do
 
   create_table "applieds", :force => true do |t|
     t.integer  "employee_id"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(:version => 20130725021036) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "applieds", ["employee_id"], :name => "index_applieds_on_employee_id"
+  add_index "applieds", ["job_id"], :name => "index_applieds_on_job_id"
+
+  create_table "contact_purchases", :force => true do |t|
+    t.integer  "employer_id"
+    t.integer  "employee_id"
+    t.string   "charge_id"
+    t.boolean  "refunded",    :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "contact_purchases", ["employee_id"], :name => "index_contact_purchases_on_employee_id"
+  add_index "contact_purchases", ["employer_id"], :name => "index_contact_purchases_on_employer_id"
 
   create_table "feedbacks", :force => true do |t|
     t.text     "message"
@@ -38,6 +53,8 @@ ActiveRecord::Schema.define(:version => 20130725021036) do
     t.integer  "resume_id"
   end
 
+  add_index "job_experiences", ["resume_id"], :name => "index_job_experiences_on_resume_id"
+
   create_table "jobs", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -51,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20130725021036) do
     t.string   "city"
     t.string   "state"
   end
+
+  add_index "jobs", ["employer_id"], :name => "index_jobs_on_employer_id"
 
   create_table "resumes", :force => true do |t|
     t.string   "phone_number"
@@ -70,6 +89,8 @@ ActiveRecord::Schema.define(:version => 20130725021036) do
     t.string   "current_major"
     t.date     "graduation_date"
   end
+
+  add_index "resumes", ["employee_id"], :name => "index_resumes_on_employee_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -95,6 +116,10 @@ ActiveRecord::Schema.define(:version => 20130725021036) do
     t.integer  "score"
     t.string   "company_name"
     t.boolean  "can_contact",            :default => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
