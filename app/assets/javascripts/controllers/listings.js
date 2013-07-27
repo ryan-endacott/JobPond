@@ -59,6 +59,13 @@ JobApp.listings = {
       });
     }
     initialize();
+
+    $(".btn-applicants").click(function(e){
+      e.preventDefault();
+      $('html,body').animate({
+        scrollTop : $(".applicants").offset().top - JobApp.NAV_BAR_PADDING
+      },'slow');
+    });
   },
 
   index : function(){

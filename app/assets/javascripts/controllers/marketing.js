@@ -117,7 +117,7 @@ JobApp.marketing = {
     $(".learn-more").click(function(e){
       e.preventDefault();
       $('html,body').animate({
-        scrollTop : $(this).offset().top - 51
+        scrollTop : $(this).offset().top - JobApp.NAV_BAR_PADDING
       },'slow');
     });
 

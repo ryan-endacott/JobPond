@@ -3,6 +3,7 @@
   .row
     .span12
       = link_to "Edit Listing", edit_employers_job_path(@listing), class: "btn btn-info"
+      = link_to "Applicants", "#", class: "btn btn-warning btn-applicants"
 - if current_user.employee?
   - if current_user.applied_for? @listing
     = link_to "Applied!", "#", id: "btn-apply",class: "btn btn-success btn-skinny", data: {job: @listing.id}
@@ -27,26 +28,51 @@
     #map-canvas{:data => {lat: @listing.latitude, long: @listing.longitude, title: @listing.employer.company_name}}
 
 %hr
-%h3
-  Other Listings By This Employer
-- if @listing.employer.jobs.count > 1
-  - @listing.employer.jobs.take(5).each do |listing|
-    - if listing == @listing
-      - next
-    .row
-      .span12
-        %h4= link_to listing.title, listing_path(listing)
-        .row-fluid
-          .span4
-            %p= listing.employer.company_name
-          .span4
-            %p
-              Pay:
-              = number_to_currency listing.pay
-          .span4
-            %p
-              = "#{listing.city}, #{listing.state}"
-              -#(hardcoded, not an attribute yet
-        %p= truncate listing.description, length: 100
-- else
-  %p The employer doesn't have anymore listings
+.row
+  .span12
+    - if current_user.employer? && current_user.my_listing?(@listing)
+      %h3.applicants Applicants
+      - if @listing.applicants.count > 0
+        %p
+          Need more options?
+          = link_to "Find potential employees!", employers_potential_hires_path, class: "btn btn-success"
+        %table.table.table-striped.table-bordered.table-hover
+          %thead
+            %tr
+              %th Name
+              %th Other Info
+              %th Score
+          %tbody
+            - @listing.applicants.each do |applicant|
+              %tr
+                %td= applicant.full_name
+                %td= applicant.resume.description ? truncate(applicant.resume.description, length: 100) : "No Description"
+                %td= applicant.score ? applicant.score : "No Score"
+      - else
+        %p
+          No one has applied yet.
+          = link_to "Find potential employees!", employers_potential_hires_path, class: "btn btn-success"
+    - else
+      %h3
+        Other Listings By This Employer
+      - if @listing.employer.jobs.count > 1
+        - @listing.employer.jobs.take(5).each do |listing|
+          - if listing == @listing
+            - next
+          .row
+            .span12
+              %h4= link_to listing.title, listing_path(listing)
+              .row-fluid
+                .span4
+                  %p= listing.employer.company_name
+                .span4
+                  %p
+                    Pay:
+                    = number_to_currency listing.pay
+                .span4
+                  %p
+                    = "#{listing.city}, #{listing.state}"
+                    -#(hardcoded, not an attribute yet
+              %p= truncate listing.description, length: 100
+      - else
+        %p The employer doesn't have anymore listings
