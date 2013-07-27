@@ -1,27 +1,28 @@
 .row
-  %h1 Your Potential Hires
+  .span12
+    %h1 Your Potential Hires
 
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
-      %tr
-        %th Name
-        %th Other info
-        %th Score
-        %th Contact
-    %tbody
-      - @job_seekers.take(30).each do |seeker|
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
         %tr
-          %td= seeker.name
-          %td Great at ping pong.
-          %td= seeker.score ? seeker.score : "No Score"
-          %td
-            = form_tag charges_path do
-              %input{type: :hidden, name: :employee_id, value: seeker.id}
-              = javascript_include_tag "https://checkout.stripe.com/v2/checkout.js",
-                :class => "stripe-button",
-                :"data-key" => "#{Rails.configuration.stripe[:publishable_key]}",
-                :"data-label" => "Contact!",
-                :"data-panel-label" => "Submit payment for",
-                :"data-name" => "Contact #{seeker.name}!",
-                :"data-description" => "Get a full refund if you don't hire him/her!* TODOMVP: WRITE TERMS AND CONDITIONS",
-                :"data-amount" => "5000"
+          %th Name
+          %th Other info
+          %th Score
+          %th Contact
+      %tbody
+        - @job_seekers.take(30).each do |seeker|
+          %tr
+            %td= seeker.name
+            %td Great at ping pong.
+            %td= seeker.score ? seeker.score : "No Score"
+            %td
+              = form_tag charges_path do
+                %input{type: :hidden, name: :employee_id, value: seeker.id}
+                = javascript_include_tag "https://checkout.stripe.com/v2/checkout.js",
+                  :class => "stripe-button",
+                  :"data-key" => "#{Rails.configuration.stripe[:publishable_key]}",
+                  :"data-label" => "Contact!",
+                  :"data-panel-label" => "Submit payment for",
+                  :"data-name" => "Contact #{seeker.name}!",
+                  :"data-description" => "Get a full refund if you don't hire him/her!* TODOMVP: WRITE TERMS AND CONDITIONS",
+                  :"data-amount" => "5000"
