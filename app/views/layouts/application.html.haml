@@ -15,12 +15,17 @@
         %nav.navbar-inner
           .container
             = render 'layouts/navigation'
-      .container
-        .content
-          .row
-            .span12
-              = render 'layouts/messages'
-              = yield
+      - if !content_for? :no_container
+        .container
+          .content
+            .row
+              .span12
+                = render 'layouts/messages'
+                = yield
+      - else
+        .container
+        = render 'layouts/messages'
+        = yield
       #push
     %footer#footer
       = render 'layouts/footer'

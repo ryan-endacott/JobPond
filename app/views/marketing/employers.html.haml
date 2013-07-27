@@ -1,6 +1,41 @@
-.hero-unit
-  %h1 Epic Marketing For Employers
-  %br
-  %p Can you believe how awesome our product is?  Neither can we!  You can literally get the best candidates ever.  Seriously.
-  %p
-    = link_to 'Sign up now!', new_employer_registration_path, class: 'btn btn-large btn-success'
+- content_for :no_container, true
+.hero-unit.dark
+  .container
+    .row
+      .span12
+        %h1 Find Quality Employees
+        %br
+        %p.lead We make finding quality employees fast and affordable!
+        %p
+          = link_to 'Sign up now!', new_employer_registration_path, class: 'btn btn-large btn-success'
+
+.container
+  .row
+    .span12
+      .row.marketing-section
+        .span2
+          %i.icon-user.icon-huge
+        .span10
+          %h2 Find Quality Applicants Fast With Our Employee Finder
+          %p.lead Apply for jobs with a single click!
+
+      .row.marketing-section
+        .span10
+          %h2 Easily Manage Your Listings
+          %p.lead Our primary goal is to find you jobs that don't require a college degree.
+        .span2
+          %i.icon-thumbs-up.icon-huge
+
+      .row.marketing-section
+        .span2
+          %i.icon-time.icon-huge
+        .span10
+          %h2 Saving You Valuable Time
+          %p.lead Don't waste anymore time searching for jobs.  Find available listings with a quick search.
+
+      .row.marketing-section
+        .span10
+          %h2 Eliminate Paperwork
+          %p.lead We want to make it quick and easy for high school and college students to find jobs.
+        .span2
+          %i.icon-file.icon-huge

@@ -14,6 +14,10 @@ class MarketingController < ApplicationController
     @near = near_formatted @coords
 	end
 
+  def employers
+    @employer = Employer.new
+  end
+
   private
 
     def near_formatted coords
