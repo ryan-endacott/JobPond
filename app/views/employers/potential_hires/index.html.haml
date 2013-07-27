@@ -9,11 +9,11 @@
         %th Score
         %th Contact
     %tbody
-      - @job_seekers.each do |seeker|
+      - @job_seekers.take(30).each do |seeker|
         %tr
           %td= seeker.name
           %td Great at ping pong.
-          %td 50
+          %td= seeker.score ? seeker.score : "No Score"
           %td
             = form_tag charges_path do
               %input{type: :hidden, name: :employee_id, value: seeker.id}

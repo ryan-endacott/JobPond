@@ -37,6 +37,7 @@ class Employee < User
   attr_accessible :can_contact
 
   after_create :create_resume
+  before_create :can_contact_default
 
   validate :needs_score_on_review
 
@@ -52,6 +53,10 @@ class Employee < User
   end
 
   private
+    def can_contact_default
+      self.can_contact = true
+    end
+
   	def create_resume
       self.build_resume.save if self.resume.nil?
   	end
