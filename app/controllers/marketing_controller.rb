@@ -9,7 +9,7 @@ class MarketingController < ApplicationController
 
 		@employee = Employee.new
 
-    @coords = coords
+    @coords = coords || [37.0433863, -93.294353] # Backup to nixa coords
 
     @near = near_formatted @coords
 	end
