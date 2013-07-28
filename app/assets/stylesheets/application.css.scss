@@ -201,3 +201,12 @@ body {
 .icon-huge{
   font-size: 130px;
 }
+
+a{
+  &.dark{
+    color: black;
+    &:hover{
+      color: black;
+    }
+  }
+}
