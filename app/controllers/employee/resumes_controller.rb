@@ -1,4 +1,4 @@
-class ResumesController < ApplicationController
+class Employee::ResumesController < ApplicationController
   authorize_resource :resume
   before_filter :employee_only!
 

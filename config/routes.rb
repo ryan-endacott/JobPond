@@ -9,10 +9,11 @@ JobApp::Application.routes.draw do
   devise_for :employers, skip: [:sessions, :passwords], controllers: {registrations: 'registrations'}
 
   post "/avatar", to: "resumes#avatar"
-  resource :employee do
+  namespace :employee do
   	resource :resume, only: ["edit", "update"]
     resources :applieds, only: ["create"]
   end
+
   resources :listings, only: ["index", "show"]
   get '/employers', :to => 'marketing#employers'
   namespace :employers do

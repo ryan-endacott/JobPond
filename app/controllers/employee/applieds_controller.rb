@@ -1,4 +1,4 @@
-class AppliedsController < ApplicationController
+class Employee::AppliedsController < ApplicationController
   # POST /applieds
   # POST /applieds.json
   def create
