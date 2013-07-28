@@ -6,8 +6,8 @@
   = f.input :first_name, autofocus: true
   = f.input :last_name, required: true
   = f.input :email, required: true, input_html: {class: "input-xlarge"}
-  = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, input_html: {class: "input-xlarge"}
-  = f.input :password_confirmation, required: false, input_html: {class: "input-xlarge"}
+  = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, label: 'Change Password', input_html: {class: "input-xlarge"}
+  = f.input :password_confirmation, label: 'Change Password Confirmation', required: false, input_html: {class: "input-xlarge"}
   = f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: {class: "input-xlarge"}
   %br
   = f.input :can_contact, hint: 'Allow employers to contact you about jobs without you applying.', inline_label: "Employers can contact me", label: false
