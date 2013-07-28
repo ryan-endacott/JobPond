@@ -11,7 +11,7 @@ class MarketingController < ApplicationController
 
     @coords = coords || [37.0433863, -93.294353] # Backup to nixa coords
 
-    @near = near_formatted @coords
+    @near = near_formatted @coords # TODO:  Fix awful sql query here or cache it.
 	end
 
   def employers
