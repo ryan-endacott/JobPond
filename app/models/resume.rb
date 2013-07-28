@@ -28,6 +28,9 @@ class Resume < ActiveRecord::Base
    	:current_education, :current_major,
    	:graduation_date, :birthday
 
+  validates :address, :city, :state, :zipcode,
+   	:phone_number, 	:highest_education, :birthday, presence: true
+
   belongs_to :employee
   has_many :job_experiences
   accepts_nested_attributes_for :job_experiences, :reject_if => :all_blank, :allow_destroy => true
