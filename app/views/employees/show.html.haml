@@ -1,0 +1,66 @@
+%h1= @employee.full_name
+%hr
+.avatar.pull-right.text-right
+  = image_tag @employee.avatar_url
+  %br
+  = #link_to "Upload avatar from computer", "#", id: "upload-avatar"
+  = link_to "Change image with gravitar", "https://en.gravatar.com/"
+- if current_user.employer? && current_user.can_see_contact?(@employee)
+  %h3 Address
+  %p= @employee.resume.full_address
+  %h3 Phone Number
+  %p= @employee.resume.phone_number ? @employee.resume.phone_number : "No phone number entered"
+-else
+  = "Can't see this."
+
+%h3 Birthday
+%p= @employee.resume.birthday ? @employee.resume.birthday : "Nothing entered."
+
+%h3 Highest Education
+%p= @employee.resume.highest_education ? @employee.resume.highest_education : "Nothing entered."
+
+%h3 Current Education
+%p= @employee.resume.current_education ? @employee.resume.current_education : "Nothing entered."
+
+%h3 Graduation Date
+%p= @employee.resume.graduation_date ? @employee.resume.graduation_date : "Nothing entered."
+
+%h3 Description
+%p= @employee.resume.description ? @employee.resume.description : "Nothing entered."
+
+%h3 Job Experience
+- if @employee.resume.job_experiences.count > 0
+  %table.table.table-striped.table-bordered.table-hover
+    %head
+      %th Job Title
+      %th Company
+      %th Time Spent
+    %tbody
+      - @employee.resume.job_experiences.each do |experience|
+        %tr
+          %td= experience.title
+          %td= experience.company
+          %td= experience.time
+- else
+  %p Nothing entered.
+
+- if current_user.employer? && current_user.can_see_contact?(@employee)
+  %h3 References
+  - if @employee.resume.references.count > 0
+    %table.table.table-striped.table-bordered.table-hover
+      %head
+        %th Name
+        %th Relationship
+        %th Length Known
+        %th Phone Number
+        %th Email
+      %tbody
+        - @employee.resume.references.each do |reference|
+          %tr
+            %td= reference.name
+            %td= reference.relationship
+            %td= reference.length_known
+            %td= reference.phone_number
+            %td= reference.email
+  - else
+    %p Nothing entered.

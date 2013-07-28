@@ -45,7 +45,7 @@
           %tbody
             - @listing.applicants.each do |applicant|
               %tr
-                %td= applicant.full_name
+                %td= link_to applicant.full_name, employee_path(applicant)
                 %td= applicant.resume.description ? truncate(applicant.resume.description, length: 100) : "No Description"
                 %td= applicant.score ? applicant.score : "No Score"
       - else

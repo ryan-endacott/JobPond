@@ -26,13 +26,21 @@ class Resume < ActiveRecord::Base
    	:phone_number, :job_experiences_attributes, :description,
    	:highest_education, :highest_major,
    	:current_education, :current_major,
-   	:graduation_date, :birthday
+   	:graduation_date, :birthday, :references_attributes
 
   belongs_to :employee
   has_many :job_experiences
   has_many :references
   accepts_nested_attributes_for :job_experiences, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :references, :reject_if => :all_blank, :allow_destroy => true
+
+  def full_address
+    if attr?(address) && attr?(city) && attr?(state) && attr?(zipcode)
+      "#{address}, #{city}, #{state}, #{zipcode}"
+    else
+      "No address entered."
+    end
+  end
 
   def incomplete?
     !(attr?(address) && attr?(city) && attr?(state) && attr?(zipcode) &&
