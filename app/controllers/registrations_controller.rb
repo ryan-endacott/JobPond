@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
       new_employers_job_path
     else
       flash[:notice] = "Welcome #{user.first_name}! The next step is to fill out your resume."
-      edit_employee_resume_path
+      edit_employees_resume_path
     end
   end
 

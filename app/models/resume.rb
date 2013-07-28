@@ -28,9 +28,6 @@ class Resume < ActiveRecord::Base
    	:current_education, :current_major,
    	:graduation_date, :birthday
 
-  validates :address, :city, :state, :zipcode,
-   	:phone_number, :birthday, presence: true
-
   belongs_to :employee
   has_many :job_experiences
   has_many :references
