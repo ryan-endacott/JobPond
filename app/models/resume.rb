@@ -34,4 +34,14 @@ class Resume < ActiveRecord::Base
   belongs_to :employee
   has_many :job_experiences
   accepts_nested_attributes_for :job_experiences, :reject_if => :all_blank, :allow_destroy => true
+
+  def incomplete?
+    !(attr?(address) && attr?(city) && attr?(state) && attr?(zipcode) &&
+     attr?(phone_number) && attr?(description) && attr?(birthday))
+  end
+
+  private
+    def attr? attribute
+        !attribute.nil? && !attribute.empty? rescue true
+    end
 end

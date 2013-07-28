@@ -12,7 +12,12 @@ class ApplicationController < ActionController::Base
       if user.employer?
         path = employers_dashboard_path
       else
-        path = listings_path
+        if user.resume.incomplete?
+          flash[:notice] += " Your resume is incomplete.  You should finish filling it out."
+          path = edit_employee_resume_path
+        else
+          path = listings_path
+        end
       end
       session[:user_return_to] || path #Was on page or go to new
     end
