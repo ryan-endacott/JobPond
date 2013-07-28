@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email,
    :password, :password_confirmation, :remember_me, :type, :avatar
 
+  validates :first_name, :last_name, presence: true
+
   has_attached_file :avatar, :styles => { :medium => "200x200>" }
 
   def full_name
