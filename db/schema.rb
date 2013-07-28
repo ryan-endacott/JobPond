@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726015236) do
+ActiveRecord::Schema.define(:version => 20130728194509) do
 
   create_table "applieds", :force => true do |t|
     t.integer  "employee_id"
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(:version => 20130726015236) do
   end
 
   add_index "jobs", ["employer_id"], :name => "index_jobs_on_employer_id"
+
+  create_table "references", :force => true do |t|
+    t.string   "name"
+    t.string   "relationship"
+    t.string   "length_known"
+    t.string   "phone_number"
+    t.string   "email"
+    t.integer  "resume_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "resumes", :force => true do |t|
     t.string   "phone_number"

@@ -25,6 +25,12 @@
 			= render "job_experience_fields", f: builder
 		.links
 			= link_to_add_association '+ Add more job experience', f, :job_experiences
+		%br
+		%p References (3 Recommended)
+		= f.simple_fields_for :references do |builder|
+			= render "reference_fields", f: builder
+		.links
+			= link_to_add_association '+ Add more references', f, :references
 
 	.form-actions
 		= f.button :submit, value: "Update Resume", class: "btn btn-success"

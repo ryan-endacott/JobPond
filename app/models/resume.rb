@@ -33,5 +33,7 @@ class Resume < ActiveRecord::Base
 
   belongs_to :employee
   has_many :job_experiences
+  has_many :references
   accepts_nested_attributes_for :job_experiences, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :references, :reject_if => :all_blank, :allow_destroy => true
 end
