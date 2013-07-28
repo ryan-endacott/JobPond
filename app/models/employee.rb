@@ -39,6 +39,8 @@ class Employee < User
   after_create :create_resume
   before_create :can_contact_default
 
+  validates :can_contact, presense: true
+
   validate :needs_score_on_review
 
   def can_contact?

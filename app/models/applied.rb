@@ -16,6 +16,7 @@ class Applied < ActiveRecord::Base
 	belongs_to :job
   attr_accessible :employee_id, :job_id
 
+  validates :employee_id, :job_id, presence: true
   #validate :apply_limit
 
   private

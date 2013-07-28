@@ -30,6 +30,7 @@
 
 class Employer < User
 	attr_accessible :company_name
+	validates :company_name, presense: true
 	has_many :jobs
 
   def my_listing? listing
