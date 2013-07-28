@@ -27,10 +27,11 @@
           = nav_link 'Edit Account', edit_employee_registration_path
     - else
       - if current_page?(employers_path)
-        = nav_link 'Sign up', new_employer_registration_path #go to employer signup
+        = nav_link 'Sign Up', new_employer_registration_path
       - else
-        %li
-          = nav_link 'Sign up', new_employee_registration_path #go to employee signup
+        = nav_link 'Employer Sign Up', new_employer_registration_path
+        = nav_link 'Job Seeker Sign Up', new_employee_registration_path
+
     - if user_signed_in?
       %li
         = nav_link 'Logout', destroy_user_session_path, :method=>'delete'
