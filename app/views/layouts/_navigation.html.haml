@@ -15,7 +15,7 @@
       = nav_link "Job Listings", listings_path
       - if current_user.employer?
         = nav_link 'Dashboard', employers_dashboard_path
-      - else
+      - elsif current_user.employee?
         = nav_link 'My Resume', edit_employee_resume_path
 
 
