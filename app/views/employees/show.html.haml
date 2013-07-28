@@ -2,9 +2,6 @@
 %hr
 .avatar.pull-right.text-right
   = image_tag @employee.avatar_url
-  %br
-  = #link_to "Upload avatar from computer", "#", id: "upload-avatar"
-  = link_to "Change image with gravitar", "https://en.gravatar.com/"
 - if current_user.employer? && current_user.can_see_contact?(@employee)
   %h3 Address
   %p= @employee.resume.full_address
