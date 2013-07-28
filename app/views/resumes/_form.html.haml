@@ -6,19 +6,19 @@
 		= f.input :city
 		= f.input :state, collection: us_states, as: :select
 		= f.input :zipcode
-		= f.input :phone_number
+		= f.input :phone_number, label: "Phone Number"
 		= f.input :birthday, start_year: Date.today.year - 90
 
-		= f.input :highest_education do
-			= f.input_field :highest_education, label: "Curent Education (If applicable)",collection: ["High School", "College"]
+		= f.input :highest_education, label: "Highest Education Completed" do
+			= f.input_field :highest_education, label: "Highest Education Completed",collection: ["High School", "College"]
 			= f.input_field :highest_major, placeholder: "Major (If applicable)"
 
-		= f.input :current_education do
+		= f.input :current_education, label: "Current Education (If Applicable)" do
 			= f.input_field :current_education, label: "Curent Education (If applicable)",collection: ["High School", "College"]
 			= f.input_field :current_major, placeholder: "Major (If applicable)"
 
 
-		= f.input :graduation_date, start_year: Date.today.year - 90
+		= f.input :graduation_date, label: "Graduation Date (For Current Education)", start_year: Date.today.year - 90
 		= f.input :description, input_html: { class: "span9", rows: 10 }, placeholder: "Tell us about yourself!"
 		%p Job Experience
 		= f.simple_fields_for :job_experiences do |builder|
