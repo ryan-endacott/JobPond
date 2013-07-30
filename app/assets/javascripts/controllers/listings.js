@@ -20,7 +20,7 @@ JobApp.listings = {
       var job_id = self.data("job");
       if(self.text() == "Applied!")
         return;
-      $.post("/employee/applieds", {
+      $.post("/employees/applieds", {
         "applied" : {
           "job_id" : job_id
         }
@@ -83,7 +83,7 @@ JobApp.listings = {
         var job_id = self.data("job");
         if(self.text() == "Applied!")
           return;
-        $.post("/employee/applieds", {
+        $.post("/employees/applieds", {
           "applied" : {
             "job_id" : job_id
           }
