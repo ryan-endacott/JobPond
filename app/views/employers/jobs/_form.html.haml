@@ -14,7 +14,7 @@
     = f.input_field :city, label: false, placeholder: "City"
     = f.input_field :state, label: false, as: :select, collection: us_states, selected: 0
     = f.input :description, input_html: { class: 'span9', rows: 10 }
-    = f.input :pay, default: 7.25, label: "Pay per hour"
+    = f.input :pay, label: "Pay per hour"
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'
