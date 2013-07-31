@@ -26,6 +26,7 @@ FactoryGirl.define do
   	password "password"
   	password_confirmation "password"
     confirmed_at Time.now
+    company_name 'Business United, LLC'
   end
 
   factory :admin, class: Admin do
