@@ -10,7 +10,7 @@
 // Grays
 // -------------------------
 $black: #000;
-$grayDarker: #080808;
+$grayDarker: #333;
 $grayDark: #999;
 $gray: #bbb;
 $grayLight: #dfdfdf;
@@ -20,14 +20,15 @@ $white: #fff;
 
 // Accent colors
 // -------------------------
-$blue: #007FFF;
+$blue: #0de1ff;
+$blueLink: #007FFF;
 $blueDark: #1F26B6;
-$green: #3FB618;
-$red: #FF0039;
+$green: #35f79e;
+$red: #ff5f5f;
 $yellow: #FFA500;
-$orange: #FF7518;
+$orange: #ff924a;
 $pink: #E671B8;
-$purple: #9954BB;
+$purple: #ff63ff;
 
 
 // Scaffolding
@@ -38,7 +39,7 @@ $textColor: #555;
 
 // Links
 // -------------------------
-$linkColor: $blue;
+$linkColor: $blueLink;
 $linkColorHover: darken($linkColor, 10%);
 
 
@@ -105,6 +106,8 @@ $btnDangerBackgroundHighlight: darken($red, 5%);
 
 $btnInverseBackground: lighten($black, 5%);
 $btnInverseBackgroundHighlight: darken($black, 5%);
+
+$btnBorderRadius: 3px;
 
 
 // Forms
