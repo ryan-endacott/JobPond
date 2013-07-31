@@ -40,7 +40,7 @@ class Employer < User
   def can_see_contact? employee
     applicants = jobs.map{|job| job.applicants}
     applicants.each do |applicant|
-      return true if applicant = employee
+      return true if applicant == employee
     end
     false
   end

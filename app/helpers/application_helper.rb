@@ -85,4 +85,36 @@ module ApplicationHelper
     ]
   end
 
+  def degrees
+    [
+      "Accountancy",
+      "Agriculture",
+      "Architecture",
+      "Biology",
+      "Business Administration",
+      "Chemistry",
+      "Computer Science",
+      "Construction Management",
+      "Criminology",
+      "Economics",
+      "Education",
+      "Engineering",
+      "English Literature",
+      "Environmental Science",
+      "History",
+      "Journalism",
+      "Management",
+      "Marketing",
+      "Music",
+      "Nursing",
+      "Physical Therapy",
+      "Physics",
+      "Politics",
+      "Pre-Med / Medical",
+      "Psychology",
+      "Religion",
+      "Social Work"
+    ]
+  end
+
 end
