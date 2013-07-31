@@ -17,7 +17,6 @@
 //= require bootstrap
 //= require_self
 //= require_tree ./controllers/
-//= require_tree ./admin/
 //= require cocoon
 
 
