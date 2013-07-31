@@ -1,3 +1,4 @@
+- content_for(:no_container, true)
 #map-heading-wrapper
 	#map-canvas.absolute{:data => {lat: @coords[0], long: @coords[1], near: @near.to_json}}
 
@@ -19,47 +20,49 @@
 			Or
 			= link_to "Sign In", new_user_session_path
 
-.row.learn-more
-	.span4.offset4.text-center
-		= link_to "Learn More", "#", class: "dark"
+.light-grey
+	.container
+		.row.learn-more
+			.span4.offset4.text-center
+				= link_to "Learn More", "#", class: "dark"
 
-.row
-	.span12
-		.row.marketing-section
-			.span10
-				%h2 Helping Undergraduates Find Jobs!
-				%p.lead We want to make it quick and easy for high school and college students to find jobs.
-			.span2
-				%i.icon-search.icon-huge.text-warning
+		.row
+			.span12
+				.row.marketing-section
+					.span10
+						%h2 Helping Undergraduates Find Jobs!
+						%p.lead We want to make it quick and easy for high school and college students to find jobs.
+					.span2
+						%i.icon-search.icon-huge.text-warning
 
-		.row.marketing-section
-			.span2
-				%i.icon-time.icon-huge.text-info
-			.span10
-				%h2 Stop Wasting Time - Find Jobs Quickly!
-				%p.lead Don't waste anymore time searching for jobs.  Find available listings with a quick search.
+				.row.marketing-section
+					.span2
+						%i.icon-time.icon-huge.text-info
+					.span10
+						%h2 Stop Wasting Time - Find Jobs Quickly!
+						%p.lead Don't waste anymore time searching for jobs.  Find available listings with a quick search.
 
-		.row.marketing-section
-			.span10
-				%h2 No Degree Required!
-				%p.lead Our primary goal is to find you jobs that don't require a college degree.
-			.span2
-				%i.icon-thumbs-up.icon-huge.text-success
+				.row.marketing-section
+					.span10
+						%h2 No Degree Required!
+						%p.lead Our primary goal is to find you jobs that don't require a college degree.
+					.span2
+						%i.icon-thumbs-up.icon-huge.text-success
 
-		.row.marketing-section
-			.span2
-				%i.icon-check.icon-huge.text-error
-			.span10
-				%h2 One Click Applications
-				%p.lead Apply for jobs with a single click!
+				.row.marketing-section
+					.span2
+						%i.icon-check.icon-huge.text-error
+					.span10
+						%h2 One Click Applications
+						%p.lead Apply for jobs with a single click!
 
-		.row.marketing-section
-			.span10
-				%h2 Single Resume
-				%p.lead One simple resume makes it quick and easy to apply for tons of jobs.
-			.span2
-				%i.icon-file.icon-huge.text-warning
+				.row.marketing-section
+					.span10
+						%h2 Single Resume
+						%p.lead One simple resume makes it quick and easy to apply for tons of jobs.
+					.span2
+						%i.icon-file.icon-huge.text-warning
 
-.row.back-to-top
-	.span4.offset4.text-center
-		= link_to "Back To Top", "#", class: "dark"
+		.row.back-to-top
+			.span4.offset4.text-center
+				= link_to "Back To Top", "#", class: "dark"
