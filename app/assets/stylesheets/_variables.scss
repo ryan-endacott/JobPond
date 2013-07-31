@@ -10,12 +10,16 @@
 // Grays
 // -------------------------
 $black: #000;
-$grayDarker: #333;
-$grayDark: #999;
-$gray: #bbb;
+$grayDarker: #3c3c3c;
+$grayDark: #555555;
+$gray: #bcbcbc;
 $grayLight: #dfdfdf;
 $grayLighter: #eee;
 $white: #fff;
+
+// Border
+$grayBorderLight: #676767;
+$grayBorderDark: #333333;
 
 
 // Accent colors
@@ -183,16 +187,20 @@ $navbarCollapseWidth: 979px;
 $navbarCollapseDesktopWidth: $navbarCollapseWidth + 1;
 
 $navbarHeight: 50px;
-$navbarBackgroundHighlight: $grayDarker;
+$navbarBackgroundHighlight: $grayDark;
 $navbarBackground: $grayDarker;
 $navbarBorder: transparent;
 
 $navbarText: $white;
 $navbarLinkColor: $white;
-$navbarLinkColorHover: $gray;
+$navbarLinkColorHover: $white;
 $navbarLinkColorActive: $white;
-$navbarLinkBackgroundHover: rgba(0, 0, 0, 0.05);
-$navbarLinkBackgroundActive: transparent;
+$navbarLinkBackgroundHover: lighten($grayDarker, 5%);
+$navbarLinkBackgroundActive: $grayDarker;
+$navbarLinkBorderRight: $grayBorderDark;
+$navbarLinkBorderLeft: $grayBorderLight;
+$navbarLinkGroupBorderRight: $grayBorderDark;
+$navbarLinkGroupBorderLeft: $grayBorderLight;
 
 $navbarBrandColor: $navbarLinkColor;
 
@@ -241,7 +249,7 @@ $errorBackground: $red;
 $errorBorder: transparent;
 
 $successText: $white;
-$successBackground: $green;
+$successBackground: darken($green, 15%);
 $successBorder: transparent;
 
 $infoText: $white;

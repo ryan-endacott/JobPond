@@ -75,7 +75,6 @@ a.text-success:hover { color: darken($green, 10%); }
 .navbar {
 
 	.navbar-inner {
-		background-image: none;
 		@include box-shadow(0);
 		@include border-radius(0);
 	}
@@ -87,11 +86,24 @@ a.text-success:hover { color: darken($green, 10%); }
 		}
 	}
 
+	.nav{
+		border-right: 1px solid $navbarLinkGroupBorderLeft;
+		border-left: 1px solid $navbarLinkGroupBorderRight;
+
+		& > li > a {
+			border-left: 1px solid $navbarLinkBorderLeft;
+			border-right: 1px solid $navbarLinkBorderRight;
+			&:hover{
+
+			}
+		}
+	}
+
 	.nav > .active > a,
 	.nav > .active > a:hover,
 	.nav > .active > a:focus {
 		@include box-shadow(0);
-		background-color: $navbarLinkBackgroundHover;
+		background-image: none;
 	}
 
 	.nav li.dropdown.open > .dropdown-toggle,

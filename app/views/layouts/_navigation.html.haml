@@ -2,9 +2,7 @@
 - if current_page? root_path
   %ul.nav.pull-right
     %li
-      %p
-        Employer?
-        = link_to "Click here!", employers_path, class: "light"
+      = link_to "Employer?  Click Here!", employers_path, class: "light"
 - else
   %ul.nav.pull-right
     - if user_signed_in? && current_user.admin?
