@@ -6,24 +6,25 @@
   %h3 Address
   %p= @employee.resume.full_address
   %h3 Phone Number
-  %p= @employee.resume.phone_number ? @employee.resume.phone_number : "No phone number entered"
+  %p= !@employee.resume.phone_number.blank? ? @employee.resume.phone_number : "No phone number entered"
 -else
+  %h3 Contact Info
   = "Can't see this."
 
 %h3 Birthday
-%p= @employee.resume.birthday ? @employee.resume.birthday : "Nothing entered."
+%p= !@employee.resume.birthday.blank? ? @employee.resume.birthday : "Nothing entered."
 
 %h3 Highest Education
-%p= @employee.resume.highest_education ? @employee.resume.highest_education : "Nothing entered."
+%p= !@employee.resume.highest_education.blank? ? @employee.resume.highest_education : "Nothing entered."
 
 %h3 Current Education
-%p= @employee.resume.current_education ? @employee.resume.current_education : "Nothing entered."
+%p= !@employee.resume.current_education.blank? ? @employee.resume.current_education : "Nothing entered."
 
 %h3 Graduation Date
-%p= @employee.resume.graduation_date ? @employee.resume.graduation_date : "Nothing entered."
+%p= !@employee.resume.graduation_date.blank? ? @employee.resume.graduation_date : "Nothing entered."
 
 %h3 Description
-%p= @employee.resume.description ? @employee.resume.description : "Nothing entered."
+%p= !@employee.resume.description.blank? ? @employee.resume.description : "Nothing entered."
 
 %h3 Job Experience
 - if @employee.resume.job_experiences.count > 0
