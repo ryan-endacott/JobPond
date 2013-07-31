@@ -10,9 +10,10 @@
 
   .form-inputs
     = f.input :title, input_html: { class: "span6" }
-    = f.input_field :address, label: false, placeholder: "Address"
-    = f.input_field :city, label: false, placeholder: "City"
-    = f.input_field :state, label: false, as: :select, collection: us_states, selected: 0
+    .row
+      = f.input :address, label: false, placeholder: "Address", wrapper_html: { class: 'span3' }
+      = f.input :city, label: false, placeholder: "City", wrapper_html: { class: 'span3' }
+      = f.input :state, label: false, as: :select, collection: us_states, selected: 0, wrapper_html: { class: 'span3' }
     = f.input :description, input_html: { class: 'span9', rows: 10 }
     = f.input :pay, label: 'Pay per hour', wrapper: :prepend do
       %span.add-on $
