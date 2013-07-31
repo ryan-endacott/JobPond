@@ -69,6 +69,15 @@ body {
 /* End sticky footer stuff ------------------------------------------*/
 
 
+#logo{
+ background: url(image-path("logo-orange.png")) no-repeat;
+ width: 145px;
+ text-indent: -9999px;
+ margin-left: 0;
+ margin-top: 7px;
+ padding-top: 5px;
+}
+
 .hero-unit{
 	&.small{
 		padding-top: 10px;
