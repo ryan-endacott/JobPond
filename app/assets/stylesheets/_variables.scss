@@ -93,14 +93,14 @@ $btnBackground: $grayLighter;
 $btnBackgroundHighlight: darken($grayLighter, 15%);
 $btnBorder: #bbb;
 
-$btnPrimaryBackground: lighten($blue, 5%);
+$btnPrimaryBackground: lighten($blue, 0%);
 $btnPrimaryBackgroundHighlight: darken($blue, 5%);
 
 $btnInfoBackground: lighten($purple, 5%);
 $btnInfoBackgroundHighlight: darken($purple, 5%);
 
-$btnSuccessBackground: lighten($green, 5%);
-$btnSuccessBackgroundHighlight: darken($green, 5%);
+$btnSuccessBackground: darken($green, 12%);
+$btnSuccessBackgroundHighlight: darken($green, 18%);
 
 $btnWarningBackground: lighten($orange, 5%);
 $btnWarningBackgroundHighlight: darken($orange, 5%);
@@ -196,7 +196,7 @@ $navbarLinkColor: $white;
 $navbarLinkColorHover: $white;
 $navbarLinkColorActive: $white;
 $navbarLinkBackgroundHover: lighten($grayDarker, 5%);
-$navbarLinkBackgroundActive: $grayDarker;
+$navbarLinkBackgroundActive: lighten($grayDarker, 2%);
 $navbarLinkBorderRight: $grayBorderDark;
 $navbarLinkBorderLeft: $grayBorderLight;
 $navbarLinkGroupBorderRight: $grayBorderDark;
