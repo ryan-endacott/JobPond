@@ -2,12 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   respond_to :html, :json
 
-  before_filter :notice
-
-  def notice
-    flash[:notice] = "Some Awesome text;"
-  end
-
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
   end
