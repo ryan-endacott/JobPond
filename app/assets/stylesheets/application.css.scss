@@ -70,12 +70,12 @@ body {
 
 
 #logo{
- background: url(image-path("logo-orange.png")) no-repeat;
- width: 145px;
- text-indent: -9999px;
- margin-left: 0;
- margin-top: 7px;
- padding-top: 5px;
+  display: inline-block;
+  background: url(image-path("logo-blue.png")) no-repeat;
+  width: 145px;
+  height: 40px;
+  text-indent: -9999px;
+  margin-top: 6px;
 }
 
 .hero-unit{
