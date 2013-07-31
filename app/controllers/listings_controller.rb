@@ -41,13 +41,13 @@ class ListingsController < ApplicationController
       c = Geocoder::Calculations.geographic_center(listings.map{ |l| [l.latitude, l.longitude]})
       if c[0].nan?
         if valid_zipcode? params[:zipcode]
-          return Geocoder.coordinates(params[:zipcode])
+          c = Geocoder.coordinates(params[:zipcode])
         else
-          return Geocoder.coordinates(ip_zipcode)
+          c = Geocoder.coordinates(ip_zipcode)
         end
-      else
-        return c
       end
+
+      return c || Geocoder::BACKUP_LOCATION
     end
 
     def ip_zipcode

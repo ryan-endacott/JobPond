@@ -237,7 +237,7 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 2.3.2.1)
+  bootstrap-sass
   cancan
   capybara
   cocoon (= 1.1.2)
