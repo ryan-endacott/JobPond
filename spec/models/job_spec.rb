@@ -26,7 +26,10 @@ describe Job do
 
 	it { @job.should respond_to :description }
 	it { @job.should respond_to :pay }
-	it { @job.should respond_to :title }
+  it { @job.should respond_to :title }
+  it { @job.should respond_to :address }
+  it { @job.should respond_to :city }
+  it { @job.should respond_to :state }
 
   it { should belong_to :employer }
   it { should have_many :applieds }

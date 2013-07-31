@@ -6,5 +6,8 @@ FactoryGirl.define do
     description "MyString"
     pay "9.99"
     employer_id 1
+    address '100 Mainstreet Street'
+    city 'Nixa'
+    state 'Missouri'
   end
 end
