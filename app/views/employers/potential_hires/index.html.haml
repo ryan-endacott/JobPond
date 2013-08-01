@@ -2,8 +2,12 @@
   .span12
     -if params[:search] == "purchased"
       %h1 Purchased Contacts
+      .hero-unit.mini
+        View employee contacts that you have purchased.
     - else
       %h1 Potential Hires
+      .hero-unit.mini
+        Find top rated employees that haven't applied for your listings.
 
     %p.categories
       = link_to "All", employers_potential_hires_path, class: "btn btn-info"
