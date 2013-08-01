@@ -32,16 +32,23 @@ class Employer < User
 	attr_accessible :company_name
 	validates :company_name, presence: true
 	has_many :jobs
+  has_many :contact_purchases
+
 
   def my_listing? listing
     listing.employer == self
   end
 
   def can_see_contact? employee
-    applicants = jobs.map{|job| job.applicants}
+    applicants = jobs.map(&:applicants)
     applicants.each do |applicant|
       return true if applicant == employee
     end
+
+    contact_purchases.each do |purchase|
+      return true if purchase.employee == employee
+    end
+
     false
   end
 
