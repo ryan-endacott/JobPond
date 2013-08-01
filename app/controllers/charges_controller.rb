@@ -19,10 +19,12 @@ class ChargesController < ApplicationController
 
     purchase = ContactPurchase.new(charge_id: charge.id)
     purchase.employer = current_user
-    purchase.employee = params[:employee_id]
+    purchase.employee_id = params[:employee_id].to_i
     purchase.save!
 
-    flash[:success] = 'Access purchased!' # TODO: Implement actual access
+    employee = Employee.find(params[:employee_id].to_i)
+
+    flash[:success] = "Access to contact #{employee.name} purchased!"
     redirect_to employers_potential_hires_path
 
   rescue Stripe::CardError => e
