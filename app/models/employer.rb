@@ -40,7 +40,8 @@ class Employer < User
   end
 
   def can_see_contact? employee
-    applicants = jobs.map(&:applicants)
+
+    applicants = jobs.map(&:applicants).flatten
     applicants.each do |applicant|
       return true if applicant == employee
     end

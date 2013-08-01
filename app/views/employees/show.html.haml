@@ -9,7 +9,7 @@
   %p= !@employee.resume.phone_number.blank? ? @employee.resume.phone_number : "No phone number entered"
 -else
   %h3 Contact Info
-  = "Can't see this."
+  = link_to "Get Contact Info!", "#", class: "btn btn-info"
 
 %h3 Birthday
 %p= !@employee.resume.birthday.blank? ? @employee.resume.birthday : "Nothing entered."

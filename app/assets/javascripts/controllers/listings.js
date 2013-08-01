@@ -72,9 +72,13 @@ JobApp.listings = {
     if($("#map-canvas").length == 0){
       console.log("Listings - Index - Listing...");
 
+      var message = "Thank you for applying!";
+
       $(".btn-apply").popover({
         trigger : "manual",
-        content : "There was an error."
+        content : function(){
+          return message;
+        }
       });
 
       $(".btn-apply").click(function(e){
@@ -90,11 +94,16 @@ JobApp.listings = {
         }).done(function(data){
             self.text("Applied!");
             self.removeClass("btn-info").addClass("btn-success");
-        }).fail(function(){
             self.popover("show")
             setTimeout(function(){
               self.popover("hide");
-            }, 2000)
+            }, 2000);
+        }).fail(function(){
+            message = "Sorry! There was an error..."
+            self.popover("show")
+            setTimeout(function(){
+              self.popover("hide");
+            }, 2000);
         });
       });
 

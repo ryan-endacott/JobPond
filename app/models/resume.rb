@@ -35,7 +35,7 @@ class Resume < ActiveRecord::Base
   accepts_nested_attributes_for :references, :reject_if => :all_blank, :allow_destroy => true
 
   def full_address
-    if attr?(address) && attr?(city) && attr?(state) && attr?(zipcode)
+    if !address.blank? && !city.blank? && !state.blank? && !zipcode.blank?
       "#{address}, #{city}, #{state}, #{zipcode}"
     else
       "No address entered."
@@ -43,13 +43,8 @@ class Resume < ActiveRecord::Base
   end
 
   def incomplete?
-    !(attr?(address) && attr?(city) && attr?(state) && attr?(zipcode) &&
-     attr?(phone_number) && attr?(description) && attr?(birthday))
+    address.blank? || city.blank? || state.blank? || zipcode.blank? ||
+     phone_number.blank? || description.blank? || birthday.blank?
   end
-
-  private
-    def attr? attribute
-        !attribute.nil? && !attribute.empty? rescue true
-    end
 
 end
