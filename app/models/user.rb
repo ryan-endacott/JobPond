@@ -26,6 +26,10 @@
 #  score                  :integer
 #  company_name           :string(255)
 #  can_contact            :boolean          default(FALSE)
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 class User < ActiveRecord::Base

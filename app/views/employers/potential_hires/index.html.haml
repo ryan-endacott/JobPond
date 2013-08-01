@@ -1,6 +1,13 @@
 .row
   .span12
-    %h1 Your Potential Hires
+    -if params[:search] == "purchased"
+      %h1 Purchased Contacts
+    - else
+      %h1 Potential Hires
+
+    %p.categories
+      = link_to "All", employers_potential_hires_path, class: "btn btn-info"
+      = link_to "Purchased Contacts", "?search=purchased", class: "btn btn-primary"
 
     %table.table.table-striped.table-bordered.table-hover
       %thead
@@ -10,22 +17,32 @@
           %th Score
           %th Contact
       %tbody
-        - @job_seekers.take(30).each do |seeker|
+        - if @job_seekers.count > 0
+          - @job_seekers.take(30).each do |seeker|
+            %tr
+              %td= link_to seeker.name, employee_path(seeker)
+              %td= truncate seeker.resume.description, length: 50
+              %td= seeker.score ? seeker.score : "No Score"
+              %td
+                - if current_user.can_see_contact?(seeker)
+                  Access available!
+                - else
+                  = form_tag charges_path do
+                    %input{type: :hidden, name: :employee_id, value: seeker.id}
+                    = javascript_include_tag "https://checkout.stripe.com/v2/checkout.js",
+                      :class => "stripe-button",
+                      :"data-key" => "#{Rails.configuration.stripe[:publishable_key]}",
+                      :"data-label" => "Contact!",
+                      :"data-panel-label" => "Submit payment for",
+                      :"data-name" => "Contact #{seeker.name}!",
+                      :"data-description" => "Get a full refund if you don't hire him/her!* TODOMVP: WRITE TERMS AND CONDITIONS",
+                      :"data-amount" => "5000"
+        - else
           %tr
-            %td= link_to seeker.name, employee_path(seeker)
-            %td Great at ping pong.
-            %td= seeker.score ? seeker.score : "No Score"
+            - if params[:search] == "purchased"
+              %td You haven't purchased any contacts.
+            - else
+              %td There aren't any potential hires yet.
             %td
-              - if current_user.can_see_contact?(seeker)
-                Access available!
-              - else
-                = form_tag charges_path do
-                  %input{type: :hidden, name: :employee_id, value: seeker.id}
-                  = javascript_include_tag "https://checkout.stripe.com/v2/checkout.js",
-                    :class => "stripe-button",
-                    :"data-key" => "#{Rails.configuration.stripe[:publishable_key]}",
-                    :"data-label" => "Contact!",
-                    :"data-panel-label" => "Submit payment for",
-                    :"data-name" => "Contact #{seeker.name}!",
-                    :"data-description" => "Get a full refund if you don't hire him/her!* TODOMVP: WRITE TERMS AND CONDITIONS",
-                    :"data-amount" => "5000"
+            %td
+            %td
