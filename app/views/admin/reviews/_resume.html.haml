@@ -21,6 +21,17 @@
 		%p Job Experience
 		= f.simple_fields_for :job_experiences do |builder|
 			.nested-fields
-				= f.input_field :title, label: false, placeholder: "Title", disabled: true
-				= f.input_field :company, label: false, placeholder: "Company", disabled: true
-				= f.input_field :time, label: false, as: :select, collection: time_frames, disabled: true
+				= builder.input_field :title, label: false, placeholder: "Title", disabled: true
+				= builder.input_field :company, label: false, placeholder: "Company", disabled: true
+				= builder.input_field :time, label: false, as: :select, collection: time_frames_short, disabled: true
+
+
+		%p References (3 Recommended)
+		= f.simple_fields_for :references do |builder|
+			.nested-fields
+				= builder.input_field :name, label: false, placeholder: "Name", disabled: true
+				= builder.input_field :relationship, label: false, placeholder: "Relationship", disabled: true
+				= builder.input_field :length_known, label: false, placeholder: "Length Known", as: :select, collection: time_frames_long, disabled: true
+				%br
+				= builder.input_field :phone_number, label: false, placeholder: "Phone Number", disabled: true
+				= builder.input_field :email, label: false, placeholder: "Email Address", disabled: true

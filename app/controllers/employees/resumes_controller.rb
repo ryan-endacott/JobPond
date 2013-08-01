@@ -15,7 +15,7 @@ class Employees::ResumesController < ApplicationController
     @resume = resume
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
-        format.html { redirect_to root_path, notice: 'Resume was successfully updated.' }
+        format.html { redirect_to listings_path, notice: 'Resume was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
