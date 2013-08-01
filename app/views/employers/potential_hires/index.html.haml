@@ -12,7 +12,7 @@
       %tbody
         - @job_seekers.take(30).each do |seeker|
           %tr
-            %td= seeker.name
+            %td= link_to seeker.name, employee_path(seeker)
             %td Great at ping pong.
             %td= seeker.score ? seeker.score : "No Score"
             %td
