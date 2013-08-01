@@ -14,7 +14,7 @@
       - if current_user.employer?
         = nav_link "Employee Finder", employers_potential_hires_path
         = nav_link 'Dashboard', employers_dashboard_path
-      - else
+      - elsif current_user.employee?
         = nav_link 'My Resume', edit_employees_resume_path
 
     - if user_signed_in?
