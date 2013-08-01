@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
       @near = near_formatted @listings
       render "map"
     else
-      @listings = @listings.paginate page: params[:page]
+      @listings = @listings.paginate(page: params[:page]).includes(:employer, :applicants)
     end
   end
 
