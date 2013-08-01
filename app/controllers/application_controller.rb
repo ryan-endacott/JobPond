@@ -11,13 +11,15 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(user)
       if user.employer?
         path = employers_dashboard_path
-      else
+      elsif user.employee?
         if user.resume.incomplete?
           flash[:notice] += " Your resume is incomplete.  You should finish filling it out."
           path = edit_employees_resume_path
         else
           path = listings_path
         end
+      else
+        path = admin_reviews_path
       end
       session[:user_return_to] || path #Was on page or go to new
     end

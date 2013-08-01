@@ -1,3 +1,4 @@
+- content_for :title, "#{@listing.title} | Job Listings"
 %h1= @listing.title
 - if current_user.employer? && current_user.my_listing?(@listing)
   .row

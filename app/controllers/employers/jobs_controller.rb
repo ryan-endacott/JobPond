@@ -3,17 +3,6 @@ class Employers::JobsController < ApplicationController
   authorize_resource :job
   before_filter :employer_only!
 
-  # GET /jobs
-  # GET /jobs.json
-  def index
-    @jobs = Job.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @jobs }
-    end
-  end
-
   # GET /jobs/new
   # GET /jobs/new.json
   def new

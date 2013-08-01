@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "JobPond"
+      %title= content_for?(:title) ? "#{yield(:title)} | JobPond" : "JobPond"
       = favicon_link_tag
       %meta{:content => content_for?(:description) ? yield(:description) : "Job App", :name => "description"}
         = stylesheet_link_tag "application", :media => "all"

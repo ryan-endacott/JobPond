@@ -34,6 +34,8 @@ class Resume < ActiveRecord::Base
   accepts_nested_attributes_for :job_experiences, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :references, :reject_if => :all_blank, :allow_destroy => true
 
+  after_save :needs_review?
+
   def full_address
     if !address.blank? && !city.blank? && !state.blank? && !zipcode.blank?
       "#{address}, #{city}, #{state}, #{zipcode}"
@@ -46,5 +48,11 @@ class Resume < ActiveRecord::Base
     address.blank? || city.blank? || state.blank? || zipcode.blank? ||
      phone_number.blank? || description.blank? || birthday.blank?
   end
+
+  private
+
+    def needs_review?
+      self.employee.reviewed = false if self.changed?
+    end
 
 end

@@ -16,15 +16,4 @@ class Employees::AppliedsController < ApplicationController
     end
   end
 
-  # DELETE /applieds/1
-  # DELETE /applieds/1.json
-  def destroy
-    @applied = Applied.find(params[:id])
-    @applied.destroy
-
-    respond_to do |format|
-      format.html { redirect_to applieds_url }
-      format.json { head :no_content }
-    end
-  end
 end

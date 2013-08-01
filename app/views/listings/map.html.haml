@@ -1,3 +1,4 @@
+- content_for :title, "Map | Job Listings"
 #map-search-form.higher.well.border.well-small
   = form_tag listings_path, method: :get, class: "form-inline pull-right search-form search-form-absolute" do
     = link_to "Back", params.merge(map: false), class: "btn btn-warning"

@@ -11,17 +11,6 @@ class Admin::ReviewsController < ApplicationController
     end
   end
 
-  # GET /admin/reviews/1
-  # GET /admin/reviews/1.json
-  def show
-    @review = Employee.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @review }
-    end
-  end
-
   # GET /admin/reviews/1/edit
   def edit
     @review = Employee.find(params[:id])
