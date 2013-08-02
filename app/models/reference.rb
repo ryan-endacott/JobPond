@@ -14,6 +14,9 @@
 #
 
 class Reference < ActiveRecord::Base
-  attr_accessible :email, :length_known, :name, :phone_number, :relationship
+  attr_accessible :email, :length_known, :name, :phone_number,
+      :relationship
   belongs_to :resume
+
+  #validates :phone_number, format: { with: /\A\d{3}-?\d{3}-?\d{4}\z/ }, allow_blank: true
 end

@@ -1,5 +1,12 @@
 = simple_form_for(@resume, url: employees_resume_path, html: {method: :put}) do |f|
-	= f.error_notification
+	.errors
+		= f.error_notification
+	.avatar.pull-right.text-right
+		= image_tag current_user.avatar_url
+		%br
+		= #link_to "Upload avatar from computer", "#", id: "upload-avatar"
+		= link_to "Change image with gravatar", "https://en.gravatar.com/"
+
 	.form-inputs
 
 		= f.input :address

@@ -34,6 +34,8 @@ class Resume < ActiveRecord::Base
   accepts_nested_attributes_for :job_experiences, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :references, :reject_if => :all_blank, :allow_destroy => true
 
+  validates :phone_number, format: { with: /\A\d{3}-?\d{3}-?\d{4}\z/ }, allow_blank: true
+
   before_save :needs_review?
 
   def full_address
@@ -52,12 +54,10 @@ class Resume < ActiveRecord::Base
   private
 
     def needs_review?
-      puts "review"
-      if self.changed?
-        puts "changed"
+      if self.changed? && self.employee
         e = self.employee
         e.reviewed = nil;
-        puts e.save
+        e.save
       end
     end
 
