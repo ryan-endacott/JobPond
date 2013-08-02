@@ -9,9 +9,13 @@ JobApp.listings = {
   show : function(){
     console.log("Listings - Show...");
 
+    var message = "Thank you for applying!";
+
     $("#btn-apply").popover({
       trigger : "manual",
-      content : "There was an error."
+      content : function(){
+        return message;
+      }
     });
 
     $("#btn-apply").click(function(e){
@@ -25,13 +29,19 @@ JobApp.listings = {
           "job_id" : job_id
         }
       }).done(function(data){
-          self.text("Applied!");
-          self.removeClass("btn-info").addClass("btn-success");
+        message = "Thank you for applying!";
+        self.text("Applied!");
+        self.removeClass("btn-info").addClass("btn-success");
+        self.popover("show")
+        setTimeout(function(){
+          self.popover("hide");
+        }, 2000);
       }).fail(function(){
-          self.popover("show")
-          setTimeout(function(){
-            self.popover("hide");
-          }, 2000)
+        message = "Sorry! There was an error..."
+        self.popover("show")
+        setTimeout(function(){
+          self.popover("hide");
+        }, 2000);
       });
     });
 
@@ -92,18 +102,19 @@ JobApp.listings = {
             "job_id" : job_id
           }
         }).done(function(data){
-            self.text("Applied!");
-            self.removeClass("btn-info").addClass("btn-success");
-            self.popover("show")
-            setTimeout(function(){
-              self.popover("hide");
-            }, 2000);
+          message = "Thank you for applying!";
+          self.text("Applied!");
+          self.removeClass("btn-info").addClass("btn-success");
+          self.popover("show")
+          setTimeout(function(){
+            self.popover("hide");
+          }, 2000);
         }).fail(function(){
-            message = "Sorry! There was an error..."
-            self.popover("show")
-            setTimeout(function(){
-              self.popover("hide");
-            }, 2000);
+          message = "Sorry! There was an error..."
+          self.popover("show")
+          setTimeout(function(){
+            self.popover("hide");
+          }, 2000);
         });
       });
 
