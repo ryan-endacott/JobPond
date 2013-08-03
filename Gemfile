@@ -10,6 +10,7 @@ group :assets do
   gem 'bootstrap-sass'
 end
 gem 'jquery-rails'
+gem 'jcrop-rails'
 gem 'cancan'
 gem 'devise'
 gem 'figaro'

@@ -27,11 +27,18 @@ class Employees::ResumesController < ApplicationController
   # POST /avatar
   def avatar
     if params[:employee] && current_user.update_attributes(params[:employee])
-      flash[:notice] = "Avatar successfully updated."
+      #if params[:employee][:avatar].blank?
+        flash[:notice] = "Avatar successfully updated."
+        redirect_to edit_employees_resume_path
+      #else
+      #  flash[:notice] = "Crop your avatar."
+      #  render "crop"
+      #end
     else
       flash[:error] = "Avatar could not be updated."
+      redirect_to edit_employees_resume_path
     end
-    redirect_to edit_employee_resume_path
+
   end
 
   private

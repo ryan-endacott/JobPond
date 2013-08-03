@@ -1,0 +1,10 @@
+- content_for :title, "Crop Avatar"
+%h1 Crop Your Avatar
+%br
+.text-center
+  = image_tag current_user.avatar.url(:large), id: "cropbox", data: { ratio: current_user.avatar_geometry(:original).width / current_user.avatar_geometry(:large).width}
+%hr
+= simple_form_for(current_user, url: avatar_path, method: :post) do |f|
+  - for attribute in [:crop_x, :crop_y, :crop_w, :crop_h]
+    = f.hidden_field attribute, :id => attribute
+  = f.submit "Crop", class: "btn btn-primary pull-right"

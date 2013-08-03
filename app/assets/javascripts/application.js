@@ -14,6 +14,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jcrop
 //= require bootstrap
 //= require_self
 //= require_tree ./controllers/

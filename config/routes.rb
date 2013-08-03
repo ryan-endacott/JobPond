@@ -8,7 +8,7 @@ JobApp::Application.routes.draw do
   devise_for :employees, skip: [:sessions, :passwords], controllers: {registrations: 'registrations'}
   devise_for :employers, skip: [:sessions, :passwords], controllers: {registrations: 'registrations'}
 
-  post "/avatar", to: "resumes#avatar"
+  post "/avatar", to: "employees/resumes#avatar"
   namespace :employees do
   	resource :resume, only: ["edit", "update"]
     resources :applieds, only: ["create"]
