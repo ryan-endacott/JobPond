@@ -42,11 +42,26 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email,
-   :password, :password_confirmation, :remember_me, :type, :avatar
+   :password, :password_confirmation, :remember_me, :type,
+   :avatar
+
+  ## If i don't have the first the form says not method...
+  ## If i don't have the second can't mass assign...
+  ## Idk why the second one alone won't just work...
+  #attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :proc
+  #attr_accessible :crop_x, :crop_y, :crop_w, :crop_h
 
   validates :first_name, :last_name, presence: true
 
-  has_attached_file :avatar, :styles => { :medium => "200x200>" }
+  #has_attached_file :avatar, styles: {
+  #  large: { geometry: "700x700>" },
+  #  medium: { geometry: "200x200#", processors: [:cropper]}
+  #}
+  #after_update :reprocess_avatar, :if => :cropping?
+
+  has_attached_file :avatar, styles: { large: "700x700>", medium: "200x200#" }
+
+
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -73,5 +88,20 @@ class User < ActiveRecord::Base
       avatar.url
     end
   end
+
+  def cropping?
+    !proc && !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
+
+  def avatar_geometry(style = :original)
+    @geometry ||= {}
+    @geometry[style] ||= Paperclip::Geometry.from_file(avatar.path(style))
+  end
+
+  private
+
+    def reprocess_avatar
+      avatar.reprocess!
+    end
 
 end
