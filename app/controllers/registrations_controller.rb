@@ -8,8 +8,10 @@ class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(user)
     if user.employer?
+      analytics_event('Employer', 'Sign Up', user.company_name)
       new_employers_job_path
-    else
+    else # Job Seeker
+      analytics_event('Job Seeker', 'Sign Up', user.name)
       flash[:notice] = "Welcome #{user.first_name}! The next step is to fill out your resume."
       edit_employees_resume_path
     end
