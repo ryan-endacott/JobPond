@@ -11,6 +11,10 @@
       = f.input :company_name, required: true
       = f.input :email, required: true
       = f.input :password, required: true
+      = f.input :accepted_tos, as: :boolean, inline_label: "Accept Terms And Conditions", label: false
+      %p
+        = link_to "Terms And Conditions", "/tos.html"
+      %br
       = f.button :submit, 'Sign up', class: 'btn-primary'
     = render "devise/shared/links"
   .span7
