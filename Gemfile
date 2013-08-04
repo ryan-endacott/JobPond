@@ -37,7 +37,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem "shoulda-matchers"
 end
-group :production do
+group :production, :staging do
   gem 'unicorn'
   gem 'pg'
 end
