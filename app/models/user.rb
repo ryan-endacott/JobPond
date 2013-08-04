@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   #attr_accessible :crop_x, :crop_y, :crop_w, :crop_h
 
   validates :first_name, :last_name, presence: true
-  validates :accepted_tos, acceptance: true, presence: true
+  validates :accepted_tos, acceptance: {accept: true}, presence: true
 
   #has_attached_file :avatar, styles: {
   #  large: { geometry: "700x700>" },
