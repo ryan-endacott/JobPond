@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def render_ga_events(events = [])
+    scripts = []
+    events.each do |event|
+      scripts.push("ga('send', 'event', '#{event[:category]}', '#{event[:action]}', '#{event[:label]}', #{event[:value] || 'null'});")
+    end
+    scripts.join('\n')
+  end
+
   def display_base_errors resource
     return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)
     messages = resource.errors[:base].map { |msg| content_tag(:p, msg) }.join
