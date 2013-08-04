@@ -3,7 +3,7 @@ class Employers::PotentialHiresController < ApplicationController
 
   def index
     if !params[:search].blank? && params[:search] == "purchased"
-      @job_seekers = current_user.contact_purchases.map(&:employee)
+      @job_seekers = current_user.purchased_contacts
     else
       @job_seekers = Employee.where(can_contact: true, reviewed: true).order("score DESC")
     end
