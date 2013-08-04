@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.13'
-gem 'sqlite3'
+
 gem 'annotate'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -24,6 +24,7 @@ gem 'geocoder'
 gem "stripe", "~> 1.8.4"
 gem "paperclip", "~> 3.0"
 group :development do
+  gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
   gem 'html2haml'
@@ -36,6 +37,7 @@ group :development, :test do
 end
 group :production do
   gem 'unicorn'
+  gem 'pg'
 end
 group :test do
   gem 'capybara'

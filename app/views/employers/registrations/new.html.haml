@@ -1,4 +1,7 @@
 - content_for :title, "Employer Sign Up"
+- content_for :tos_label do
+  %span.text-black= "Accept"
+  = link_to "Terms Of Service", "/tos.html"
 
 %h2 New Employer Sign Up
 .row
@@ -11,6 +14,8 @@
       = f.input :company_name, required: true
       = f.input :email, required: true
       = f.input :password, required: true
+      = f.input :accepted_tos, as: :boolean, inline_label: content_for(:tos_label), label: false
+      %br
       = f.button :submit, 'Sign up', class: 'btn-primary'
     = render "devise/shared/links"
   .span7
