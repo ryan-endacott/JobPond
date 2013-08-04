@@ -28,6 +28,7 @@ JobApp::Application.routes.draw do
   namespace :admin do
     resources :reviews, only: ["index", "edit", "update"]
     resources :feedbacks, only: ['index']
+    resources :stats, only: ['index']
   end
 
   get '/contact', to: 'admin/feedbacks#new'

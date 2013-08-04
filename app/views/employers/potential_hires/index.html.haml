@@ -27,7 +27,7 @@
             %tr
               %td= link_to seeker.name, employee_path(seeker)
               %td= truncate seeker.resume.description, length: 50
-              %td= seeker.score ? seeker.score : "No Score"
+              %td= seeker.score || "No Score"
               %td
                 - if current_user.can_see_contact?(seeker)
                   Access available!

@@ -37,24 +37,19 @@ class Employer < User
 	validates :company_name, presence: true
 	has_many :jobs
   has_many :contact_purchases
+  has_many :purchased_contacts, through: :contact_purchases, source: :employee
 
 
   def my_listing? listing
     listing.employer == self
   end
 
+  def all_applicants
+    jobs.map(&:applicants).flatten
+  end
+
   def can_see_contact? employee
-
-    applicants = jobs.map(&:applicants).flatten
-    applicants.each do |applicant|
-      return true if applicant == employee
-    end
-
-    contact_purchases.each do |purchase|
-      return true if purchase.employee == employee
-    end
-
-    false
+    all_applicants.include?(employee) || purchased_contacts.include?(employee)
   end
 
 end
