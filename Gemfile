@@ -25,6 +25,7 @@ gem 'will_paginate-bootstrap'
 gem 'geocoder'
 gem "stripe", "~> 1.8.4"
 gem "paperclip", "~> 3.0"
+
 group :development do
   gem 'sqlite3'
   gem 'better_errors'
@@ -40,6 +41,8 @@ end
 group :production, :staging do
   gem 'unicorn'
   gem 'pg'
+  gem 'dalli'
+  gem 'memcachier'
 end
 group :test do
   gem 'capybara'
