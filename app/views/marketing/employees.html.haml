@@ -15,6 +15,7 @@
 					= f.input_field :last_name, placeholder: "Last", class: "input-block-level"
 			= f.input_field :email, placeholder: "Email", class: "input-block-level"
 			= f.input_field :password, placeholder: "Password", class: "input-block-level"
+			= f.input :accepted_tos, as: :boolean, inline_label: "Accept Terms And Conditions", label: false
 			= f.button :submit, 'Sign up', class: 'btn-primary btn-block btn-medium'
 		%p.text-center
 			Or
