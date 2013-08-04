@@ -3,7 +3,7 @@ module ApplicationHelper
   def render_ga_events(events = [])
     scripts = []
     events.each do |event|
-      scripts.push("ga('send', 'event', '#{event[:category]}', '#{event[:action]}', '#{event[:label]}', #{event[:value] || 'null'});")
+      scripts.push("ga('send', 'event', '#{event[:category]}', '#{event[:action]}', '#{event[:label]}', #{event[:value] || 0});")
     end
     scripts.join('\n')
   end
