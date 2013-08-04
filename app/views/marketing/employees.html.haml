@@ -1,6 +1,10 @@
 - content_for(:no_container, true)
+- content_for :tos_label do
+	%span.text-black= "Accept"
+	= link_to "Terms Of Service", "/tos.html"
+
 #map-heading-wrapper
-	#map-canvas.absolute{:data => {lat: @coords[0], long: @coords[1], near: @near.to_json}}
+	#map-canvas.absolute{data: {lat: @coords[0], long: @coords[1], near: @near.to_json}}
 
 	#map-heading-promo-text.span6.well.border.higher
 		%h2 Find Undergraduate Jobs!
@@ -15,7 +19,7 @@
 					= f.input_field :last_name, placeholder: "Last", class: "input-block-level"
 			= f.input_field :email, placeholder: "Email", class: "input-block-level"
 			= f.input_field :password, placeholder: "Password", class: "input-block-level"
-			= f.input :accepted_tos, as: :boolean, inline_label: "Accept Terms And Conditions", label: false
+			= f.input :accepted_tos, as: :boolean, inline_label: content_for(:tos_label), label: false
 			= f.button :submit, 'Sign up', class: 'btn-primary btn-block btn-medium'
 		%p.text-center
 			Or

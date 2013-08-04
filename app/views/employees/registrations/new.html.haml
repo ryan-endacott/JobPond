@@ -1,4 +1,8 @@
 - content_for :title, "Job Seeker Sign Up"
+- content_for :tos_label do
+	%span.text-black= "Accept"
+	= link_to "Terms Of Service", "/tos.html"
+
 %h2 New Job Seeker Sign Up
 .row
 	.span5
@@ -9,9 +13,7 @@
 			= f.input :last_name, required: true
 			= f.input :email, required: true, input_html: {class: "input-xlarge"}
 			= f.input :password, required: true, input_html: {class: "input-xlarge"}
-			= f.input :accepted_tos, as: :boolean, inline_label: "Accept Terms And Conditions", label: false
-			%p
-				= link_to "Terms And Conditions", "/tos.html"
+			= f.input :accepted_tos, as: :boolean, inline_label: content_for(:tos_label), label: false
 			%br
 			= f.button :submit, 'Sign up', class: 'btn-primary'
 		= render "devise/shared/links"
