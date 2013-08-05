@@ -43,6 +43,7 @@ group :production, :staging do
   gem 'pg'
   gem 'dalli'
   gem 'memcachier'
+  gem 'newrelic_rpm'
 end
 group :test do
   gem 'capybara'
