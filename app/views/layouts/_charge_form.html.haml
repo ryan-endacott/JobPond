@@ -1,0 +1,25 @@
+= form_tag charges_path do
+  %input{type: :hidden, name: :employee_id, value: seeker.id}
+  %script{:src => "https://checkout.stripe.com/v2/checkout.js"}
+  %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"}
+  %button{id: "StripeChargeButton#{seeker.id}", class: btn_class}= label
+  :javascript
+    $('#StripeChargeButton#{seeker.id}').click(function(){
+      var token = function(res){
+        var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+        $('form').append($input).submit();
+      };
+
+      StripeCheckout.open({
+        key:         "#{Rails.configuration.stripe[:publishable_key]}",
+        amount:      5000,
+        currency:    'usd',
+        name:        "Contact #{seeker.name}",
+        description: "Get a full refund by contacting us if you don't hire him/her! Terms and conditions apply.",
+        panelLabel:  'Submit payment for',
+        token:       token
+      });
+
+      return false;
+    });
+
