@@ -1,7 +1,7 @@
 - content_for(:no_container, true)
 - content_for :tos_label do
 	%span.text-black= "Accept"
-	= link_to "Terms Of Service", "/tos.html"
+	= link_to "Terms Of Service", "/tos.html", target: "_blank"
 
 #map-heading-wrapper
 	#map-canvas.absolute{data: {lat: @coords[0], long: @coords[1], near: @near.to_json}}
