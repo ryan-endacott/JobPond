@@ -13,7 +13,7 @@ ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
 
-GOOGLE_ANALYTICS_KEY: UA-42777752-2
+GOOGLE_ANALYTICS_KEY: UA-42777752-1
 
 stripe_test: &stripe_test
   STRIPE_PUBLISHABLE_KEY: pk_test_lDdJmb3kyATpFi383DJ5dclR
@@ -25,10 +25,8 @@ development:
 production:
   STRIPE_PUBLISHABLE_KEY: pk_live_SyoIzCBgX6It3TmWa27LIkSz
   STRIPE_SECRET_KEY: sk_live_7npiwumkwNye5OSiLgIvyiHC
-  GOOGLE_ANALYTICS_KEY: UA-42777752-1
   SITE_URL: jobpond.net
 
 staging:
   <<: *stripe_test
-  GOOGLE_ANALYTICS_KEY: UA-42777752-2
   SITE_URL: staging.jobpond.net
