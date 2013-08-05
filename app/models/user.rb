@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
       hash = Digest::MD5.hexdigest(self.email.strip)
       "http://www.gravatar.com/avatar/#{hash}?s=200&d=mm"
     else
-      avatar.url
+      avatar.url(:medium)
     end
   end
 
