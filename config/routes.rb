@@ -30,8 +30,8 @@ JobApp::Application.routes.draw do
     resources :feedbacks, only: ['index']
     resources :stats, only: ['index']
   end
-  get '/about_us', to: 'marketing#about_us'
 
+  get '/about_us', to: 'marketing#about_us'
   get '/contact', to: 'admin/feedbacks#new'
   post '/contact', to: 'admin/feedbacks#create'
 
