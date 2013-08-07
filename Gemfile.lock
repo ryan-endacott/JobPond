@@ -259,6 +259,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   paperclip (~> 3.0)
+  pg
   quiet_assets
   rails (= 3.2.13)
   rspec-rails

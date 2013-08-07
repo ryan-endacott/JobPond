@@ -3,7 +3,7 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
-    @amount = 5000
+    @amount = 10
 
     customer = Stripe::Customer.create(
       :email => 'example@stripe.com',
@@ -25,7 +25,7 @@ class ChargesController < ApplicationController
     employee = Employee.find(params[:employee_id].to_i)
 
     flash[:success] = "Access to contact #{employee.name} purchased!"
-    redirect_to employers_potential_hires_path
+    redirect_to employee_path(employee)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

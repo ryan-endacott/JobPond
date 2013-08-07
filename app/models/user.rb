@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email,
    :password, :password_confirmation, :remember_me, :type,
-   :avatar
+   :avatar, :accepted_tos
 
   ## If i don't have the first the form says not method...
   ## If i don't have the second can't mass assign...
@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
   #attr_accessible :crop_x, :crop_y, :crop_w, :crop_h
 
   validates :first_name, :last_name, presence: true
+  validates :accepted_tos, acceptance: {accept: true}, presence: true
 
   #has_attached_file :avatar, styles: {
   #  large: { geometry: "700x700>" },
@@ -85,7 +86,7 @@ class User < ActiveRecord::Base
       hash = Digest::MD5.hexdigest(self.email.strip)
       "http://www.gravatar.com/avatar/#{hash}?s=200&d=mm"
     else
-      avatar.url
+      avatar.url(:medium)
     end
   end
 

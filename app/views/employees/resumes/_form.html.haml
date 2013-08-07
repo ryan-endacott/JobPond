@@ -2,7 +2,7 @@
 	.errors
 		= f.error_notification
 	.avatar.pull-right.text-right
-		= image_tag current_user.avatar.url(:medium)
+		= image_tag current_user.avatar_url
 		%br
 		= link_to "Upload avatar from computer", "#", id: "upload-avatar"
 		%br

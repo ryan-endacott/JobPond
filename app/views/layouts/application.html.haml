@@ -1,6 +1,30 @@
 !!!
 %html
   %head
+
+    - if Rails.env.production? || Rails.env.staging? # Google analytics
+      :javascript
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        // Local development testing:
+        /*
+          ga('create', '#{ENV['GOOGLE_ANALYTICS_KEY']}', {
+            'cookieDomain': 'none'
+          });
+        */
+
+
+        // Production analytics
+        ga('create', '#{ENV['GOOGLE_ANALYTICS_KEY']}', 'jobpond.net');
+        ga('send', 'pageview');
+
+        // Handle events
+        #{render_ga_events(flash[:analytics]) if flash[:analytics]}
+
+
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? "#{yield(:title)} | JobPond" : "JobPond"
       = favicon_link_tag

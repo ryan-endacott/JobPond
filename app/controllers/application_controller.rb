@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+    def analytics_event(*args)
+      flash[:analytics] ||= []
+      flash[:analytics].push({ category: args[0], action: args[1], label: args[2], value: args[3]})
+    end
+
     def after_sign_in_path_for(user)
       if user.employer?
         path = employers_dashboard_path

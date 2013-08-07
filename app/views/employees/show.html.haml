@@ -10,7 +10,7 @@
   %p= !@employee.resume.phone_number.blank? ? @employee.resume.phone_number : "No phone number entered"
 -else
   %h3 Contact Info
-  = link_to "Get Contact Info!", "#", class: "btn btn-info"
+  = render partial: 'layouts/charge_form', locals: { btn_class: 'btn btn-info', label: 'Get Contact Info!', seeker: @employee }
 
 %h3 Birthday
 %p= !@employee.resume.birthday.blank? ? @employee.resume.birthday : "Nothing entered."
