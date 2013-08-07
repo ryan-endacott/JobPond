@@ -18,6 +18,9 @@ class MarketingController < ApplicationController
     @employer = Employer.new
   end
 
+  def about_us
+  end
+
   private
 
     def near_formatted coords
